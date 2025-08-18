@@ -7,34 +7,38 @@ import home from "../assets/homeHero.mp4";
 import whyChoose from "../assets/whyChoose.jpg";
 import janeDoe from "../assets/janeDoe.jpg";
 import johnSmith from "../assets/johnSmith.jpg";
-import emilyDavis from "../assets/emilyDavis.jpg";
+import emilyDavis from "../assets/emilyDavis.png";
 import kevinSpacey from "../assets/kevinSpacey.jpg";
+
 
 // Strict color palette
 const COLOR_1 = "#002346"; // deep blue
 const COLOR_2 = "#F8F4E3"; // off-white
 const COLOR_3 = "#333333"; // dark gray
 
+
 const Home = ({ user, onLogout }) => {
   const navigate = useNavigate();
   const { darkMode, setDarkMode } = useDarkMode();
-  // Scroll to next section (Practice Areas)
+
+  // Scroll to next section (Our Services)
   const handleExploreClick = () => {
     const nextSection = document.getElementById("practice-areas");
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+
   return (
-      <div
-        className="flex flex-col min-h-screen transition duration-300"
-        style={{
-          overflowX: "hidden",
-          background: darkMode ? COLOR_1 : COLOR_2,
-          color: darkMode ? COLOR_2 : COLOR_3,
-        }}
+    <div
+      className="flex flex-col min-h-screen transition duration-300"
+      style={{
+        overflowX: "hidden",
+        background: darkMode ? COLOR_1 : COLOR_2,
+        color: darkMode ? COLOR_2 : COLOR_3,
+      }}
     >
-      {/* Sticky header wrapper for z-index stacking context */}
+      {/* Sticky header */}
       <div
         className="fixed top-0 left-0 w-full z-[100]"
         style={{
@@ -42,16 +46,11 @@ const Home = ({ user, onLogout }) => {
           boxShadow: "0 2px 8px 0 rgba(51,51,51,0.08)",
         }}
       >
-        <Header
-          user={user}
-          onLogout={onLogout}
-        />
+        <Header user={user} onLogout={onLogout} />
       </div>
 
-      <main
-        className="flex-grow mx-auto"
-        style={{ color: darkMode ? COLOR_2 : COLOR_3 }}
-      >
+      <main className="flex-grow mx-auto" style={{ color: darkMode ? COLOR_2 : COLOR_3 }}>
+        
         {/* 1. Hero Section */}
         <section
           className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0"
@@ -74,52 +73,52 @@ const Home = ({ user, onLogout }) => {
             <source src={home} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+
           {/* Hero Content */}
           <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
             <h1
               className="text-5xl font-extrabold mb-6 drop-shadow-lg"
               style={{ color: COLOR_2 }}
             >
-              Welcome to Verdict Law Firm
+              Building Tomorrow, Today
             </h1>
             <p
               className="text-xl max-w-3xl mx-auto mb-8 drop-shadow-lg justify-center"
               style={{ color: COLOR_2 }}
             >
-              Your trusted legal partner committed to protecting your rights and
-              guiding you to justice. Committed to ensuring justice is served with integrity and
-              dedication.
+              Your trusted partner in construction and architecture — delivering innovative designs,
+              sustainable solutions, and projects that stand the test of time.
             </p>
-            {/* Button triggers scroll to next section */}
             <button
               className="px-8 py-4 rounded-full transition drop-shadow-lg mt-4"
               style={{ background: COLOR_3, color: COLOR_2 }}
               onClick={handleExploreClick}
             >
-              Explore our firm
+              Explore our services
             </button>
           </div>
         </section>
-        {/* 2. Practice Areas */}
+
+        {/* 2. Services Section */}
         <section
           id="practice-areas"
           className="px-6 py-10"
           style={{ background: COLOR_1 }}
         >
           <h2 className="text-3xl text-center font-bold mb-8" style={{ color: COLOR_2 }}>
-            Practice Areas
+            Our Expertise
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
-              "criminal",
-              "family",
-              "corporate",
-              "civil",
-              "real-estate",
-              "immigration",
+              "Residential Projects",
+              "Commercial Complexes",
+              "Industrial Facilities",
+              "Interior Design",
+              "Urban Planning",
+              "Renovation & Restoration",
             ].map((area) => (
               <button
-                onClick={() => navigate(`/services/${area}`)}
+                onClick={() => navigate(`/services/${area.toLowerCase().replace(/ /g, "-")}`)}
                 key={area}
                 className="p-6 rounded-lg border-2 transition cursor-pointer shadow-md hover:shadow-2xl hover:-translate-y-2 hover:scale-105 duration-300"
                 style={{
@@ -131,15 +130,14 @@ const Home = ({ user, onLogout }) => {
               >
                 <h3 className="text-xl font-semibold mb-2">{area}</h3>
                 <p className="text-base">
-                  Expert legal services tailored to your needs in{" "}
-                  {area.toLowerCase()}.
+                  High-quality design and construction services tailored for {area.toLowerCase()}.
                 </p>
               </button>
             ))}
           </div>
         </section>
-        {/* 3. Why Choose Us / Key Advantages */}
-        {/* 3. About Us / Firm Trivia */}
+
+        {/* 3. About Section */}
         <section
           className="px-6 py-10 flex flex-col md:flex-row items-center"
           style={{ background: darkMode ? COLOR_1 : COLOR_2 }}
@@ -148,31 +146,26 @@ const Home = ({ user, onLogout }) => {
           <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
             <img
               src={whyChoose}
-              alt="Verdict Law Firm Office"
+              alt="Architecture Office"
               className="rounded-lg shadow-lg object-cover"
-              style={{
-                width: "420px",
-                height: "280px",
-                border: `2px solid ${COLOR_1}`,
-              }}
+              style={{ width: "420px", height: "280px", border: `2px solid ${COLOR_1}` }}
             />
           </div>
-          {/* Right side: Trivia + Button */}
+
+          {/* Right side */}
           <div className="w-full md:w-1/2 flex flex-col items-start justify-center md:pl-10">
             <h2 className="text-3xl font-bold mb-8" style={{ color: darkMode ? "#fff" : COLOR_3 }}>
-              About Verdict Law Firm
+              About Our Firm
             </h2>
             <ul
               className="list-disc list-inside text-lg mb-8"
               style={{ color: darkMode ? "#fff" : COLOR_3 }}
             >
-              <li>Founded in 1997, serving 3,000+ clients[1].</li>
-              <li>Multi-disciplinary team awarded for excellence[1].</li>
-              <li>300+ high-profile cases won in last decade[1].</li>
-              <li>
-                Clients range from individuals to Fortune 500 companies[2].
-              </li>
-              <li>Diverse outreach & pro bono work in the community[2].</li>
+              <li>Established in 1997, with 2,500+ projects completed globally.</li>
+              <li>Award-winning design and engineering teams.</li>
+              <li>Specialized in sustainable and innovative architecture.</li>
+              <li>Trusted by clients ranging from homeowners to multinational corporations.</li>
+              <li>Dedicated to transforming communities through responsible construction.</li>
             </ul>
             <button
               className="px-8 py-4 rounded-full transition drop-shadow-lg"
@@ -183,33 +176,18 @@ const Home = ({ user, onLogout }) => {
             </button>
           </div>
         </section>
-        {/* 4. Meet the Team */}
+
+        {/* 4. Meet The Team */}
         <section className="px-6 py-10" style={{ background: COLOR_1 }}>
           <h2 className="text-3xl text-center font-bold mb-8" style={{ color: COLOR_2 }}>
-            Meet Our Attorneys
+            Meet Our Architects & Engineers
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              {
-                name: "Jane Doe",
-                title: "Senior Criminal Lawyer",
-                img: janeDoe,
-              },
-              {
-                name: "John Smith",
-                title: "Family Law Specialist",
-                img: johnSmith,
-              },
-              {
-                name: "Emily Davis",
-                title: "Corporate Law Expert",
-                img: emilyDavis,
-              },
-              {
-                name: "Kevin Spacey",
-                title: "Real Estate Law Specialist",
-                img: kevinSpacey,
-              },
+              { name: "Jane Doe", title: "Lead Architect", img: janeDoe },
+              { name: "John Smith", title: "Structural Engineer", img: johnSmith },
+              { name: "Emily Davis", title: "Interior Designer", img: emilyDavis },
+              { name: "Kevin Spacey", title: "Project Manager", img: kevinSpacey },
             ].map(({ name, title, img }) => (
               <div
                 key={name}
@@ -234,16 +212,10 @@ const Home = ({ user, onLogout }) => {
                   aria-label={name}
                 />
                 <div className="relative z-10 p-4 w-full flex flex-col items-center">
-                  <h3
-                    className="text-xl font-bold mb-2 drop-shadow-lg"
-                    style={{ color: COLOR_2 }}
-                  >
+                  <h3 className="text-xl font-bold mb-2 drop-shadow-lg" style={{ color: COLOR_2 }}>
                     {name}
                   </h3>
-                  <p
-                    className="text-base font-medium drop-shadow-lg"
-                    style={{ color: COLOR_2 }}
-                  >
+                  <p className="text-base font-medium drop-shadow-lg" style={{ color: COLOR_2 }}>
                     {title}
                   </p>
                 </div>
@@ -258,88 +230,57 @@ const Home = ({ user, onLogout }) => {
           style={{ background: darkMode ? '#002346' : '#F8F4E3' }}
         >
           <h2
-              className="text-4xl font-bold mb-4 text-center"
-              style={{ color: darkMode ? '#fff' : '#002346' }}
+            className="text-4xl font-bold mb-4 text-center"
+            style={{ color: darkMode ? '#fff' : '#002346' }}
           >
-            A Law Firm You Can Rely On
+            A Construction Partner You Can Trust
           </h2>
           <p
-              className="text-lg mb-10 max-w-3xl text-center"
-              style={{ color: darkMode ? '#fff' : '#333333' }}
+            className="text-lg mb-10 max-w-3xl text-center"
+            style={{ color: darkMode ? '#fff' : '#333333' }}
           >
-            Our commitment to reliability goes beyond legal expertise. At
-            Verdict Law Firm, we prioritize transparent communication, strict
-            confidentiality, and a results-driven approach tailored for every
-            client. Our values and statistics demonstrate why clients trust
-            us—again and again.
+            We go beyond blueprints and concrete. Our commitment to reliability, transparency, 
+            and innovation ensures every project is completed on time, within budget, 
+            and with uncompromising quality.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 w-full max-w-5xl">
-            {/* Cards */}
-            <div
-              className="rounded-xl p-8 shadow-lg bg-white"
-              style={{ color: '#002346' }}
-            >
-              <div className="text-3xl font-bold mb-2" style={{ color: '#333333' }}>
-                88%
-              </div>
+            <div className="rounded-xl p-8 shadow-lg bg-white" style={{ color: '#002346' }}>
+              <div className="text-3xl font-bold mb-2" style={{ color: '#333333' }}>92%</div>
               <div className="font-medium">
-                Client satisfaction rate,
-                <br />
-                one of the highest in the industry[14].
+                Client satisfaction rate<br />across residential & commercial projects.
               </div>
             </div>
-            <div
-              className="rounded-xl p-8 shadow-lg bg-white"
-              style={{ color: '#002346' }}
-            >
-              <div className="text-3xl font-bold mb-2" style={{ color: '#333333' }}>
-                95%
-              </div>
+            <div className="rounded-xl p-8 shadow-lg bg-white" style={{ color: '#002346' }}>
+              <div className="text-3xl font-bold mb-2" style={{ color: '#333333' }}>98%</div>
               <div className="font-medium">
-                Matters resolved
-                <br />
-                within estimated timelines[17].
+                Projects delivered<br />within scheduled timelines.
               </div>
             </div>
-            <div
-              className="rounded-xl p-8 shadow-lg bg-white"
-              style={{ color: '#002346' }}
-            >
-              <div className="text-3xl font-bold mb-2" style={{ color: '#333333' }}>
-                24/7
-              </div>
+            <div className="rounded-xl p-8 shadow-lg bg-white" style={{ color: '#002346' }}>
+              <div className="text-3xl font-bold mb-2" style={{ color: '#333333' }}>24/7</div>
               <div className="font-medium">
-                Availability for urgent legal inquiries
-                <br />
-                and rapid responses[8].
+                Dedicated project support<br />and client communication.
               </div>
             </div>
-            <div
-              className="rounded-xl p-8 shadow-lg bg-white"
-              style={{ color: '#002346' }}
-            >
-              <div className="text-3xl font-bold mb-2" style={{ color: '#333333' }}>
-                70+
-              </div>
+            <div className="rounded-xl p-8 shadow-lg bg-white" style={{ color: '#002346' }}>
+              <div className="text-3xl font-bold mb-2" style={{ color: '#333333' }}>150+</div>
               <div className="font-medium">
-                Dedicated legal professionals
-                <br />
-                with proven track records[17].
+                Architects & engineers<br />with proven track records.
               </div>
             </div>
           </div>
         </section>
 
-        {/* 6. Contact / Consultation CTA */}
+        {/* 6. Contact Section */}
         <section
-          className="text-center py-20  shadow-lg"
+          className="text-center py-20 shadow-lg"
           style={{ background: COLOR_1 }}
         >
           <h2 className="text-4xl font-bold mb-6" style={{ color: COLOR_2 }}>
-              Ready to Protect Your Rights?
+            Ready to Start Your Project?
           </h2>
           <p className="max-w-xl mx-auto mb-8" style={{ color: COLOR_2 }}>
-              Contact Verdict today to schedule your confidential consultation.
+            Contact us today to discuss your vision, and let’s bring it to life with expert design and construction.
           </p>
           <button
             className="px-8 py-4 rounded-full transition"
@@ -351,7 +292,7 @@ const Home = ({ user, onLogout }) => {
         </section>
       </main>
 
-  <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );
 };

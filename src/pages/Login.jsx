@@ -1,11 +1,11 @@
-import lawAndOrder from '../assets/lawAndOrder.jpg';
+import login from '../assets/login.jpg';
 import React, { useState } from 'react';
 import { useDarkMode } from '../context/DarkModeContext';
 import { useNavigate } from 'react-router-dom';
 import { Sun, Moon } from 'lucide-react';
 
 const ADMIN_EMAIL = 'admin@enkonix.in';
-const ADMIN_PASSWORD = 'admin@123';
+const ADMIN_PASSWORD = 'admin123';
 
 const Login = ({ onLogin }) => {
   const navigate = useNavigate();
@@ -132,7 +132,7 @@ const Login = ({ onLogin }) => {
     <div
       className="min-h-screen w-screen flex items-center justify-center transition duration-300 relative"
       style={{
-        backgroundImage: `url(${lawAndOrder})`,
+        backgroundImage: `url(${login})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

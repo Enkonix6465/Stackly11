@@ -3,56 +3,53 @@ import Header from '../components/Header.jsx';
 import { useDarkMode } from '../context/DarkModeContext';
 import AOS from 'aos';
 import Footer from '../components/Footer.jsx';
-//import '../aos-custom.css';
 import contact from '../assets/contactUsHero.mp4';
 
-
+// Office locations for construction firm branches
 const locations = [
   {
     city: "Mumbai",
-    address: "12 Justice Lane, Fort, Mumbai 400001",
+    address: "12 Skyline Lane, Fort, Mumbai 400001",
     phone: "+91-22-5555-1212"
   },
   {
     city: "Delhi",
-    address: "220A, Barakhamba Road, Connaught Place, New Delhi 110001",
+    address: "220A, Architect Road, Connaught Place, New Delhi 110001",
     phone: "+91-11-4433-2211"
   },
   {
     city: "Bengaluru",
-    address: "7 Law Street, Indiranagar, Bengaluru 560038",
+    address: "7 Vision Avenue, Indiranagar, Bengaluru 560038",
     phone: "+91-80-5577-8899"
   }
 ];
 
-
-// FAQ data and accordion component
+// Construction/Architecture Firm FAQ data
 const FAQS = [
   {
-    question: "What wellness programs do you offer?",
+    question: "What types of construction projects do you specialize in?",
     answer:
-      "We offer comprehensive wellness programs including nutrition coaching, fitness training, mindfulness sessions, stress management, and sleep optimization. Each program is personalized to meet your specific health goals and lifestyle needs."
+      "We handle residential, commercial, and industrial projects, including new builds, renovations, interiors, and urban planning."
   },
   {
-    question: "How long does it take to see results?",
+    question: "How long does it take to complete a typical project?",
     answer:
-      "Results vary by individual and program, but most clients begin to notice improvements within a few weeks of consistent participation."
+      "Timelines vary by scope and size. Most residential builds are completed within 6–12 months, with regular updates provided throughout the process."
   },
   {
-    question: "What is included in a wellness consultation?",
+    question: "Can you help with permits and approvals?",
     answer:
-      "A wellness consultation includes a comprehensive assessment of your health, lifestyle, and goals, followed by a personalized plan and recommendations."
+      "Yes, our expert team manages documentation, permits, and government approvals for a smooth, hassle-free experience."
   },
   {
-    question: "Do you offer virtual wellness sessions?",
+    question: "Do you design as well as build?",
     answer:
-      "Yes, we offer both in-person and virtual sessions to accommodate your preferences and schedule."
+      "Absolutely! We offer complete design-build solutions, from architectural concepts to finished construction."
   }
 ];
 
 function FAQAccordion() {
   const [openIdx, setOpenIdx] = React.useState(0);
-  // Color palette
   const COLOR_1 = '#002346';
   const COLOR_2 = '#F8F4E3';
   const COLOR_3 = '#333333';
@@ -106,22 +103,20 @@ const ContactUs = ({ user, onLogout }) => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  // Strict color palette
   const COLOR_1 = '#002346'; // deep blue
   const COLOR_2 = '#F8F4E3'; // off-white
   const COLOR_3 = '#333333'; // dark gray
 
-  // Contact form submit handler
   const handleContactSubmit = (e) => {
     e.preventDefault();
     setMessageSubmitted(true);
     setTimeout(() => setMessageSubmitted(false), 3000);
   };
+
   return (
     <div className={`min-h-screen w-full transition-colors duration-300 ${darkMode ? `bg-[${COLOR_1}] text-[${COLOR_2}]` : `bg-[${COLOR_2}] text-[${COLOR_3}]`}`} style={{overflowX: 'hidden', background: darkMode ? COLOR_1 : COLOR_2, color: darkMode ? COLOR_2 : COLOR_3}}> 
       <div className="fixed top-0 left-0 w-full z-[100]" style={{background: darkMode ? COLOR_3 : COLOR_2, boxShadow: '0 2px 8px 0 rgba(51,51,51,0.08)'}}>
-  <Header user={user} onLogout={onLogout} />
-        
+        <Header user={user} onLogout={onLogout} />
       </div>
 
       {/* 1. Hero Section with Video */}
@@ -140,15 +135,15 @@ const ContactUs = ({ user, onLogout }) => {
         </video>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
           <h1 className="font-bold text-5xl mb-6 drop-shadow-lg" style={{color: COLOR_2}} data-aos="fade-down">
-            Contact Us
+            Contact Vision Builders
           </h1>
           <p className="max-w-2xl mx-auto text-lg drop-shadow-lg" style={{color: COLOR_2}} data-aos="fade-up">
-            We're here to help reach out for legal advice, appointments, or urgent support.
+            Ready to discuss your next construction or architectural project? Reach out today to get started.
           </p>
         </div>
       </section>
 
-      {/* 2. Firm Contact Information */}
+      {/* 2. Company Contact Info */}
       <section className="w-full py-12 px-6" style={{backgroundColor: darkMode ? COLOR_1 : COLOR_2}}>
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4" style={{ color: darkMode ? COLOR_2 : COLOR_1 }} data-aos="fade-up">
@@ -161,7 +156,7 @@ const ContactUs = ({ user, onLogout }) => {
               data-aos="fade-right"
             >
               <h3 className="font-semibold text-lg mb-1">Email</h3>
-              <p className="mb-2">mail@enkonix.com</p>
+              <p className="mb-2">info@visionbuilders.com</p>
             </div>
             <div
               className="p-6 rounded-2xl shadow-lg"
@@ -189,13 +184,12 @@ const ContactUs = ({ user, onLogout }) => {
           <h2 className="text-3xl font-bold mb-6 text-center" style={{ color: COLOR_3 }} data-aos="fade-down">
             Send Us a Message
           </h2>
-          
             <form
               className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-8 rounded-2xl border border-[#e5e7eb]"
               style={{ boxShadow: '0 2px 16px 0 rgba(0,35,70,0.08)' }}
               onSubmit={handleContactSubmit}
             >
-              {/* Left column: Image and fields */}
+              {/* Left column */}
               <div className="flex flex-col gap-6 justify-center">
                 {/* Name */}
                 <label className="font-medium text-sm mb-1 self-start" htmlFor="name" style={{ color: '#222' }}>Your Name</label>
@@ -243,7 +237,7 @@ const ContactUs = ({ user, onLogout }) => {
                     type="text"
                     autoComplete="off"
                     className="pl-10 border border-[#002346] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#002346] bg-white text-base w-full placeholder-[#b0b0b0]"
-                    placeholder="Your Name"
+                    placeholder="Your Phone"
                     style={{ color: '#222' }}
                   />
                 </div>
@@ -256,7 +250,7 @@ const ContactUs = ({ user, onLogout }) => {
                   name="message"
                   rows={11}
                   className="border border-[#002346] rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#002346] bg-white text-base w-full placeholder-[#b0b0b0]"
-                  placeholder="Your Name"
+                  placeholder="How can we help with your project?"
                   required
                   style={{ color: '#222' }}
                 />
@@ -305,20 +299,20 @@ const ContactUs = ({ user, onLogout }) => {
         </div>
       </section>
 
-      {/* 5. Emergency Help */}
+      {/* 5. Map Section (kept generic) */}
       <section className="w-full py-12 px-6" style={{ background: COLOR_1 }}>
         <div className="rounded-xl shadow-lg">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425882353772!3d40.74076297144166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b30eac9f%3A0x2595e5b0b5b0b5b0!2sManhattan%2C%20New%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
-              width="100%"
-              height="400"
-              style={{ border: 0, borderRadius: "8px" }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Wellness Center NYC Location"
-            ></iframe>
-          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425882353772!3d40.74076297144166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b30eac9f%3A0x2595e5b0b5b0b5b0!2sManhattan%2C%20New%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1703123456789!5m2!1sen!2sus"
+            width="100%"
+            height="400"
+            style={{ border: 0, borderRadius: "8px" }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Vision Builders Location"
+          ></iframe>
+        </div>
       </section>
 
       {/* 6. FAQ Section */}
@@ -330,7 +324,7 @@ const ContactUs = ({ user, onLogout }) => {
           <FAQAccordion />
         </div>
       </section>
-  <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );
 };

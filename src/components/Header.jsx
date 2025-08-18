@@ -173,61 +173,61 @@ export default function Header() {
                   className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
                   onClick={() => { 
                     setServicesDropdown(false); 
-                    navigate('/services/family');
+                    navigate('/services/residential-projects');
                     scrollToTop();
                   }}
                 >
-                  Family Law
+                  Residential Projects
                 </div>
                 <div 
                   className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
                   onClick={() => { 
                     setServicesDropdown(false); 
-                    navigate('/services/civil');
+                    navigate('/services/commercial-complexes');
                     scrollToTop();
                   }}
                 >
-                  Civil Law
+                  Commercial Complexes
                 </div>
                 <div 
                   className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
                   onClick={() => { 
                     setServicesDropdown(false); 
-                    navigate('/services/corporate');
+                    navigate('/services/industrial-facilities');
                     scrollToTop();
                   }}
                 >
-                  Corporate Law
+                  Industrial Facilities
                 </div>
                 <div 
                   className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
                   onClick={() => { 
                     setServicesDropdown(false); 
-                    navigate('/services/real-estate');
+                    navigate('/services/interior-design');
                     scrollToTop();
                   }}
                 >
-                  Real-Estate Law
+                  Interior Design
                 </div>
                 <div 
                   className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
                   onClick={() => { 
                     setServicesDropdown(false); 
-                    navigate('/services/criminal');
+                    navigate('/services/urban-planning');
                     scrollToTop();
                   }}
                 >
-                  Criminal Law
+                  Urban Planning
                 </div>
                 <div 
                   className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${darkMode ? 'text-white hover:bg-gray-700' : 'text-black hover:bg-gray-100'}`} 
                   onClick={() => { 
                     setServicesDropdown(false); 
-                    navigate('/services/immigration');
+                    navigate('/services/renovation-restoration');
                     scrollToTop();
                   }}
                 >
-                  Immigration Law
+                  Renovation & Restoration
                 </div>
               </div>
             )}
@@ -341,7 +341,7 @@ export default function Header() {
               {homeDropdown && (
                 <div className="ml-4 mt-2 space-y-2">
                   <Link 
-                    to="/home1" 
+                    to="/home" 
                     onClick={closeMobileMenu}
                     className={`block py-2 px-4 rounded-lg transition-colors duration-200 ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
                   >
@@ -388,40 +388,40 @@ export default function Header() {
                     View All Services
                   </div>
                   <div 
-                    onClick={() => { closeMobileMenu(); navigate('/services/family'); scrollToTop(); }}
+                    onClick={() => { closeMobileMenu(); navigate('/services/residential-projects'); scrollToTop(); }}
                     className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
                   >
-                    Family
+                    Residential Projects
                   </div>
                   <div 
-                    onClick={() => { closeMobileMenu(); navigate('/services/civil'); scrollToTop(); }}
+                    onClick={() => { closeMobileMenu(); navigate('/services/commercial-complexes'); scrollToTop(); }}
                     className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
                   >
-                    Civil
+                    Commercial Complexes
                   </div>
                   <div 
-                    onClick={() => { closeMobileMenu(); navigate('/services/corporate'); scrollToTop(); }}
+                    onClick={() => { closeMobileMenu(); navigate('/services/industrial-facilities'); scrollToTop(); }}
                     className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
                   >
-                    Corporate
+                    Industrial Facilities
                   </div>
                   <div 
-                    onClick={() => { closeMobileMenu(); navigate('/services/real-estate'); scrollToTop(); }}
+                    onClick={() => { closeMobileMenu(); navigate('/services/interior-design'); scrollToTop(); }}
                     className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
                   >
-                    Real-Estate
+                    Interior Design
                   </div>
                   <div 
-                    onClick={() => { closeMobileMenu(); navigate('/services/criminal'); scrollToTop(); }}
+                    onClick={() => { closeMobileMenu(); navigate('/services/urban-planning'); scrollToTop(); }}
                     className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
                   >
-                    Criminal
+                    Urban Planning
                   </div>
                   <div 
-                    onClick={() => { closeMobileMenu(); navigate('/services/immigration'); scrollToTop(); }}
+                    onClick={() => { closeMobileMenu(); navigate('/services/renovation-restoration'); scrollToTop(); }}
                     className={`block py-2 px-4 rounded-lg transition-colors duration-200 cursor-pointer ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
                   >
-                    Immigration
+                    Renovation & Restoration
                   </div>
                 </div>
               )}

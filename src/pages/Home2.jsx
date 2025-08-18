@@ -10,6 +10,7 @@ import { useState, useRef, useEffect } from "react";
 
 export default function Home2({ user, onLogout }) {
   const { darkMode, setDarkMode } = useDarkMode();
+
   function useSyncHeight(leftRef, rightRef) {
     useEffect(() => {
       function sync() {
@@ -22,22 +23,26 @@ export default function Home2({ user, onLogout }) {
       return () => window.removeEventListener("resize", sync);
     }, [leftRef, rightRef]);
   }
+
   const navigate = useNavigate();
+
   // Strict color palette
   const COLOR_1 = "#002346"; // deep blue
   const COLOR_2 = "#F8F4E3"; // off-white
   const COLOR_3 = "#333333"; // dark gray
+
+  // Replace "case studies" with sample architecture/construction projects
   const caseStudies = [
     {
-      title: "Successful Property Dispute Resolution",
+      title: "Sustainable Residential Complex",
       summary:
-        "Our expert team helped a client reclaim rightful ownership in a complex boundary dispute, achieving a favorable settlement through mediation.",
+        "Designed and constructed an award-winning eco-friendly residential complex with solar integration and smart water management.",
       year: 2024,
     },
     {
-      title: "Winning Contractual Claim",
+      title: "Modern Corporate Headquarters",
       summary:
-        "Represented a business client in breach of contract litigation, securing significant damages and reinforcement of contractual rights.",
+        "Delivered a state-of-the-art commercial office building with innovative open-plan designs and LEED Platinum certification.",
       year: 2023,
     },
   ];
@@ -59,6 +64,7 @@ export default function Home2({ user, onLogout }) {
         color: darkMode ? COLOR_2 : COLOR_3,
       }}
     >
+      {/* Sticky Header */}
       <div
         className="fixed top-0 left-0 w-full z-[100]"
         style={{
@@ -66,13 +72,10 @@ export default function Home2({ user, onLogout }) {
           boxShadow: "0 2px 8px 0 rgba(51,51,51,0.08)",
         }}
       >
-        <Header
-          user={user}
-          onLogout={onLogout}
-        />
+        <Header user={user} onLogout={onLogout} />
       </div>
 
-      {/* Section 1: Hero Section with Video */}
+      {/* Section 1: Hero with Video */}
       <section
         className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0"
         style={{ minHeight: "100vh", maxWidth: "100vw", background: COLOR_1 }}
@@ -94,20 +97,21 @@ export default function Home2({ user, onLogout }) {
             className="text-5xl font-extrabold mb-6 drop-shadow-lg"
             style={{ color: COLOR_2 }}
           >
-            Welcome to Verdict
+            Welcome to Vision Builders
           </h1>
           <p
             className="text-xl max-w-3xl mx-auto mb-8 drop-shadow-lg"
             style={{ color: COLOR_2 }}
           >
-            Providing trusted legal counsel with unmatched dedication and
-            integrity.
+            Designing and building innovative spaces that inspire communities and
+            stand the test of time.
           </p>
         </div>
       </section>
+
       <main className="flex-grow max-w-7xl mx-auto px-6 py-12 space-y-24 md:space-y-32">
+        
         {/* Section 2: Our Philosophy */}
-        {/* Section 2: Our Philosophy with Side Image */}
         <section
           className="max-w-5xl mx-auto px-0 py-0 flex flex-col md:flex-row items-stretch min-h-[420px]"
           style={{
@@ -122,7 +126,7 @@ export default function Home2({ user, onLogout }) {
 
             return (
               <>
-                {/* Left Side: Image (synced height) */}
+                {/* Left Image */}
                 <div
                   ref={leftRef}
                   className="md:w-2/5 w-full flex items-stretch justify-center"
@@ -134,7 +138,7 @@ export default function Home2({ user, onLogout }) {
                 >
                   <img
                     src={philosophy}
-                    alt="Law Firm Philosophy"
+                    alt="Architectural Philosophy"
                     className="rounded-xl shadow-lg object-cover h-full"
                     style={{
                       width: "98%",
@@ -145,26 +149,27 @@ export default function Home2({ user, onLogout }) {
                     }}
                   />
                 </div>
-                {/* Right Side: Content (synced height) */}
+
+                {/* Right Content */}
                 <div
                   ref={rightRef}
                   className="md:w-3/5 w-full flex flex-col justify-center px-8 py-10"
-                  style={{ backgroundColor: darkMode? "#002346" : "#F8F4E3" }}
+                  style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
                 >
                   <h2
                     className="text-4xl font-extrabold mb-4"
                     style={{ color: darkMode ? "#fff" : "#002346" }}
                   >
-                    Our Philosophy
+                    Our Design Philosophy
                   </h2>
                   <p
                     className="text-lg leading-relaxed mb-6"
                     style={{ color: darkMode ? "#fff" : "#002346" }}
                   >
-                    Integrity, advocacy, and unwavering commitment to justice
-                    anchor our practice. Every client benefits from our
-                    personalized guidance, transparency, and strategic
-                    excellence—delivering results that transform lives.
+                    Creativity, sustainability, and precision are the cornerstones
+                    of our practice. Every project is tailored with innovation,
+                    functional design, and a strong commitment to environmental
+                    responsibility.
                   </p>
                   <div className="flex flex-col space-y-4">
                     {/* Card 1 */}
@@ -177,12 +182,11 @@ export default function Home2({ user, onLogout }) {
                       }}
                     >
                       <h3 className="text-xl font-bold mb-1">
-                        Client-Centered Advocacy
+                        Client-Focused Design
                       </h3>
                       <p>
-                        Every matter is approached with empathy and
-                        diligence—your interests and rights are always at the
-                        forefront.
+                        Every structure begins with your vision—crafted through
+                        collaboration and personalized planning.
                       </p>
                     </div>
                     {/* Card 2 */}
@@ -198,11 +202,11 @@ export default function Home2({ user, onLogout }) {
                         className="text-xl font-bold mb-1"
                         style={{ color: "#002346" }}
                       >
-                        Transparent Guidance
+                        Sustainable Innovation
                       </h3>
                       <p>
-                        We keep you informed at every stage, ensuring clear
-                        communication and honest advice for confident decisions.
+                        We integrate green building practices and future-ready
+                        technologies into every design.
                       </p>
                     </div>
                     {/* Card 3 */}
@@ -214,10 +218,10 @@ export default function Home2({ user, onLogout }) {
                         borderLeft: "6px solid #333333",
                       }}
                     >
-                      <h3 className="text-xl font-bold mb-1">Proven Results</h3>
+                      <h3 className="text-xl font-bold mb-1">Proven Excellence</h3>
                       <p>
-                        Our strategic approach has secured favorable outcomes
-                        for thousands, from individuals to major corporations.
+                        From homes to skyscrapers, our portfolio showcases
+                        projects that are both iconic and enduring.
                       </p>
                     </div>
                   </div>
@@ -247,20 +251,18 @@ export default function Home2({ user, onLogout }) {
           </h2>
           <div className="space-y-8 max-w-4xl mx-auto text-lg leading-relaxed">
             <p>
-              At <span className="font-semibold">Verdict</span>, we combine
-              strategic insight with meticulous attention to detail. Every case
-              is handled with personalized care, ensuring that your voice is
-              heard and your goals are prioritized.
+              At <span className="font-semibold">Vision Builders</span>, we unite
+              architectural creativity with engineering precision. Each project
+              is overseen with attention to detail, ensuring structural quality
+              and design excellence.
             </p>
             <p>
-              We emphasize clear communication
-              and transparency throughout the legal process, offering you
-              consistent updates and honest assessments to guide your decisions.
+              We believe in transparent communication and collaboration—keeping
+              clients consistently updated from planning to construction.
             </p>
             <p>
-              Our proactive legal strategies focus on both negotiation and
-              litigation, aiming for solutions that minimize risk while
-              maximizing your interests.
+              Our process emphasizes innovation, sustainability, and efficiency,
+              delivering results that are functional, aesthetic, and future-ready.
             </p>
           </div>
         </section>
@@ -281,7 +283,7 @@ export default function Home2({ user, onLogout }) {
             className="text-4xl font-extrabold mb-12 text-center"
             style={{ color: COLOR_3 }}
           >
-            Case Studies
+            Featured Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {caseStudies.map(({ title, summary, year }, idx) => (
@@ -315,7 +317,7 @@ export default function Home2({ user, onLogout }) {
           </div>
         </section>
 
-        {/* Section 5: Latest Legal Insights */}
+        {/* Section 5: Latest Insights */}
         <section
           className="max-w-7xl mx-auto rounded-xl p-8 shadow-md"
           style={{ background: COLOR_1 }}
@@ -324,24 +326,24 @@ export default function Home2({ user, onLogout }) {
             className="text-3xl font-semibold mb-8 text-center"
             style={{ color: COLOR_2 }}
           >
-            Latest Legal Insights
+            Latest Construction Insights
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
               {
-                title: "Understanding Civil Litigation",
+                title: "Trends in Sustainable Architecture",
                 excerpt:
-                  "A comprehensive overview of steps involved in civil litigation.",
+                  "Exploring the latest innovations in eco-friendly building materials and energy design.",
               },
               {
-                title: "Your Rights in Property Disputes",
+                title: "Maximizing Space in Urban Design",
                 excerpt:
-                  "Key points every property owner should know to safeguard their interests legally.",
+                  "Creative strategies for making the most of limited urban spaces.",
               },
               {
-                title: "Effective Contract Drafting Tips",
+                title: "Smart Building Technologies",
                 excerpt:
-                  "Tips for creating airtight contracts to avoid future legal complications.",
+                  "How IoT and automation are redefining modern construction.",
               },
             ].map(({ title, excerpt }, idx) => (
               <article
@@ -372,7 +374,7 @@ export default function Home2({ user, onLogout }) {
           </div>
         </section>
 
-        {/* Section 6: Contact & Appointment */}
+        {/* Section 6: Contact */}
         <section
           id="consultation-form"
           className="rounded-xl p-8 shadow-md max-w-3xl mx-auto"
@@ -382,7 +384,7 @@ export default function Home2({ user, onLogout }) {
             className="text-3xl font-semibold mb-6 text-center"
             style={{ color: COLOR_3 }}
           >
-            Schedule a Consultation
+            Schedule a Project Consultation
           </h2>
           <form className="space-y-6" onSubmit={handleConsultSubmit}>
             <div>
@@ -438,7 +440,7 @@ export default function Home2({ user, onLogout }) {
               <textarea
                 id="message"
                 rows={4}
-                placeholder="Briefly describe your legal matter"
+                placeholder="Briefly describe your project"
                 required
                 className="w-full p-3 rounded border"
                 style={{
@@ -453,7 +455,7 @@ export default function Home2({ user, onLogout }) {
               className="w-full py-3 rounded transition-colors"
               style={{ background: COLOR_3, color: COLOR_2 }}
             >
-              Book Appointment
+              Book Consultation
             </button>
           </form>
           {consultSent && (
@@ -461,13 +463,13 @@ export default function Home2({ user, onLogout }) {
               className="mt-4 text-center text-green-700 font-semibold"
               style={{ color: "#002346" }}
             >
-              Appointment is booked successfully!
+              Your consultation request was submitted successfully!
             </div>
           )}
         </section>
       </main>
 
-      {/* Anchor for Book Consultation scroll */}
+      {/* Anchor */}
       <div id="consultation"></div>
       <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>

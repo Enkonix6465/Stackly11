@@ -17,7 +17,8 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import aboutUsHero from "../assets/aboutUsHero.mp4";
-import missionVision from "../assets/missionVision.jpg"; // Change this to a suitable about/mission static image
+import missionVision from "../assets/missionVision.jpg"; // suitable about/mission static image
+
 
 const AboutUs = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();
@@ -55,7 +56,7 @@ const AboutUs = ({ user, onLogout }) => {
         </div>
       </div>
 
-      {/* 1. Hero / Introduction with Fullscreen Video Background and Toggle */}
+      {/* 1. Hero / Introduction */}
       <section
         className="w-full relative min-h-screen flex items-center justify-center text-center overflow-hidden"
         style={{ background: COLOR_1 }}
@@ -77,16 +78,16 @@ const AboutUs = ({ user, onLogout }) => {
             className="text-5xl font-extrabold mb-6"
             style={{ color: COLOR_2 }}
           >
-            About Verdict Law Firm
+            About Vision Builders
           </h1>
           <p className="text-xl max-w-3xl mx-auto" style={{ color: COLOR_2 }}>
-            Committed to justice, integrity, and personalized legal solutions
-            for every client.
+            Shaping skylines and building communities with passion, innovation,
+            and trust since our foundation.
           </p>
         </div>
       </section>
 
-      {/* 2. Our Mission & Vision Section (image left, content right) */}
+      {/* 2. Our Mission & Vision Section */}
       <section className="w-full py-16 px-6 max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-0">
         {(() => {
           const leftRef = useRef(null);
@@ -105,7 +106,7 @@ const AboutUs = ({ user, onLogout }) => {
               >
                 <img
                   src={missionVision}
-                  alt="Inspiring Verdict Mission"
+                  alt="Vision Builders Mission"
                   className="rounded-xl shadow-lg object-cover border-4"
                   style={{
                     width: "96%",
@@ -128,7 +129,7 @@ const AboutUs = ({ user, onLogout }) => {
               >
                 <h2
                   className="text-3xl font-bold mb-3"
-                  style={{ color: darkMode ? "#F8F4E3" : "#002346"  }}
+                  style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
                 >
                   Our Mission & Vision
                 </h2>
@@ -136,10 +137,10 @@ const AboutUs = ({ user, onLogout }) => {
                   className="mb-6 text-base md:text-lg"
                   style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
                 >
-                  We are committed to empowering individuals to achieve their
-                  optimal well-being—protecting your rights, delivering
-                  personalized legal solutions, and fostering a supportive,
-                  client-first community.
+                  We are committed to designing and constructing spaces that
+                  inspire, endure, and improve lives. Every project reflects our
+                  focus on innovation, sustainability, and excellence in
+                  architecture and construction.
                 </p>
                 {/* Mission card */}
                 <div
@@ -156,9 +157,8 @@ const AboutUs = ({ user, onLogout }) => {
                     Our Mission
                   </h3>
                   <p style={{ color: "#333333" }}>
-                    To provide accessible, comprehensive legal solutions that
-                    transform lives and create lasting positive change for
-                    everyone we serve.
+                    To build sustainable, functional, and beautiful spaces that
+                    bring visions to life and positively impact communities.
                   </p>
                 </div>
                 {/* Vision card */}
@@ -176,9 +176,9 @@ const AboutUs = ({ user, onLogout }) => {
                     Our Vision
                   </h3>
                   <p style={{ color: "#333333" }}>
-                    To be recognized as the leading law firm—where individuals
-                    and businesses discover their path to justice, well-being,
-                    and peace of mind.
+                    To be a global leader in innovative and sustainable
+                    architecture—transforming skylines and redefining modern
+                    living and workspaces.
                   </p>
                 </div>
               </div>
@@ -201,7 +201,7 @@ const AboutUs = ({ user, onLogout }) => {
               "Integrity",
               "Excellence",
               "Client Focus",
-              "Respect",
+              "Sustainability",
               "Innovation",
               "Community",
             ].map((value, idx) => (
@@ -217,16 +217,16 @@ const AboutUs = ({ user, onLogout }) => {
                 <h3 className="font-semibold mb-2">{value}</h3>
                 <p>
                   {value === "Integrity"
-                    ? "We adhere to the highest ethical standards and honesty in all client dealings."
+                    ? "We uphold honesty and transparency in every project, from planning to delivery."
                     : value === "Excellence"
-                    ? "Delivering outstanding results through expert knowledge and meticulous preparation."
+                    ? "Delivering world-class design and construction quality through expertise and precision."
                     : value === "Client Focus"
-                    ? "Prioritizing client needs with personalized service and open communication."
-                    : value === "Respect"
-                    ? "Fostering mutual respect within our team and with clients and opposing parties."
+                    ? "Your vision is central to our process—we collaborate closely to exceed expectations."
+                    : value === "Sustainability"
+                    ? "Prioritizing eco-friendly practices, green materials, and energy-efficient solutions."
                     : value === "Innovation"
-                    ? "Employing creative legal strategies to achieve favorable outcomes."
-                    : "Committed to giving back and supporting access to justice for all."}
+                    ? "Embracing modern technologies and forward-thinking designs to shape the future."
+                    : "Dedicated to building not just structures, but lasting positive impacts for people and society."}
                 </p>
               </li>
             ))}
@@ -244,10 +244,10 @@ const AboutUs = ({ user, onLogout }) => {
         </h2>
         <p
           className="text-center mb-14 text-lg font-medium"
-          style={{ color: darkMode ? "#F8F4E3" : "#333333"}}
+          style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
         >
-          A journey of continuous growth, innovation, and commitment to
-          transforming lives through justice.
+          A journey of creativity, technology, and dedication—transforming
+          blueprints into reality since day one.
         </p>
         <div className="relative flex flex-col gap-16">
           {/* Timeline Card: Foundation */}
@@ -256,11 +256,16 @@ const AboutUs = ({ user, onLogout }) => {
               className="flex-1 rounded-xl shadow-lg p-8"
               style={{ backgroundColor: darkMode ? "#F8F4E3" : "#002346" }}
             >
-              <h3 className="text-xl font-bold mb-2" style={{color:darkMode ? "#002346" : "white"}}>Foundation</h3>
-              <p style={{color:darkMode ? "#002346" : "white"}}>
-                Started Verdict Law Firm with a vision to protect clients’
-                rights through personalized care and evidence-based legal
-                practice. First office established, 2016.
+              <h3
+                className="text-xl font-bold mb-2"
+                style={{ color: darkMode ? "#002346" : "white" }}
+              >
+                Foundation
+              </h3>
+              <p style={{ color: darkMode ? "#002346" : "white" }}>
+                Founded Vision Builders with the goal of redefining modern
+                architecture—first office established in 2016, delivering
+                pioneering residential projects.
               </p>
             </div>
             <div
@@ -283,14 +288,16 @@ const AboutUs = ({ user, onLogout }) => {
             >
               <h3 className="text-xl font-bold mb-2">Expansion</h3>
               <p>
-                Expanded service offerings to include corporate and family law.
-                Opened second office, increased team to 20+ legal professionals,
-                2019.
+                Expanded into commercial and industrial projects. Opened second
+                design studio, grew to 20+ architects and engineers, 2019.
               </p>
             </div>
             <div
               className="flex-shrink-0 z-10 w-16 h-16 flex items-center justify-center rounded-full shadow-lg"
-              style={{ background: darkMode ? "#333333" : "#002346", color: "#F8F4E3" }}
+              style={{
+                background: darkMode ? "#333333" : "#002346",
+                color: "#F8F4E3",
+              }}
             >
               <span className="font-semibold text-lg">2019</span>
             </div>
@@ -302,11 +309,15 @@ const AboutUs = ({ user, onLogout }) => {
               className="flex-1 rounded-xl shadow-lg p-8"
               style={{ backgroundColor: darkMode ? "#F8F4E3" : "#002346" }}
             >
-              <h3 className="text-xl font-bold mb-2" style={{color:darkMode ? "#002346" : "white"}}>National Recognition</h3>
-              <p style={{color:darkMode ? "#002346" : "white"}}>
-                Achieved national recognition for landmark victories in
-                high-profile cases. Team awarded for excellence in advocacy and
-                client service, 2022.
+              <h3
+                className="text-xl font-bold mb-2"
+                style={{ color: darkMode ? "#002346" : "white" }}
+              >
+                National Recognition
+              </h3>
+              <p style={{ color: darkMode ? "#002346" : "white" }}>
+                Earned national recognition for eco-friendly architecture and
+                innovative structural designs. Awarded Best Design Firm, 2022.
               </p>
             </div>
             <div
@@ -331,14 +342,16 @@ const AboutUs = ({ user, onLogout }) => {
                 Technology & Innovation
               </h3>
               <p>
-                Adopted digital case management, remote consultations, and
-                online legal resources for better client access and streamlined
-                operations, 2024.
+                Integrated BIM systems, smart building technologies, and remote
+                project collaboration for efficiency and connectivity, 2024.
               </p>
             </div>
             <div
               className="flex-shrink-0 z-10 w-16 h-16 flex items-center justify-center rounded-full shadow-lg"
-              style={{ background: darkMode ? "#333333" : "#002346", color: "#F8F4E3" }}
+              style={{
+                background: darkMode ? "#333333" : "#002346",
+                color: "#F8F4E3",
+              }}
             >
               <span className="font-semibold text-lg">2024</span>
             </div>
@@ -346,7 +359,7 @@ const AboutUs = ({ user, onLogout }) => {
         </div>
       </section>
 
-      {/* 5. Our Commitment to Clients */}
+      {/* 5. Our Commitment Section */}
       <section className="w-full py-16 px-6" style={{ background: COLOR_1 }}>
         <div
           className="max-w-4xl mx-auto text-center"
@@ -354,19 +367,19 @@ const AboutUs = ({ user, onLogout }) => {
         >
           <h2 className="text-3xl font-bold mb-6">Our Commitment to You</h2>
           <p className="text-lg leading-relaxed mb-6">
-            We dedicate ourselves to offering transparent, accessible, and
-            proactive legal services. From the first consultation to the final
-            resolution, your goals are at the heart of our approach.
+            We commit to delivering reliable, innovative, and sustainable
+            building solutions. From blueprint to handover, your vision is at
+            the heart of everything we do.
           </p>
           <p className="italic text-base max-w-2xl mx-auto">
-            “Verdict Law Firm gave me personalized support and achieved results
-            I thought weren’t possible. Truly a partner you can count on.” —
+            “Vision Builders transformed our dream into reality with unmatched
+            professionalism and creativity. A true partner in every step.” —
             Client Testimonial
           </p>
         </div>
       </section>
 
-      {/* 6. Get in Touch / Call to Action */}
+      {/* 6. Call-to-Action */}
       <section
         className="w-full py-20 text-center"
         style={{ backgroundColor: darkMode ? COLOR_1 : "#F8F4E3" }}
@@ -375,14 +388,14 @@ const AboutUs = ({ user, onLogout }) => {
           className="text-4xl font-bold mb-6"
           style={{ color: darkMode ? "#fff" : COLOR_1 }}
         >
-          Ready to Connect with Us?
+          Ready to Build with Us?
         </h2>
         <p
           className="mb-8 text-lg max-w-xl mx-auto"
           style={{ color: darkMode ? "#fff" : COLOR_3 }}
         >
-          Contact Verdict Law Firm today to schedule your consultation and
-          discuss how we can serve your legal needs.
+          Contact Vision Builders today to schedule your consultation and
+          discover how we can bring your project to life.
         </p>
         <button
           className="font-bold px-8 py-4 rounded-full transition"
@@ -396,7 +409,7 @@ const AboutUs = ({ user, onLogout }) => {
         </button>
       </section>
 
-  <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );
 };

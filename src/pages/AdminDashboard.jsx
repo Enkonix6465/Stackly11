@@ -44,12 +44,10 @@ export default function AdminDashboard({ user, onLogout }) {
   useEffect(() => {
     const fetchUserData = () => {
       let logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
-      // Remove duplicate admin entries (optional)
       logins = logins.map(l => ({
         ...l,
         role: (l.email === 'admin@enkonix.in' || l.name === 'Admin') ? 'Admin' : 'User'
       }));
-      // Optionally filter out duplicate logins for the same user on the same event/time
       const uniqueLogins = [];
       const seen = new Set();
       for (const entry of logins) {
@@ -63,9 +61,7 @@ export default function AdminDashboard({ user, onLogout }) {
       setRegisteredUsers(JSON.parse(localStorage.getItem('registeredUsers') || '[]'));
     };
     fetchUserData();
-    // Listen for storage changes (other tabs/windows)
     window.addEventListener('storage', fetchUserData);
-    // Refresh when page regains focus
     window.addEventListener('focus', fetchUserData);
     return () => {
       window.removeEventListener('storage', fetchUserData);
@@ -73,22 +69,18 @@ export default function AdminDashboard({ user, onLogout }) {
     };
   }, []);
   const { darkMode, setDarkMode } = useDarkMode();
-  // Strict palette
-  const COLOR_1 = "#002346"; // Deep Blue
-  const COLOR_2 = "#F8F4E3"; // Soft Ivory
-  const COLOR_3 = "#333333"; // Charcoal Black
-
-  // Conditional text color
+  const COLOR_1 = "#002346";
+  const COLOR_2 = "#F8F4E3";
+  const COLOR_3 = "#333333";
   const textPrimary = darkMode ? COLOR_2 : COLOR_3;
   const cardBg = darkMode ? COLOR_3 : COLOR_2;
-  const borderColor = COLOR_1;
 
-  // Example chart data
+  // Chart data - same logic
   const firmOverviewData = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        label: "Billable",
+        label: "Active Projects",
         data: [27, 51, 72, 38, 94, 102],
         borderColor: COLOR_1,
         backgroundColor: darkMode ? "#fff" : "rgba(0,35,70,0.08)",
@@ -96,7 +88,7 @@ export default function AdminDashboard({ user, onLogout }) {
         pointRadius: 3,
       },
       {
-        label: "Non-Billable",
+        label: "Completed Projects",
         data: [13, 26, 38, 16, 29, 42],
         borderColor: COLOR_3,
         backgroundColor: darkMode ? "#fff" : "rgba(51,51,51,0.04)",
@@ -108,39 +100,18 @@ export default function AdminDashboard({ user, onLogout }) {
   };
 
   const financialCardData = [
-    // Icon color will be set dynamically in render
-    {
-      label: "Draft Bills",
-      value: 16,
-      color: COLOR_3,
-    },
-    {
-      label: "Total in Draft",
-      value: 4,
-      color: COLOR_3,
-    },
-    {
-      label: "Unpaid Bills",
-      value: 0,
-      color: COLOR_3,
-    },
-    {
-      label: "Overdue Bills",
-      value: 2,
-      color: COLOR_3,
-    },
-    {
-      label: "Total in Overdue",
-      value: 0,
-      color: COLOR_3,
-    },
+    { label: "Design Proposals", value: 16, color: COLOR_3 },
+    { label: "Projects In Progress", value: 4, color: COLOR_3 },
+    { label: "Pending Approvals", value: 0, color: COLOR_3 },
+    { label: "Delayed Projects", value: 2, color: COLOR_3 },
+    { label: "Upcoming Handovers", value: 0, color: COLOR_3 },
   ];
 
   const statsByCountry = {
     labels: ["UK", "CANADA", "USA", "AUS", "BD"],
     datasets: [
       {
-        label: "Billable Discounted",
+        label: "Projects Delivered",
         data: [182, 240, 320, 210, 78],
         backgroundColor: darkMode ? "#fff" : COLOR_1,
         borderWidth: 2,
@@ -148,7 +119,7 @@ export default function AdminDashboard({ user, onLogout }) {
     ],
   };
 
-  // Pie chart for utilization, realization, collection
+  // Pie chart for utilization, realization, collection (leave as is; not shown in this code)
   const usagePieData = (value, label, color) => ({
     labels: [label, "Remaining"],
     datasets: [
@@ -160,15 +131,14 @@ export default function AdminDashboard({ user, onLogout }) {
     ],
   });
 
-  // Sample recent invoice list
+  // Sample recent invoice list (renamed for architecture context)
   const recentInvoices = [
-    { client: "Courtney Henry", status: "Paid" },
-    { client: "Courtney Henry", status: "Pending" },
-    { client: "Courtney Henry", status: "Paid" },
-    { client: "Courtney Henry", status: "Unpaid" },
+    { client: "GreenSpace Developers", status: "Paid" },
+    { client: "UrbanHabitat Ltd.", status: "Pending" },
+    { client: "Skyline Apartments", status: "Paid" },
+    { client: "Blue Ocean Realty", status: "Unpaid" },
   ];
 
-  // App
   return (
     <div
       style={{ background: darkMode ? COLOR_1 : COLOR_2, minHeight: "100vh" }}
@@ -257,7 +227,7 @@ export default function AdminDashboard({ user, onLogout }) {
 
         {/* Firm Overview Row */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {/* Firm Overview Line Chart */}
+          {/* Firm Overview Bar Chart */}
           <div
             className="rounded-2xl shadow-md p-4 col-span-2"
             style={{ background: cardBg }}
@@ -267,13 +237,13 @@ export default function AdminDashboard({ user, onLogout }) {
                 className="font-bold text-lg"
                 style={{ color: textPrimary }}
               >
-                Firm Overview
+                Firm Project Overview
               </span>
               <span
                 className="text-xs font-semibold"
                 style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
               >
-                Current Time: 13.6%
+                Ongoing Projects: 13.6%
               </span>
             </div>
             <Bar
@@ -291,11 +261,11 @@ export default function AdminDashboard({ user, onLogout }) {
               height={110}
             />
             <div className="text-right text-xs mt-2" style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
-              $54,129.546 total | 235 Billable
+              54 active projects | 235 completed
             </div>
           </div>
 
-          {/* Client Locations Map Placeholder */}
+          {/* Client Locations Map */}
           <div
             className="rounded-2xl shadow-md p-4 flex flex-col items-center"
             style={{
@@ -308,13 +278,12 @@ export default function AdminDashboard({ user, onLogout }) {
               className="font-bold text-lg mb-2"
               style={{ color: textPrimary }}
             >
-              Clients Locations
+              Project Locations
             </span>
-            {/* insert world map component or static svg here */}
             <div className="w-full flex justify-center">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/World_map_-_low_resolution.svg/300px-World_map_-_low_resolution.svg.png"
-                alt="Clients Map"
+                alt="Projects Map"
                 style={{ maxWidth: 180, opacity: 0.7, borderRadius: 10 }}
               />
             </div>
@@ -351,7 +320,7 @@ export default function AdminDashboard({ user, onLogout }) {
               className="font-bold text-md mb-2 block"
               style={{ color: textPrimary }}
             >
-              Billable by Country
+              Projects by Country
             </span>
             <Bar
               data={statsByCountry}
@@ -372,7 +341,7 @@ export default function AdminDashboard({ user, onLogout }) {
               className="text-right mt-3 text-xs font-semibold"
               style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             >
-              $1,129.546 billable discounted
+              1,129 projects delivered globally
             </div>
           </div>
 
@@ -385,7 +354,7 @@ export default function AdminDashboard({ user, onLogout }) {
               className="font-bold text-md mb-2 block"
               style={{ color: textPrimary }}
             >
-              Recent Invoices
+              Recent Project Invoices
             </span>
             <table
               className="w-full text-left text-xs"
@@ -423,9 +392,9 @@ export default function AdminDashboard({ user, onLogout }) {
           </div>
         </section>
 
-        {/* Matters Overview & Quick Actions - Horizontal Cards */}
+        {/* Project Overview & Quick Actions */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-          {/* Total Matters Card */}
+          {/* Total Projects Card */}
           <div
             className="rounded-2xl shadow-md p-6 flex flex-col items-center"
             style={{ background: cardBg, color: darkMode ? "#F8F4E3" : "#333333" }}
@@ -436,10 +405,10 @@ export default function AdminDashboard({ user, onLogout }) {
               className="uppercase font-semibold mt-1"
               style={{ fontSize: 12, color: darkMode ? "#F8F4E3" : "#333333" }}
             >
-              Total Matters
+              Total Projects
             </div>
           </div>
-          {/* Closed Matters Card */}
+          {/* Completed Projects Card */}
           <div
             className="rounded-2xl shadow-md p-6 flex flex-col items-center"
             style={{ background: cardBg, color: darkMode ? "#F8F4E3" : "#333333" }}
@@ -447,7 +416,7 @@ export default function AdminDashboard({ user, onLogout }) {
             <FileText size={36} />
             <div className="font-bold text-2xl mt-2">3,410</div>
             <div className="uppercase font-semibold" style={{ fontSize: 12 }}>
-              Closed Matters
+              Completed Projects
             </div>
           </div>
           {/* Clients Card */}
@@ -458,12 +427,12 @@ export default function AdminDashboard({ user, onLogout }) {
             <Users size={36} />
             <div className="font-bold text-2xl mt-2">921</div>
             <div className="uppercase font-semibold" style={{ fontSize: 12 }}>
-              Clients Involved
+              Clients Served
             </div>
           </div>
         </section>
       </main>
-  <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );
 }

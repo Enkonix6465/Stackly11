@@ -15,7 +15,7 @@ function useSyncHeight(leftRef, rightRef) {
 }
 import { useDarkMode } from "../context/DarkModeContext";
 import { useLocation, Link } from "react-router-dom";
-import supremeCourt from "../assets/supremeCourt.png";
+import burjKhalifa from "../assets/burjKhalifa.jpg"; // Optional: Replace with a suitable "landmark building" image for architecture firm if needed
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import AOS from "aos";
@@ -31,143 +31,150 @@ function ScrollToTop() {
   return null;
 }
 
+// Construction/Architecture blog posts
 const blogPosts = [
   {
-    title: "Understanding Your Rights When Arrested",
+    title: "2025 Design Trends: What's Shaping Modern Architecture",
     date: "August 1, 2025",
     excerpt:
-      "Being arrested can be overwhelming. Learn the crucial rights every citizen should know and how to protect yourself legally...",
-    slug: "understanding-your-rights",
-    author: "Adv. Priya Sinha",
+      "Discover this year’s most influential building materials, design philosophies, and eco-friendly innovations driving the world of architecture and construction...",
+    slug: "2025-design-trends-modern-architecture",
+    author: "Ar. Priya Sharma",
   },
   {
-    title: "The Bail Application Process: What to Expect",
-    date: "July 24, 2025",
+    title: "How to Plan a Residential Project: From Blueprint to Build",
+    date: "July 18, 2025",
     excerpt:
-      "Need help with bail? We break down the step-by-step process and offer tips for best outcomes at your first hearing...",
-    slug: "bail-application-process",
-    author: "Adv. Rahul Mohanty",
+      "Explore the complete process for planning, designing, and executing a new home. Tips from architects and site engineers for smooth project delivery...",
+    slug: "planning-residential-project",
+    author: "Eng. Rahul Verma",
   },
   {
-    title: "White-Collar Crime: Common Defenses Explained",
-    date: "July 15, 2025",
+    title: "Renovating for Sustainability: Practical Approaches",
+    date: "July 5, 2025",
     excerpt:
-      "White-collar charges are complex. Explore the most effective legal defenses for fraud, embezzlement, and regulatory offences.",
-    slug: "white-collar-crime-defenses",
-    author: "Adv. Sneha Nair",
+      "Learn how to integrate green practices and energy efficiency into renovations—plus ways to maximize value and comfort.",
+    slug: "renovating-for-sustainability",
+    author: "Ar. Sneha Nair",
   },
 ];
 
+// Architecture/Construction suggestions (formerly "how to prepare for crime")
 const suggestions = [
   {
-    title: "Prepare for Arrest",
+    title: "Planning Your Project",
     description:
-      "Know your rights clearly: remain silent, ask for a lawyer, and avoid signing anything without legal advice.",
-    icon: "🛑",
+      "Define your goals, budget, and timeline early. Consult with architects for a vision that matches your needs and site conditions.",
+    icon: "📐",
   },
   {
-    title: "Bail Application",
+    title: "Choosing Sustainable Materials",
     description:
-      "Gather all case-related documents in advance and maintain communication with your attorney to streamline the bail process.",
-    icon: "⚖️",
+      "Prioritize energy-efficient, locally-sourced, and long-lasting building materials for better environmental impact and cost savings.",
+    icon: "♻️",
   },
   {
-    title: "White-Collar Crime Defense",
+    title: "Smart Home Integrations",
     description:
-      "Collect evidence and financial records meticulously to build a strong defense against allegations like fraud or embezzlement.",
-    icon: "💼",
+      "Incorporate the latest technologies—smart lighting, security, and climate control—for convenience and better quality of living.",
+    icon: "🏡",
   },
   {
-    title: "Dealing with Domestic Violence",
+    title: "Managing Project Costs",
     description:
-      "Reach out to legal help immediately and document incidents properly for stronger protection and legal action.",
-    icon: "🏠",
+      "Work closely with your builder for transparent cost estimates. Plan for contingencies and monitor progress at every stage.",
+    icon: "💰",
   },
   {
-    title: "Cybercrime Preparedness",
+    title: "Renovation Success Tips",
     description:
-      "Secure digital accounts, keep backups of important data, and report suspicious activity promptly for timely legal intervention.",
-    icon: "💻",
+      "Assess the existing structure's condition. Plan for upgrades in insulation, lighting, and space utilization for the best results.",
+    icon: "🔨",
   },
   {
-    title: "Handling Cyberbullying",
+    title: "Working with Architects",
     description:
-      "Document incidents thoroughly, avoid direct confrontation, and consult legal professionals for protection and remedies.",
-    icon: "📱",
+      "Share your ideas, preferences, and priorities clearly. Regular collaboration ensures the best outcome for your vision.",
+    icon: "🗣️",
   },
 ];
 
+// Safety Precautions by Age Group (household/home/space focus)
 const precautions = {
   below18: [
-    "Inform parents or guardians about suspicious situations.",
-    "Avoid sharing personal information online.",
-    "Be cautious of strangers both online and offline.",
-    "Know emergency contact numbers.",
+    "Inform parents or guardians before making changes to your room or home.",
+    "Avoid climbing on unstable furniture or fixtures.",
+    "Do not operate power tools or heavy equipment unsupervised.",
+    "Know emergency exit routes and basic first aid.",
   ],
   adults: [
-    "Use secure passwords and two-factor authentication online.",
-    "Always carry identification documents when outside.",
-    "Be aware of your surroundings and avoid risky areas.",
-    "Seek legal advice immediately if suspected of crime involvement.",
+    "Check credentials when hiring contractors or service providers.",
+    "Ensure proper ventilation during painting or renovation.",
+    "Secure all construction permits before starting work.",
+    "Discuss scope, costs, and timelines with your architect at every step.",
   ],
   seniorCitizens: [
-    "Avoid sharing financial information with unknown persons.",
-    "Use trusted contacts for errands and travels.",
-    "Install home security systems or alarms.",
-    "Report scams or suspicious calls to authorities promptly.",
+    "Install handrails and slip-resistant flooring where possible.",
+    "Ensure living spaces are well-lit and free of obstructions.",
+    "Keep emergency contacts visible and accessible.",
+    "Arrange regular maintenance checks for building safety.",
   ],
 };
 
-// Law Quiz Data and Component
+// Architecture Quiz Data
 const QUIZ_QUESTIONS = [
   {
-    question:
-      "Which article of the Indian Constitution guarantees the right to equality?",
+    question: "Which architectural style is known for its use of glass and steel?",
     options: [
-      "A. Article 14",
-      "B. Article 19",
-      "C. Article 21",
-      "D. Article 32",
-    ],
-    answer: 0,
-  },
-  {
-    question: "What is the minimum age for marriage for women in India?",
-    options: ["A. 16 years", "B. 18 years", "C. 21 years", "D. 25 years"],
-    answer: 1,
-  },
-  {
-    question:
-      "Which law deals with the punishment of criminal offences in India?",
-    options: [
-      "A. Indian Penal Code",
-      "B. Code of Civil Procedure",
-      "C. Indian Evidence Act",
-      "D. Companies Act",
-    ],
-    answer: 0,
-  },
-  {
-    question: "Who is the head of the judiciary in India?",
-    options: [
-      "A. President of India",
-      "B. Chief Justice of India",
-      "C. Prime Minister",
-      "D. Attorney General",
+      "A. Brutalism",
+      "B. Modernism",
+      "C. Gothic",
+      "D. Baroque",
     ],
     answer: 1,
   },
   {
-    question: "What is the jail term for money laundering?",
-    options: ["A. 3-4 years", "B. 4-5 years", "C. 5-6 years", "D. 6-7 years"],
-    answer: 3,
+    question: "Minimum recommended ceiling height for living rooms (as per most standards)?",
+    options: ["A. 2.3m", "B. 2.6m", "C. 2.9m", "D. 3.2m"],
+    answer: 1,
+  },
+  {
+    question:
+      "What is LEED certification related to in construction?",
+    options: [
+      "A. Safety Standards",
+      "B. Project Management",
+      "C. Green Building",
+      "D. Judicial Approvals",
+    ],
+    answer: 2,
+  },
+  {
+    question: "Which tool is essential for site measurements?",
+    options: [
+      "A. Hammer",
+      "B. Trowel",
+      "C. Measuring Tape",
+      "D. Level",
+    ],
+    answer: 2,
+  },
+  {
+    question: "A cantilever is best described as:",
+    options: [
+      "A. A type of paint",
+      "B. A projecting structure supported at only one end",
+      "C. A concrete mixture",
+      "D. A type of roof tile",
+    ],
+    answer: 1,
   },
 ];
 
 function LawQuiz() {
-  const COLOR_1 = "#002346"; // Deep Blue
-  const COLOR_2 = "#F8F4E3"; // Soft Ivory
-  const COLOR_3 = "#333333"; // Charcoal Black
+  const COLOR_1 = "#002346";
+  const COLOR_2 = "#F8F4E3";
+  const COLOR_3 = "#333333";
 
   const [step, setStep] = React.useState(0);
   const [selected, setSelected] = React.useState([]);
@@ -341,126 +348,6 @@ function LawQuiz() {
   );
 }
 
-// Indian Judiciary Flowchart component
-function JudiciaryFlowchart() {
-  const COLOR_1 = "#002346"; // Deep Blue
-  const COLOR_2 = "#F8F4E3"; // Soft Ivory
-  const COLOR_3 = "#333333"; // Charcoal Black
-
-  // A simple flowchart using divs and CSS flex/grid with arrows and boxes
-  return (
-    <section
-      className="w-full mx-auto px-6 py-16"
-      style={{ background: COLOR_2 }}
-      aria-label="Indian Judiciary System Flowchart"
-    >
-      <h2
-        className="text-4xl text-center font-bold mb-12"
-        style={{ color: COLOR_3 }}
-      >
-        Indian Judiciary System
-      </h2>
-
-      <div className="max-w-7xl mx-auto flex flex-col items-center space-y-16">
-        {/* Supreme Court */}
-        <div className="flex flex-col items-center">
-          <div
-            className="rounded-xl border-4 border-solid shadow-lg px-8 py-6 text-center"
-            style={{
-              borderColor: COLOR_1,
-              background: COLOR_2,
-              color: COLOR_3,
-              minWidth: 280,
-            }}
-          >
-            <h3 className="text-xl font-semibold mb-1">
-              Supreme Court of India
-            </h3>
-            <p className="text-sm">
-              Highest judicial authority and final court of appeal.
-            </p>
-          </div>
-          <div
-            className="w-0.5 h-12 bg-gradient-to-b from-transparent via-black/50 to-transparent mt-4"
-            style={{ backgroundColor: COLOR_3 }}
-            aria-hidden="true"
-          />
-        </div>
-
-        {/* High Courts */}
-        <div className="flex justify-center space-x-12">
-          <div
-            className="rounded-xl border-4 border-solid shadow-lg px-6 py-5 text-center"
-            style={{
-              borderColor: COLOR_1,
-              background: COLOR_2,
-              color: COLOR_3,
-              minWidth: 220,
-            }}
-          >
-            <h3 className="text-lg font-semibold mb-1">High Courts</h3>
-            <p className="text-xs">
-              State-level courts with appellate and original jurisdiction.
-            </p>
-          </div>
-        </div>
-
-        <div
-          className="w-full border-t-4 border-dashed"
-          style={{ borderColor: COLOR_1 }}
-          aria-hidden="true"
-        />
-
-        {/* Subordinate Courts */}
-        <div className="grid grid-cols-3 gap-8 max-w-5xl w-full text-center">
-          <div
-            className="rounded-xl border-4 border-solid shadow-lg p-4"
-            style={{
-              borderColor: COLOR_1,
-              background: COLOR_2,
-              color: COLOR_3,
-            }}
-            aria-label="District Courts and Sessions Courts"
-          >
-            <h4 className="font-semibold mb-1">District & Sessions Courts</h4>
-            <p className="text-xs">
-              Handle civil and criminal cases at district level.
-            </p>
-          </div>
-          <div
-            className="rounded-xl border-4 border-solid shadow-lg p-4"
-            style={{
-              borderColor: COLOR_1,
-              background: COLOR_2,
-              color: COLOR_3,
-            }}
-            aria-label="Civil Courts"
-          >
-            <h4 className="font-semibold mb-1">Civil Courts</h4>
-            <p className="text-xs">
-              Deal with disputes involving individuals or organizations.
-            </p>
-          </div>
-          <div
-            className="rounded-xl border-4 border-solid shadow-lg p-4"
-            style={{
-              borderColor: COLOR_1,
-              background: COLOR_2,
-              color: COLOR_3,
-            }}
-            aria-label="Criminal Courts"
-          >
-            <h4 className="font-semibold mb-1">Criminal Courts</h4>
-            <p className="text-xs">
-              Handle cases involving crimes and offences.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 const Blog = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();
   useEffect(() => {
@@ -498,7 +385,7 @@ const Blog = ({ user, onLogout }) => {
           />
         </div>
 
-        {/* 1. Hero Section with Video */}
+        {/* 1. Hero with Video */}
         <section
           className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0"
           style={{
@@ -531,15 +418,14 @@ const Blog = ({ user, onLogout }) => {
               style={{ color: COLOR_2 }}
               data-aos="fade-down"
             >
-              Legal Insights & Updates
+              Inspiration & Building Insights
             </h1>
             <p
               className="max-w-2xl mx-auto text-lg drop-shadow-lg"
               style={{ color: COLOR_2 }}
               data-aos="fade-up"
             >
-              News, legal guides, and expert tips from our attorneys helping you
-              stay informed and empowered.
+              Construction news, design guides, and expert tips from our team—helping you create better spaces for life and work.
             </p>
           </div>
         </section>
@@ -613,7 +499,7 @@ const Blog = ({ user, onLogout }) => {
             className="text-4xl text-center font-bold mb-12"
             style={{ color: COLOR_2 }}
           >
-            How to Prepare if You Face a Crime Situation
+            Project Planning & Building Tips
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {suggestions.map(({ title, description, icon }, idx) => (
@@ -646,7 +532,7 @@ const Blog = ({ user, onLogout }) => {
             className="text-4xl text-center font-bold mb-12"
             style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
           >
-            Precautions by Age Group
+            Safety Precautions at Home & Work
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto text-left">
             {/* Below 18 Age */}
@@ -660,7 +546,7 @@ const Blog = ({ user, onLogout }) => {
                 className="text-2xl font-semibold mb-4"
                 style={{ color: COLOR_1 }}
               >
-                Below 18 Age
+                Children & Teens
               </h3>
               <ul className="list-disc list-inside space-y-2 text-sm">
                 {precautions.below18.map((item, idx) => (
@@ -709,11 +595,11 @@ const Blog = ({ user, onLogout }) => {
           </div>
         </section>
 
-        {/* Section: General Knowledge — Supreme Court of India */}
+        {/* Section: Fun Building Fact Block */}
         <section
           className="w-full mx-auto px-6 py-16 flex flex-col md:flex-row items-stretch justify-center max-w-7xl"
           style={{ background: "#002346", borderRadius: "1.5rem" }}
-          aria-label="General Knowledge About Supreme Court of India"
+          aria-label="Architecture/Building Knowledge"
           data-aos="fade-up"
         >
           {/* Height sync for image and content */}
@@ -724,15 +610,15 @@ const Blog = ({ user, onLogout }) => {
 
             return (
               <>
-                {/* Left: Supreme Court Image */}
+                {/* Left: Iconic building Image */}
                 <div
                   ref={leftRef}
                   className="md:w-1/2 w-full flex items-stretch justify-center mb-8 md:mb-0"
                   style={{ transition: "height 0.3s" }}
                 >
                   <img
-                    src={supremeCourt}
-                    alt="Supreme Court of India"
+                    src={burjKhalifa} // Optionally replace with your own architecture firm image
+                    alt="Iconic Building"
                     className="rounded-xl shadow-lg object-cover border-4 w-full max-w-[360px] h-full"
                     style={{
                       width: "90%",
@@ -745,7 +631,6 @@ const Blog = ({ user, onLogout }) => {
                     }}
                   />
                 </div>
-
                 {/* Right: Content */}
                 <div
                   ref={rightRef}
@@ -755,7 +640,7 @@ const Blog = ({ user, onLogout }) => {
                     className="text-3xl font-bold mb-6"
                     style={{ color: "#F8F4E3" }}
                   >
-                    Supreme Court of India: Know the Facts
+                    Building the Future: Did You Know?
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-lg">
                     <div>
@@ -764,14 +649,10 @@ const Blog = ({ user, onLogout }) => {
                         style={{ color: "#F8F4E3" }}
                       >
                         <li>
-                          The Supreme Court of India is the highest judicial
-                          authority and was established on{" "}
-                          <b>January 28, 1950</b>.
+                          The tallest building in the world, the Burj Khalifa, stands at 828 meters and required over 330,000 cubic meters of concrete!
                         </li>
                         <li>
-                          It is located at <b>Tilak Marg, New Delhi</b>, and its
-                          iconic building features a distinctive dome inspired
-                          by the Temple of the Vedic gods.
+                          Sustainable design can reduce a building's operating costs by up to 50% through energy and water savings.
                         </li>
                       </ul>
                     </div>
@@ -781,12 +662,11 @@ const Blog = ({ user, onLogout }) => {
                         style={{ color: "#F8F4E3" }}
                       >
                         <li>
-                          As of August 2025, <b>Justice D.Y. Chandrachud</b> is
-                          the Chief Justice of India.
+                          Modern BIM (Building Information Modeling) improves collaboration among architects, engineers, and contractors for fewer errors.
                         </li>
-                        <li>The Court comprises the Chief Justice and up to{" "}
-                <b>33 other judges</b>; appointments are made by the President
-                of India.</li>
+                        <li>
+                          The Great Wall of China is over 13,000 miles long—history’s most impressive construction feat!
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -804,13 +684,12 @@ const Blog = ({ user, onLogout }) => {
         >
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-12" style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>
-              Test Your Legal Knowledge
+              Test Your Architecture Knowledge
             </h2>
             <LawQuiz />
           </div>
         </section>
 
-        {/* Footer */}
         <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
       </div>
     </>
