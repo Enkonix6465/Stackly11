@@ -34,11 +34,11 @@ const Footer = ({ darkMode, bgColor }) => {
         <div>
           <h4 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-[#F8F4E3]' : 'text-[#002346]'}`}>Quick Links</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/home" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`}>Home</Link></li>
-            <li><Link to="/about" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`}>About Us</Link></li>
-            <li><Link to="/blog" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`}>Blog</Link></li>
-            <li><Link to="/contact" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`}>Contact Us</Link></li>
-            <li><Link to="/services" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`}>Services</Link></li>
+            <li><Link to="/home" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Home</Link></li>
+            <li><Link to="/about" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>About Us</Link></li>
+            <li><Link to="/blog" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Blog</Link></li>
+            <li><Link to="/contact" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Contact Us</Link></li>
+            <li><Link to="/services" className={`${darkMode ? 'text-[#F8F4E3] hover:text-[#F8F4E3]' : 'text-[#333333] hover:text-[#002346]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Services</Link></li>
           </ul>
         </div>
 
@@ -46,12 +46,12 @@ const Footer = ({ darkMode, bgColor }) => {
         <div>
           <h4 className={`text-lg font-semibold mb-3 ${darkMode ? 'text-[#F8F4E3]' : 'text-[#002346]'}`}>Our Services</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/services/residential-projects" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`}>Residential Projects</Link></li>
-            <li><Link to="/services/commercial-complexes" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`}>Commercial Complexes</Link></li>
-            <li><Link to="/services/industrial-facilities" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`}>Industrial Facilities</Link></li>
-            <li><Link to="/services/interior-design" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`}>Interior Design</Link></li>
-            <li><Link to="/services/urban-planning" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`}>Urban Planning</Link></li>
-            <li><Link to="/services/renovation-restoration" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`}>Renovation & Restoration</Link></li>
+            <li><Link to="/services/residential-projects" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Residential Projects</Link></li>
+            <li><Link to="/services/commercial-complexes" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Commercial Complexes</Link></li>
+            <li><Link to="/services/industrial-facilities" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Industrial Facilities</Link></li>
+            <li><Link to="/services/interior-design" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Interior Design</Link></li>
+            <li><Link to="/services/urban-planning" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Urban Planning</Link></li>
+            <li><Link to="/services/renovation-restoration" className={`${darkMode ? 'text-[#F8F4E3]' : 'text-[#333333]'} hover:underline`} onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>Renovation & Restoration</Link></li>
           </ul>
         </div>
 
