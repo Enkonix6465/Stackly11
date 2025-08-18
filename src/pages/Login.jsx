@@ -142,10 +142,10 @@ const Login = ({ onLogin }) => {
         <div className="flex justify-between items-center mb-6">
           <h2 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-[#002346]'}`}>
             {isAdmin
-              ? 'Admin Login - Verdict'
+              ? 'Admin Login'
               : isSignup
-                ? 'Sign Up for Verdict'
-                : 'Login to Verdict'}
+                ? 'Sign Up'
+                : 'Login'}
           </h2>
           <button
             onClick={() => setDarkMode(prev => !prev)}
