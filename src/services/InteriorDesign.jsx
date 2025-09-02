@@ -1,4 +1,6 @@
+/* eslint-disable no-irregular-whitespace */
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext.jsx";
@@ -32,90 +34,69 @@ const InteriorDesign = ({ user, onLogout }) => {
     };
   }, []);
 
-  const scrollToBenefits = () => {
-    const benefitsSection = document.getElementById("key-benefits");
-    if (benefitsSection) benefitsSection.scrollIntoView({ behavior: "smooth" });
-  };
-  const scrollToPricing = () => {
-    const pricingSection = document.getElementById("pricing-section");
-    if (pricingSection) pricingSection.scrollIntoView({ behavior: "smooth" });
-  };
-
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []); // Interior Design content
 
+  const { t } = useTranslation();
+
   const benefits = [
-    "Personalized spaces that reflect your unique style",
-    "Optimized use of space, light, and color",
-    "Seamless project management from concept to completion",
-    "Access to exclusive materials and custom furnishings",
-    "Stress-free process with professional guidance",
-    "Increased property value and market appeal",
+    t("interior.benefit1"),
+    t("interior.benefit2"),
+    t("interior.benefit3"),
+    t("interior.benefit4"),
+    t("interior.benefit5"),
+    t("interior.benefit6"),
   ];
 
   const services = [
     {
-      title: "Residential Interior Design",
-      description:
-        "Transforming homes into functional and beautiful living spaces, tailored to your lifestyle.",
+      title: t("interior.service1.title"),
+      description: t("interior.service1.desc"),
     },
     {
-      title: "Commercial Space Planning",
-      description:
-        "Creating inspiring and efficient environments for offices, retail, and hospitality sectors.",
+      title: t("interior.service2.title"),
+      description: t("interior.service2.desc"),
     },
     {
-      title: "3D Rendering & Virtual Walkthroughs",
-      description:
-        "Bringing your design to life with high-fidelity 3D models and interactive virtual tours.",
+      title: t("interior.service3.title"),
+      description: t("interior.service3.desc"),
     },
     {
-      title: "Color Consultation & Styling",
-      description:
-        "Expert advice on color palettes, furniture selection, and decor to harmonize your space.",
+      title: t("interior.service4.title"),
+      description: t("interior.service4.desc"),
     },
     {
-      title: "Renovation & Remodeling",
-      description:
-        "Full-service project management for residential and commercial renovations from start to finish.",
+      title: t("interior.service5.title"),
+      description: t("interior.service5.desc"),
     },
     {
-      title: "E-Design Packages",
-      description:
-        "A flexible and affordable virtual service for those who want a professional design plan to implement themselves.",
+      title: t("interior.service6.title"),
+      description: t("interior.service6.desc"),
     },
-  ];
-
-  const howItWorks = [
-    "Initial Style & Needs Assessment",
-    "Conceptual Design & Mood Boards",
-    "Detailed Floor Plans & Layouts",
-    "Material Selection & Sourcing",
-    "Execution & Project Management",
   ];
 
   const features = [
-    "Custom design concepts and renderings",
-    "Curated list of furniture and material selections",
-    "Dedicated project manager for real-time updates",
-    "Post-completion support and styling advice",
+    t("interior.feature1"),
+    t("interior.feature2"),
+    t("interior.feature3"),
+    t("interior.feature4"),
   ];
 
   const pricingTiers = [
     {
-      title: "E-Design Package",
+      title: t("interior.pricing1.title"),
       price: "$399",
-      priceNote: "/room",
+      priceNote: t("interior.pricing1.priceNote"),
       features: [
-        "Personalized digital design board",
-        "Clickable shopping list of products",
-        "Floor plan with furniture layout",
-        "One round of revisions included",
-        "Email support for implementation",
-        "Virtual consultation available",
+        t("interior.pricing1.feature1"),
+        t("interior.pricing1.feature2"),
+        t("interior.pricing1.feature3"),
+        t("interior.pricing1.feature4"),
+        t("interior.pricing1.feature5"),
+        t("interior.pricing1.feature6"),
       ],
-      buttonText: "Book Consult",
+      buttonText: t("interior.pricing1.button"),
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#F8F4E3", color: "#002346" },
@@ -123,36 +104,36 @@ const InteriorDesign = ({ user, onLogout }) => {
         "rounded-2xl p-6 border-2 border-[#002346] hover:border-[#333333] transition-all duration-300",
     },
     {
-      title: "Full-Service Design",
+      title: t("interior.pricing2.title"),
       price: "$1,999",
-      priceNote: "/room",
+      priceNote: t("interior.pricing2.priceNote"),
       features: [
-        "All E-Design services",
-        "On-site visits and project management",
-        "Sourcing and procurement of materials",
-        "Installation and final styling",
-        "Access to exclusive trade discounts",
+        t("interior.pricing2.feature1"),
+        t("interior.pricing2.feature2"),
+        t("interior.pricing2.feature3"),
+        t("interior.pricing2.feature4"),
+        t("interior.pricing2.feature5"),
       ],
-      buttonText: "Contact Us",
+      buttonText: t("interior.pricing2.button"),
       buttonClass:
         "w-full bg-[#AABF91] text-[#002346] font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] hover:text-white transition-colors duration-300 transform hover:scale-105",
-      badge: "MOST POPULAR",
+      badge: t("interior.pricing2.badge"),
       boxStyle: { background: "#002346", color: "#F8F4E3" },
       className: "rounded-2xl p-6 border-2 border-[#002346] scale-105",
     },
     {
-      title: "Renovation & Remodel",
+      title: t("interior.pricing3.title"),
       price: "$4,999",
-      priceNote: "/project",
+      priceNote: t("interior.pricing3.priceNote"),
       features: [
-        "Full design and planning services",
-        "Architectural drawing and permits",
-        "Coordination with contractors",
-        "Complete project oversight",
-        "Post-renovation styling and support",
-        "Sustainability-focused design options",
+        t("interior.pricing3.feature1"),
+        t("interior.pricing3.feature2"),
+        t("interior.pricing3.feature3"),
+        t("interior.pricing3.feature4"),
+        t("interior.pricing3.feature5"),
+        t("interior.pricing3.feature6"),
       ],
-      buttonText: "Start Now",
+      buttonText: t("interior.pricing3.button"),
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#F8F4E3", color: "#002346" },
@@ -160,10 +141,6 @@ const InteriorDesign = ({ user, onLogout }) => {
         "rounded-2xl p-6 border-2 border-[#002346] hover:border-[#333333] transition-all duration-300",
     },
   ];
-
-  const cubeColors = darkMode
-    ? ["#F8F4E3", "#AABF91", "#F8F4E3", "#AABF91", "#F8F4E3", "#AABF91"] // off-white and muted green shades for dark
-    : ["#002346", "#B57560", "#002346", "#B57560", "#002346", "#B57560"]; // deep blue + sepia accent for light mode
 
   return (
     <div
@@ -171,15 +148,12 @@ const InteriorDesign = ({ user, onLogout }) => {
         darkMode ? "bg-[#002346]" : "bg-[#F8F4E3]"
       }`}
     >
-           
       <div className="sticky top-0 z-50">
-         
         <div className="fixed top-0 left-0 w-full z-[100] bg-[#F8F4E3] dark:bg-[#002346] shadow-lg">
-                    <Header user={user} onLogout={onLogout} />       
+          <Header user={user} onLogout={onLogout} />
         </div>
-             
       </div>
-            {/* Hero Section */} 
+      {/* Hero Section */}
       <section
         className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0"
         style={{
@@ -188,7 +162,6 @@ const InteriorDesign = ({ user, onLogout }) => {
           background: darkMode ? "#002346" : "#F8F4E3",
         }}
       >
-               
         <video
           autoPlay
           loop
@@ -198,166 +171,120 @@ const InteriorDesign = ({ user, onLogout }) => {
           className="absolute inset-0 w-full h-full object-cover z-0"
           style={{ minHeight: "100vh", minWidth: "100vw", objectFit: "cover" }}
         >
-                    <source src={interiorHero} type="video/mp4" />          Your
-          browser does not support the video tag.        
+          <source src={interiorHero} type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
-               
+
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-                   
           <h1
             className="font-bold text-5xl mb-6"
             style={{ color: "#002346", textShadow: "0 2px 8px #F8F4E3" }}
             data-aos="fade-down"
           >
-                        Interior Design          
+            {t("interior.heroTitle")}
           </h1>
-                   
+
           <p
             className="max-w-2xl mx-auto text-lg"
             style={{ color: "#333333", textShadow: "0 2px 8px #F8F4E3" }}
             data-aos="fade-up"
           >
-                        Creating spaces that are both beautiful and livable.    
-                 
+            {t("interior.heroSubtitle")}
           </p>
-                 
         </div>
-             
       </section>
-            {/* Benefits Section */}     
+      {/* Benefits Section */}
       <section
         id="key-benefits"
-        className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
+        className="w-full py-20 px-4 transition-colors duration-300"
+        style={{ backgroundColor: darkMode ? COLOR_1 : COLOR_2 }}
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-once="false"
       >
-               
-        <div className="max-w-7xl mx-auto w-full">
-                   
-          <div
-            className="text-center mb-16"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-                       
-            <h2
-              className="text-5xl font-bold mb-4"
+        <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row gap-12 items-start justify-between">
+          {/* Left: Image and Tagline */}
+          <div className="hidden md:flex flex-col items-center w-1/3">
+            <img
+              src={interiorDesignPhoto}
+              alt="Interior Design"
+              className="rounded-2xl shadow-xl mb-6 w-[320px] h-[340px] object-cover border-4 border-[#F8F4E3] dark:border-[#002346]"
+              style={{
+                maxWidth: "100%",
+                background: darkMode ? "#333333" : "#fff",
+                marginTop: 0,
+                alignSelf: "flex-start",
+              }}
+            />
+            <h3
+              className="text-2xl font-bold mb-2 self-center"
               style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
             >
-                            Our Design Philosophy            
-            </h2>
-                       
+              {t("interior.benefitsImageTitle")}
+            </h3>
             <p
-              className="text-lg max-w-2xl mx-auto"
-              style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+              className="text-lg max-w-md self-center"
+              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             >
-                            A collaborative approach to create functional and
-              captivating environments.            
+              {t("interior.benefitsImageSubtitle")}
             </p>
-                     
           </div>
-                   
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                       
-            <div
-              className="space-y-8"
-              data-aos="fade-right"
-              data-aos-delay="300"
-            >
-                           
-              {benefits.slice(0, 3).map((b, idx) => (
-                <div
-                  key={idx}
-                  className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}
-                >
-                                   
-                  <h3
-                    className="text-2xl font-bold mb-2"
-                    style={{ color: "#F8F4E3" }}
-                  >
-                    {b.split(":")[0]}
-                  </h3>
-                                   
-                  <p className="text-base" style={{ color: "#F8F4E3" }}>
-                    {b}
-                  </p>
-                                 
-                </div>
-              ))}
-                         
-            </div>
-                       
-            <div
-              className="flex flex-col items-center lg:items-start justify-start h-full"
-              data-aos="zoom-in"
-              data-aos-delay="600"
-            >
-                           
-              <img
-                src={interiorDesignPhoto}
-                alt="Interior Design"
-                className="rounded-2xl shadow-xl mb-6 w-[420px] h-[420px] object-fill border-4 border-[#F8F4E3] dark:border-[#002346]"
-                style={{
-                  maxWidth: "100%",
-                  background: darkMode ? "#333333" : "#fff",
-                  marginTop: 0,
-                  alignSelf: "flex-start",
-                }}
-              />
-                           
-              <h3
-                className="text-2xl font-bold mb-4 self-center lg:self-start"
+          {/* Right: Modern Grid of Benefit Cards */}
+          <div className="flex-1 w-full">
+            <div className="mb-10 text-center md:text-left">
+              <h2
+                className="text-5xl font-bold mb-4"
                 style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
               >
-                Designing Your Dream Space.
-              </h3>
-                           
+                {t("interior.benefitsTitle")}
+              </h2>
               <p
-                className="text-lg max-w-md self-center lg:self-start"
-                style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                className="text-lg max-w-2xl mx-auto md:mx-0"
+                style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
               >
-                                We believe a well-designed interior is a
-                reflection of its inhabitants.
+                {t("interior.benefitsSubtitle")}
               </p>
-                         
             </div>
-                       
-            <div
-              className="space-y-8"
-              data-aos="fade-left"
-              data-aos-delay="300"
-            >
-                           
-              {benefits.slice(3, 6).map((b, idx) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {benefits.map((b, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}
+                  className="relative flex flex-col items-center bg-white dark:bg-[#333333] rounded-2xl shadow-xl px-6 py-8 border border-[#e5e7eb] dark:border-[#222] hover:scale-105 transition-transform duration-300"
+                  style={{
+                    color: darkMode ? "#F8F4E3" : "#002346",
+                    minHeight: 180,
+                  }}
                 >
-                                   
-                  <h3
-                    className="text-2xl font-bold mb-2"
-                    style={{ color: "#F8F4E3" }}
+                  <div
+                    className="flex items-center justify-center w-16 h-16 rounded-full shadow-lg mb-4"
+                    style={{
+                      background: darkMode ? "#333333" : "#002346",
+                      color: "#F8F4E3",
+                      fontSize: 32,
+                      fontWeight: 700,
+                      border: `3px solid ${darkMode ? "#F8F4E3" : "#B57560"}`,
+                      transition: "border 0.2s",
+                    }}
+                  >
+                    <span>{idx + 1}</span>
+                  </div>
+                  <h4
+                    className="font-bold text-lg mb-2 text-center w-full"
+                    style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
                   >
                     {b.split(":")[0]}
-                  </h3>
-                                   
-                  <p className="text-base" style={{ color: "#F8F4E3" }}>
+                  </h4>
+                  <p
+                    className="text-sm text-center w-full"
+                    style={{ color: darkMode ? "#AABF91" : "#333333" }}
+                  >
                     {b}
                   </p>
-                                 
                 </div>
               ))}
-                         
             </div>
-                     
           </div>
-                 
         </div>
-             
       </section>
             {/* Services Section */}     
       <section
@@ -370,7 +297,7 @@ const InteriorDesign = ({ user, onLogout }) => {
           <div className="mb-12" data-aos="fade-up">
                        
             <h2 className="text-5xl text-center font-bold text-white">
-                            Our Interior Design Services            
+              {t("interior.servicesTitle")}
             </h2>
                      
           </div>
@@ -414,150 +341,86 @@ const InteriorDesign = ({ user, onLogout }) => {
       </section>
             {/* How It Works Section */} 
       <section
-        className={`w-full py-20 px-4 relative`}
+        className="w-full py-20 px-4 relative"
         style={{ background: darkMode ? COLOR_1 : COLOR_2, overflow: "hidden" }}
       >
-               
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
-                    {/* Text Side */}         
-          <div className="flex-1 md:pr-12 mb-10 md:mb-0">
-                       
+        <div className="max-w-3xl mx-auto w-full flex flex-col items-center">
+          <div className="mb-12 text-center">
             <h2
               className="text-5xl font-extrabold mb-2"
               style={{ color: darkMode ? COLOR_2 : COLOR_1, letterSpacing: -2 }}
             >
-                            OUR DESIGN PROCESS            
+              {t("interior.processTitle")}
             </h2>
-                       
             <p
-              className={`text-lg mb-8 ${
-                darkMode ? "text-[#AABF91]" : "text-[#333]"
-              }`}
+              className={`text-lg mb-8 ${darkMode ? "text-[#AABF91]" : "text-[#333]"}`}
             >
-                            From a blank canvas to a masterpiece.            
+              {t("interior.processSubtitle")}
             </p>
-                       
-            <ul
-              className={`list-disc pl-6 space-y-4 text-base ${
-                darkMode ? "text-[#AABF91]" : "text-[#333]"
-              }`}
-            >
-                            <li>Initial consultation and client brief.</li>     
-                     
-              <li>In-depth conceptualization and mood board creation.</li>     
-                      <li>Space planning and 3D visualization.</li>             
-              <li>Material, furniture, and accessory selection.</li>           
-                <li>Execution, installation, and styling.</li>             
-              <li>Final review and client handover.</li>           
-            </ul>
-                     
           </div>
-                    {/* Animated Cubes Side */}         
-          <div className="flex-1 flex justify-center relative min-h-[480px] w-full md:w-auto">
-                        {/* Decorative arcs on large screens only */}           
-            <div className="hidden md:block absolute left-0 right-0 top-0 bottom-0 pointer-events-none">
-                           
-              {[0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  className="absolute right-6"
-                  style={{
-                    top: 100 + 60 * i,
-                    width: 300 + i * 80,
-                    height: 80 + i * 40,
-                    border: "1.5px dashed #B57560",
-                    borderRadius: "45%",
-                    zIndex: 1,
-                    mixBlendMode: darkMode ? "screen" : "normal",
-                  }}
-                />
-              ))}
-                         
-            </div>
-                        {/* Cubes container */}           
+          {/* Vertical Stepper with Progress Bar */}
+          <div className="relative w-full flex flex-col items-center">
+            {/* Vertical progress bar */}
             <div
-              className="z-10 flex flex-col items-end ml-auto space-y-6 w-[290px] sm:w-[320px] md:w-[340px] lg:w-[360px]"
-              style={{ perspective: "1200px" }}
-            >
-                            {/* Cubes with color scheme consistent with page */}
-                           
-              {[
-                { color: cubeColors[0], label: "Conceive" },
-                { color: cubeColors[1], label: "Plan" },
-                { color: cubeColors[2], label: "Render" },
-                { color: cubeColors[3], label: "Select" },
-                { color: cubeColors[4], label: "Install" },
-                { color: cubeColors[5], label: "Style" },
-              ].map((step, i) => (
-                <div
-                  key={step.label}
-                  className="relative flex items-center rounded-xl shadow-xl"
-                  style={{
-                    width: "100%",
-                    height: "65px",
-                    background: step.color,
-                    borderRadius: "12px",
-                    boxShadow: `0 10px 20px -5px rgba(0,0,0,0.3)`,
-                    transformOrigin: "center",
-                    animation: `floatUpDown 3s ease-in-out ${
-                      i * 0.25
-                    }s infinite`,
-                    cursor: "default",
-                    userSelect: "none",
-                    color: darkMode ? COLOR_1 : COLOR_2,
-                    fontWeight: "700",
-                    fontSize: "1.3rem",
-                    paddingLeft: "32px",
-                    letterSpacing: "0.05em",
-                  }}
-                  tabIndex={0} // for keyboard focus, accessibility
-                  aria-label={`Step ${i + 1}: ${step.label}`}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.transform =
-                      "translateY(-10px) rotateX(5deg) rotateY(7deg)")
-                  }
-                  onMouseLeave={(e) => (e.currentTarget.style.transform = "")}
-                >
-                                    {step.label}                 
-                  {/* Subtle glow */}
-                                   
+              className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#B57560] to-[#AABF91] opacity-30 z-0"
+              style={{ transform: "translateX(-50%)" }}
+            />
+            {[
+              t("interior.processStep1"),
+              t("interior.processStep2"),
+              t("interior.processStep3"),
+              t("interior.processStep4"),
+              t("interior.processStep5"),
+              t("interior.processStep6"),
+            ].map((step, idx, arr) => (
+              <div
+                key={idx}
+                className="relative flex flex-col md:flex-row items-center w-full z-10"
+              >
+                <div className="flex flex-col items-center w-full md:w-auto">
+                  {/* Step Number */}
                   <div
+                    className="flex items-center justify-center w-16 h-16 rounded-full shadow-lg mb-2 z-10 bg-white dark:bg-[#333333] border-4"
                     style={{
-                      position: "absolute",
-                      bottom: "8px",
-                      left: "10%",
-                      width: "80%",
-                      height: "6px",
-                      backgroundColor: "rgba(0,0,0,0.15)",
-                      filter: "blur(8px)",
-                      borderRadius: "5px",
-                      pointerEvents: "none",
-                      zIndex: 0,
+                      borderColor: darkMode ? "#AABF91" : "#B57560",
+                      color: darkMode ? "#AABF91" : "#002346",
+                      fontSize: 28,
+                      fontWeight: 700,
                     }}
-                  />
-                                 
+                  >
+                    <span>{String(idx + 1).padStart(2, "0")}</span>
+                  </div>
+                  {/* Progress bar segment */}
+                  {idx < arr.length - 1 && (
+                    <div className="w-1 h-12 md:h-16 bg-gradient-to-b from-[#B57560] to-[#AABF91] opacity-30" />
+                  )}
                 </div>
-              ))}
-                         
-            </div>
-                     
+                {/* Step Card */}
+                <div
+                  className="relative bg-white dark:bg-[#333333] rounded-xl shadow-lg px-6 py-5 min-h-[90px] flex flex-col justify-center items-center border border-[#e5e7eb] dark:border-[#222] w-full md:ml-8 my-4 md:my-0"
+                  style={{
+                    color: darkMode ? "#F8F4E3" : "#002346",
+                    zIndex: 2,
+                    textAlign: "center",
+                  }}
+                >
+                  <h3
+                    className="font-bold text-lg mb-1"
+                    style={{ color: darkMode ? "#AABF91" : "#002346" }}
+                  >
+                    {t("Step")} {idx + 1}
+                  </h3>
+                  <p
+                    className="text-sm"
+                    style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                  >
+                    {step}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-                 
         </div>
-               
-        <style>{`
-          @keyframes floatUpDown {
-            0%, 100% { transform: translateY(0) }
-            50% { transform: translateY(-10px) }
-          }
-          @media (max-width: 768px) {
-            .z-10.flex.flex-col.items-end.ml-auto.space-y-6 {
-              width: 100% !important;
-              align-items: center !important;
-            }
-          }
-        `}</style>
-             
       </section>
             {/* Features Section */}     
       <section
@@ -577,12 +440,10 @@ const InteriorDesign = ({ user, onLogout }) => {
                   className="text-5xl font-bold mb-6"
                   style={{ color: "#F8F4E3" }}
                 >
-                                    Our Client-Focused Approach                
+                  {t("interior.featuresTitle")}
                 </h2>
-                               
                 <p className="text-xl mb-8" style={{ color: "#F8F4E3" }}>
-                                    Delivering a beautiful and stress-free
-                  design experience.                
+                  {t("interior.featuresSubtitle")}
                 </p>
                              
               </div>
@@ -593,36 +454,25 @@ const InteriorDesign = ({ user, onLogout }) => {
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                                    We believe the best designs come from close
-                  collaboration, from the first sketch to the final styling.    
-                             
+                  {t("interior.featuresPara1")}
                 </p>
-                               
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                                    Our team manages every detail of the
-                  project, including vendor coordination and material delivery.
-                                 
+                  {t("interior.featuresPara2")}
                 </p>
-                               
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                                    Receive regular updates and have access to
-                  our secure digital portal to review plans and progress
-                  anytime.                
+                  {t("interior.featuresPara3")}
                 </p>
-                               
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                                    We provide peace of mind throughout the
-                  entire process, making your design journey enjoyable and
-                  stress-free.                
+                  {t("interior.featuresPara4")}
                 </p>
                              
               </div>
@@ -641,12 +491,9 @@ const InteriorDesign = ({ user, onLogout }) => {
                   style={{ background: "#F8F4E3", color: "#333333" }}
                 >
                                    
-                  <h3 className="text-xl font-bold mb-2">{feature}</h3>         
-                         
+                  <h3 className="text-xl font-bold mb-2">{feature}</h3>
                   <p className="text-base">
-                                       
-                    {`Benefit from ${feature.toLowerCase()} as our interior design client.`}
-                                     
+                    {t("interior.featureBenefit", { feature })}
                   </p>
                                  
                 </div>
@@ -674,17 +521,15 @@ const InteriorDesign = ({ user, onLogout }) => {
             data-aos="fade-down"
             data-aos-delay="50"
           >
-                        Design Your Dream Space          
+            {t("interior.pricingTitle")}
           </h2>
-                   
           <p
             className="text-xl mb-12 max-w-2xl mx-auto"
             style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             data-aos="fade-up"
             data-aos-delay="100"
           >
-                        Choose the perfect package to transform your home or
-            office.          
+            {t("interior.pricingSubtitle")}
           </p>
                    
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -702,7 +547,7 @@ const InteriorDesign = ({ user, onLogout }) => {
                                
                 {tier.badge && (
                   <div className="bg-white text-[#002346] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
-                                        {tier.badge}                 
+                    {tier.badge}
                   </div>
                 )}
                                
@@ -712,7 +557,6 @@ const InteriorDesign = ({ user, onLogout }) => {
                 >
                   {tier.title}
                 </h3>
-                               
                 <div
                   className="text-4xl font-bold mb-4"
                   style={{ color: COLOR_3 }}
@@ -729,7 +573,7 @@ const InteriorDesign = ({ user, onLogout }) => {
                                  
                 </ul>
                                
-                {tier.buttonText === "Book Consult" && (
+                {tier.buttonText === t("interior.pricing1.button") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
                     style={{
@@ -739,11 +583,10 @@ const InteriorDesign = ({ user, onLogout }) => {
                     }}
                     onClick={() => navigate("/home2#consultation-form")}
                   >
-                                        {tier.buttonText}                 
+                    {tier.buttonText}
                   </button>
                 )}
-                               
-                {tier.buttonText === "Contact Us" && (
+                {tier.buttonText === t("interior.pricing2.button") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
                     style={{
@@ -753,11 +596,10 @@ const InteriorDesign = ({ user, onLogout }) => {
                     }}
                     onClick={() => navigate("/contact")}
                   >
-                                        {tier.buttonText}                 
+                    {tier.buttonText}
                   </button>
                 )}
-                               
-                {tier.buttonText === "Start Now" && (
+                {tier.buttonText === t("interior.pricing3.button") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
                     style={{
@@ -767,7 +609,7 @@ const InteriorDesign = ({ user, onLogout }) => {
                     }}
                     onClick={() => navigate("/home")}
                   >
-                                        {tier.buttonText}                 
+                    {tier.buttonText}
                   </button>
                 )}
                              

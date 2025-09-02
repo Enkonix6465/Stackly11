@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import { useDarkMode } from "../context/DarkModeContext";
 import { Pie, Bar } from "react-chartjs-2";
@@ -25,6 +26,7 @@ import {
 } from "lucide-react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
+import { useTranslation } from "react-i18next";
 
 ChartJS.register(
   ArcElement,
@@ -33,7 +35,7 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
-  Title
+  Title,
 );
 
 export default function AdminDashboard({ user, onLogout }) {
@@ -43,10 +45,13 @@ export default function AdminDashboard({ user, onLogout }) {
 
   useEffect(() => {
     const fetchUserData = () => {
-      let logins = JSON.parse(localStorage.getItem('userLogins') || '[]');
-      logins = logins.map(l => ({
+      let logins = JSON.parse(localStorage.getItem("userLogins") || "[]");
+      logins = logins.map((l) => ({
         ...l,
-        role: (l.email === 'admin@enkonix.in' || l.name === 'Admin') ? 'Admin' : 'User'
+        role:
+          l.email === "admin@enkonix.in" || l.name === "Admin"
+            ? "Admin"
+            : "User",
       }));
       const uniqueLogins = [];
       const seen = new Set();
@@ -58,20 +63,23 @@ export default function AdminDashboard({ user, onLogout }) {
         }
       }
       setUserLogins(uniqueLogins);
-      setRegisteredUsers(JSON.parse(localStorage.getItem('registeredUsers') || '[]'));
+      setRegisteredUsers(
+        JSON.parse(localStorage.getItem("registeredUsers") || "[]"),
+      );
     };
     fetchUserData();
-    window.addEventListener('storage', fetchUserData);
-    window.addEventListener('focus', fetchUserData);
+    window.addEventListener("storage", fetchUserData);
+    window.addEventListener("focus", fetchUserData);
     return () => {
-      window.removeEventListener('storage', fetchUserData);
-      window.removeEventListener('focus', fetchUserData);
+      window.removeEventListener("storage", fetchUserData);
+      window.removeEventListener("focus", fetchUserData);
     };
   }, []);
   const { darkMode, setDarkMode } = useDarkMode();
   const COLOR_1 = "#002346";
   const COLOR_2 = "#F8F4E3";
   const COLOR_3 = "#333333";
+  const { t } = useTranslation();
   const textPrimary = darkMode ? COLOR_2 : COLOR_3;
   const cardBg = darkMode ? COLOR_3 : COLOR_2;
 
@@ -100,11 +108,11 @@ export default function AdminDashboard({ user, onLogout }) {
   };
 
   const financialCardData = [
-    { label: "Design Proposals", value: 16, color: COLOR_3 },
-    { label: "Projects In Progress", value: 4, color: COLOR_3 },
-    { label: "Pending Approvals", value: 0, color: COLOR_3 },
-    { label: "Delayed Projects", value: 2, color: COLOR_3 },
-    { label: "Upcoming Handovers", value: 0, color: COLOR_3 },
+    { label: t("adminDashboard.designProposals"), value: 16, color: COLOR_3 },
+    { label: t("adminDashboard.projectsInProgress"), value: 4, color: COLOR_3 },
+    { label: t("adminDashboard.pendingApprovals"), value: 0, color: COLOR_3 },
+    { label: t("adminDashboard.delayedProjects"), value: 2, color: COLOR_3 },
+    { label: t("adminDashboard.upcomingHandovers"), value: 0, color: COLOR_3 },
   ];
 
   const statsByCountry = {
@@ -133,10 +141,10 @@ export default function AdminDashboard({ user, onLogout }) {
 
   // Sample recent invoice list (renamed for architecture context)
   const recentInvoices = [
-    { client: "GreenSpace Developers", status: "Paid" },
-    { client: "UrbanHabitat Ltd.", status: "Pending" },
-    { client: "Skyline Apartments", status: "Paid" },
-    { client: "Blue Ocean Realty", status: "Unpaid" },
+    { client: t("adminDashboard.invoiceClients.0"), status: "Paid" },
+    { client: t("adminDashboard.invoiceClients.1"), status: "Pending" },
+    { client: t("adminDashboard.invoiceClients.2"), status: "Paid" },
+    { client: t("adminDashboard.invoiceClients.3"), status: "Unpaid" },
   ];
 
   return (
@@ -157,39 +165,70 @@ export default function AdminDashboard({ user, onLogout }) {
       <main className="pt-28 max-w-7xl mx-auto px-2 md:px-6">
         {/* User Login Info Section */}
         <section className="mb-8">
-          <div className="rounded-2xl shadow-md p-6 mb-4" style={{ background: cardBg }}>
-            <h2 className="text-2xl font-bold mb-4" style={{ color: textPrimary }}>User Login Activity</h2>
+          <div
+            className="rounded-2xl shadow-md p-6 mb-4"
+            style={{ background: cardBg }}
+          >
+            <h2
+              className="text-2xl font-bold mb-4"
+              style={{ color: textPrimary }}
+            >
+              {t("adminDashboard.userLoginActivity")}
+            </h2>
             <div className="flex flex-wrap gap-8 items-center mb-2">
-              <div className="text-lg font-semibold" style={{ color: textPrimary }}>
-                Total Registered Users: <span className="font-bold">{registeredUsers.length}</span>
+              <div
+                className="text-lg font-semibold"
+                style={{ color: textPrimary }}
+              >
+                {t("adminDashboard.totalRegisteredUsers")}:{" "}
+                <span className="font-bold">{registeredUsers.length}</span>
               </div>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm" style={{ color: textPrimary }}>
+              <table
+                className="w-full text-left text-sm"
+                style={{ color: textPrimary }}
+              >
                 <thead>
                   <tr>
-                    <th className="py-2">Email</th>
-                    <th className="py-2">Name</th>
-                    <th className="py-2">Role</th>
-                    <th className="py-2">Time</th>
-                    <th className="py-2">Date</th>
-                    <th className="py-2">Event</th>
+                    <th className="py-2">{t("adminDashboard.email")}</th>
+                    <th className="py-2">{t("adminDashboard.name")}</th>
+                    <th className="py-2">{t("adminDashboard.role")}</th>
+                    <th className="py-2">{t("adminDashboard.time")}</th>
+                    <th className="py-2">{t("adminDashboard.date")}</th>
+                    <th className="py-2">{t("adminDashboard.event")}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {userLogins.length === 0 ? (
-                    <tr><td colSpan="6" className="py-4 text-center">No user logins or signups yet.</td></tr>
+                    <tr>
+                      <td colSpan="6" className="py-4 text-center">
+                        {t("adminDashboard.noUserLogins")}
+                      </td>
+                    </tr>
                   ) : (
-                    userLogins.slice().reverse().map((login, idx) => (
-                      <tr key={idx} className="border-t" style={{ borderColor: '#EEE' }}>
-                        <td className="py-2">{login.email}</td>
-                        <td className="py-2">{login.name}</td>
-                        <td className="py-2">{login.role}</td>
-                        <td className="py-2">{login.loginTime}</td>
-                        <td className="py-2">{login.loginDate}</td>
-                        <td className="py-2">{login.event === 'signup' ? 'Signup' : 'Login'}</td>
-                      </tr>
-                    ))
+                    userLogins
+                      .slice()
+                      .reverse()
+                      .map((login, idx) => (
+                        <tr
+                          key={idx}
+                          className="border-t"
+                          style={{ borderColor: "#EEE" }}
+                        >
+                          <td className="py-2">{login.email}</td>
+                          <td className="py-2">{login.name}</td>
+                          <td className="py-2">{login.role}</td>
+                          <td className="py-2">{login.loginTime}</td>
+                          <td className="py-2">{login.loginDate}</td>
+                          <td className="py-2">
+                            {login.event === "signup" ? "Signup" : "Login"}
+                            {login.event === "signup"
+                              ? t("adminDashboard.signup")
+                              : t("adminDashboard.login")}
+                          </td>
+                        </tr>
+                      ))
                   )}
                 </tbody>
               </table>
@@ -208,7 +247,10 @@ export default function AdminDashboard({ user, onLogout }) {
                 minHeight: 110,
               }}
             >
-              <FileText size={26} style={{ color: darkMode ? "#F8F4E3" : "#002346" }} />
+              <FileText
+                size={26}
+                style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+              />
               <span
                 className="text-2xl font-extrabold mt-2"
                 style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
@@ -217,7 +259,10 @@ export default function AdminDashboard({ user, onLogout }) {
               </span>
               <span
                 className="text-xs font-semibold mt-1 text-center"
-                style={{ color: darkMode ? "#F8F4E3" : "#333333", opacity: 0.85 }}
+                style={{
+                  color: darkMode ? "#F8F4E3" : "#333333",
+                  opacity: 0.85,
+                }}
               >
                 {card.label}
               </span>
@@ -237,13 +282,13 @@ export default function AdminDashboard({ user, onLogout }) {
                 className="font-bold text-lg"
                 style={{ color: textPrimary }}
               >
-                Firm Project Overview
+                {t("adminDashboard.firmProjectOverview")}
               </span>
               <span
                 className="text-xs font-semibold"
                 style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
               >
-                Ongoing Projects: 13.6%
+                {t("adminDashboard.ongoingProjects")}: 13.6%
               </span>
             </div>
             <Bar
@@ -251,7 +296,10 @@ export default function AdminDashboard({ user, onLogout }) {
               options={{
                 responsive: true,
                 plugins: {
-                  legend: { display: true, labels: { color: darkMode ? "#F8F4E3" : "#333333" } },
+                  legend: {
+                    display: true,
+                    labels: { color: darkMode ? "#F8F4E3" : "#333333" },
+                  },
                 },
                 scales: {
                   x: { ticks: { color: darkMode ? "#F8F4E3" : "#333333" } },
@@ -260,8 +308,12 @@ export default function AdminDashboard({ user, onLogout }) {
               }}
               height={110}
             />
-            <div className="text-right text-xs mt-2" style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
-              54 active projects | 235 completed
+            <div
+              className="text-right text-xs mt-2"
+              style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+            >
+              {t("adminDashboard.activeProjects", { count: 54 })} |{" "}
+              {t("adminDashboard.completedProjects", { count: 235 })}
             </div>
           </div>
 
@@ -301,7 +353,10 @@ export default function AdminDashboard({ user, onLogout }) {
               >
                 <span
                   className="w-2 h-2 mr-1 rounded-full"
-                  style={{ background: COLOR_2, border: `1.5px solid ${COLOR_3}` }}
+                  style={{
+                    background: COLOR_2,
+                    border: `1.5px solid ${COLOR_3}`,
+                  }}
                 />{" "}
                 Non-active
               </span>
@@ -320,7 +375,7 @@ export default function AdminDashboard({ user, onLogout }) {
               className="font-bold text-md mb-2 block"
               style={{ color: textPrimary }}
             >
-              Projects by Country
+              {t("adminDashboard.projectsByCountry")}
             </span>
             <Bar
               data={statsByCountry}
@@ -341,7 +396,7 @@ export default function AdminDashboard({ user, onLogout }) {
               className="text-right mt-3 text-xs font-semibold"
               style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             >
-              1,129 projects delivered globally
+              {t("adminDashboard.projectsDeliveredGlobally", { count: 1129 })}
             </div>
           </div>
 
@@ -354,7 +409,7 @@ export default function AdminDashboard({ user, onLogout }) {
               className="font-bold text-md mb-2 block"
               style={{ color: textPrimary }}
             >
-              Recent Project Invoices
+              {t("adminDashboard.recentProjectInvoices")}
             </span>
             <table
               className="w-full text-left text-xs"
@@ -362,8 +417,8 @@ export default function AdminDashboard({ user, onLogout }) {
             >
               <thead>
                 <tr>
-                  <th>Client Name</th>
-                  <th>Status</th>
+                  <th>{t("adminDashboard.clientName")}</th>
+                  <th>{t("adminDashboard.status")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -376,14 +431,21 @@ export default function AdminDashboard({ user, onLogout }) {
                     <td className="py-2">{row.client}</td>
                     <td>
                       {row.status === "Paid" && (
-                        <span style={{ color: "green" }}>Paid</span>
+                        <span style={{ color: "green" }}>
+                          {t("adminDashboard.paid")}
+                        </span>
                       )}
                       {row.status === "Pending" && (
-                        <span style={{ color: "orange" }}>Pending</span>
+                        <span style={{ color: "orange" }}>
+                          {t("adminDashboard.pending")}
+                        </span>
                       )}
                       {row.status === "Unpaid" && (
-                        <span style={{ color: "red" }}>Unpaid</span>
+                        <span style={{ color: "red" }}>
+                          {t("adminDashboard.unpaid")}
+                        </span>
                       )}
+                      {/*  */}
                     </td>
                   </tr>
                 ))}
@@ -397,7 +459,10 @@ export default function AdminDashboard({ user, onLogout }) {
           {/* Total Projects Card */}
           <div
             className="rounded-2xl shadow-md p-6 flex flex-col items-center"
-            style={{ background: cardBg, color: darkMode ? "#F8F4E3" : "#333333" }}
+            style={{
+              background: cardBg,
+              color: darkMode ? "#F8F4E3" : "#333333",
+            }}
           >
             <FolderOpen size={36} />
             <div className="font-bold text-2xl mt-2">13,183</div>
@@ -405,29 +470,35 @@ export default function AdminDashboard({ user, onLogout }) {
               className="uppercase font-semibold mt-1"
               style={{ fontSize: 12, color: darkMode ? "#F8F4E3" : "#333333" }}
             >
-              Total Projects
+              {t("adminDashboard.totalProjects")}
             </div>
           </div>
           {/* Completed Projects Card */}
           <div
             className="rounded-2xl shadow-md p-6 flex flex-col items-center"
-            style={{ background: cardBg, color: darkMode ? "#F8F4E3" : "#333333" }}
+            style={{
+              background: cardBg,
+              color: darkMode ? "#F8F4E3" : "#333333",
+            }}
           >
             <FileText size={36} />
             <div className="font-bold text-2xl mt-2">3,410</div>
             <div className="uppercase font-semibold" style={{ fontSize: 12 }}>
-              Completed Projects
+              {t("adminDashboard.completedProjectsLabel")}
             </div>
           </div>
           {/* Clients Card */}
           <div
             className="rounded-2xl shadow-md p-6 flex flex-col items-center"
-            style={{ background: cardBg, color: darkMode ? "#F8F4E3" : "#333333" }}
+            style={{
+              background: cardBg,
+              color: darkMode ? "#F8F4E3" : "#333333",
+            }}
           >
             <Users size={36} />
             <div className="font-bold text-2xl mt-2">921</div>
             <div className="uppercase font-semibold" style={{ fontSize: 12 }}>
-              Clients Served
+              {t("adminDashboard.clientsServed")}
             </div>
           </div>
         </section>

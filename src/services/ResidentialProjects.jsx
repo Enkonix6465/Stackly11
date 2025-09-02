@@ -1,49 +1,48 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header.jsx';
-import { useDarkMode } from '../context/DarkModeContext.jsx';
-import Footer from '../components/Footer.jsx';
-import AOS from 'aos';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../components/Header.jsx";
+import { useDarkMode } from "../context/DarkModeContext.jsx";
+import Footer from "../components/Footer.jsx";
+import AOS from "aos";
+import { useTranslation } from "react-i18next";
 import {
-  UserIcon,
-  DocumentDuplicateIcon,
-  ClipboardDocumentCheckIcon,
-  PaperAirplaneIcon,
-  BriefcaseIcon,
-  SparklesIcon,
-  Cog6ToothIcon,
-} from "@heroicons/react/24/solid";
+  FaHome,
+  FaPalette,
+  FaLeaf,
+  FaCogs,
+  FaRegSmile,
+  FaCheckCircle,
+  FaLightbulb,
+  FaPhoneAlt,
+  FaUserTie,
+  FaChartLine,
+} from "react-icons/fa";
+import family from "../assets/residentialHero.mp4";
+// import residentialService from "../assets/residentialService.png";
 
-import family from '../assets/residentialHero.mp4';
-import residentialService from '../assets/residentialService.png';
-
-const COLOR_1 = '#002346'; // deep blue
-const COLOR_2 = '#F8F4E3'; // off-white
-const COLOR_3 = '#333333'; // dark gray
+const COLOR_1 = "#002346"; // deep blue
+const COLOR_2 = "#F8F4E3"; // off-white
+const COLOR_3 = "#333333"; // dark gray
 
 const ResidentialProjects = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = 'html, body { overflow-x: hidden !important; }';
+    const style = document.createElement("style");
+    style.innerHTML = "html, body { overflow-x: hidden !important; }";
     document.head.appendChild(style);
-    return () => { document.head.removeChild(style); };
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
-  const scrollToBenefits = () => {
-    const benefitsSection = document.getElementById('key-benefits');
-    if (benefitsSection) benefitsSection.scrollIntoView({ behavior: 'smooth' });
-  };
-  const scrollToPricing = () => {
-    const pricingSection = document.getElementById('pricing-section');
-    if (pricingSection) pricingSection.scrollIntoView({ behavior: 'smooth' });
-  };
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
 
-  useEffect(() => { AOS.init({ duration: 1000, once: true }); }, []);
-  
-  // Text content adjusted to Residential projects context
+  // i18n-ready content (arrays must be inside the render to update on language change)
   const benefits = [
     "Custom-tailored designs meeting your unique residential needs",
     "Seamless project management ensuring timely delivery",
@@ -51,46 +50,65 @@ const ResidentialProjects = ({ user, onLogout }) => {
     "Transparent budget handling and cost-effective solutions",
     "Expert craftsmanship focused on quality and durability",
     "Dedicated support through every stage of construction",
-  ];
+  ].map((key) => t(key));
 
   const services = [
     {
-      title: "Residential Projects",
-      description: "From cozy single-family homes to expansive luxury estates, creating living spaces that inspire and endure."
+      title: t("Residential Projects"),
+      description: t(
+        "From cozy single-family homes to expansive luxury estates, creating living spaces that inspire and endure.",
+      ),
+      icon: FaHome,
     },
     {
-      title: "Interior Design",
-      description: "Crafting interiors that harmonize beauty and functionality to make every house a home."
+      title: t("Interior Design"),
+      description: t(
+        "Crafting interiors that harmonize beauty and functionality to make every house a home.",
+      ),
+      icon: FaPalette,
     },
     {
-      title: "Renovation & Restoration",
-      description: "Enhancing and preserving your current home with thoughtful upgrades and restorations."
+      title: t("Renovation & Restoration"),
+      description: t(
+        "Enhancing and preserving your current home with thoughtful upgrades and restorations.",
+      ),
+      icon: FaLeaf,
     },
     {
-      title: "Landscape Design",
-      description: "Transforming outdoor spaces into beautiful, functional environments tailored to your lifestyle."
+      title: t("Landscape Design"),
+      description: t(
+        "Transforming outdoor spaces into beautiful, functional environments tailored to your lifestyle.",
+      ),
+      icon: FaCogs,
     },
     {
-      title: "Smart Home Integration",
-      description: "Upgrading homes with the latest smart technologies for convenience, security, and energy efficiency."
+      title: t("Smart Home Integration"),
+      description: t(
+        "Upgrading homes with the latest smart technologies for convenience, security, and energy efficiency.",
+      ),
+      icon: FaRegSmile,
     },
     {
-      title: "Home Extensions",
-      description: "Expanding your living space with seamless additions that blend perfectly with your existing home."
-    }
+      title: t("Home Extensions"),
+      description: t(
+        "Expanding your living space with seamless additions that blend perfectly with your existing home.",
+      ),
+      icon: FaCheckCircle,
+    },
   ];
 
   const features = [
     "Regular project status updates",
     "Personalized communication with your project manager",
     "Access to design reviews and materials through our client portal",
-    "Focus on client satisfaction and finishing details"
-  ];
+    "Focus on client satisfaction and finishing details",
+  ].map((key) => t(key));
 
   const pricingTiers = [
     {
-      title: "Initial Consultation",
-      price: "$150", priceNote: "/hour",
+      title: t("Initial Consultation"),
+      price: "$150",
+      priceNote: "/hour",
       features: [
         "Discuss your vision and requirements",
         "Preliminary feasibility and site assessment",
@@ -98,15 +116,14 @@ const ResidentialProjects = ({ user, onLogout }) => {
         "Outline next steps and project timeline",
         "Follow-up consultation to finalize details",
         "No obligation to proceed with the project",
-      ],
-      buttonText: "Book Consultation",
-      buttonClass: "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
-      boxStyle: { background: "#AABF91", color: "#002346" },
-      className: "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
+      ].map((key) => t(key)),
+      buttonText: t("Book Consultation"),
+      badge: null,
     },
     {
-      title: "Design & Planning",
-      price: "$3,000", priceNote: "/project",
+      title: t("Design & Planning"),
+      price: "$3,000",
+      priceNote: "/project",
       features: [
         "Architectural design and layout plans",
         "Interior concept development",
@@ -114,44 +131,52 @@ const ResidentialProjects = ({ user, onLogout }) => {
         "Regular client design consultations",
         "Detailed project timeline",
         "Final design package with specifications",
-      ],
-      buttonText: "Contact Us",
-      buttonClass: "w-full bg-[#AABF91] text-[#002346] font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] hover:text-white transition-colors duration-300 transform hover:scale-105",
-      badge: "MOST POPULAR",
-      boxStyle: { background: "#002346", color: "#AABF91" },
-      className: "rounded-2xl p-6 border-2 border-[#AABF91] scale-105",
+      ].map((key) => t(key)),
+      buttonText: t("Contact Us"),
+      badge: t("MOST POPULAR"),
     },
     {
-      title: "Full Construction",
-      price: "Starting at $50,000", priceNote: "/project",
+      title: t("Full Construction"),
+      price: t("Starting at $50,000"),
+      priceNote: "/project",
       features: [
         "Complete construction management and execution",
         "High-quality materials and craftsmanship",
         "On-site supervision and quality assurance",
         "Post-construction walkthrough and support",
-      ],
-      buttonText: "Start Now",
-      buttonClass: "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
-      boxStyle: { background: "#AABF91", color: "#002346" },
-      className: "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
-    }
+      ].map((key) => t(key)),
+      buttonText: t("Start Now"),
+      badge: null,
+    },
   ];
 
   // Color palette matching the page's scheme for cubes
   const cubeColors = darkMode
-    ? ['#F8F4E3', '#AABF91', '#F8F4E3', '#AABF91', '#F8F4E3', '#AABF91'] // off-white and muted green shades for dark
-    : ['#002346', '#B57560', '#002346', '#B57560', '#002346', '#B57560']; // deep blue + sepia accent for light mode
+    ? ["#F8F4E3", "#AABF91", "#F8F4E3", "#AABF91", "#F8F4E3", "#AABF91"] // off-white and muted green shades for dark
+    : ["#002346", "#B57560", "#002346", "#B57560", "#002346", "#B57560"]; // deep blue + sepia accent for light mode
 
   return (
-    <div className={`min-h-screen w-full transition-colors duration-300`} style={{background: darkMode ? COLOR_1 : COLOR_2}}>
+    <div
+      className={`min-h-screen w-full transition-colors duration-300`}
+      style={{ background: darkMode ? COLOR_1 : COLOR_2 }}
+    >
       <div className="sticky top-0 z-50">
-        <div className="fixed top-0 left-0 w-full z-[100]" style={{background: darkMode ? COLOR_3 : COLOR_2, boxShadow: '0 2px 8px 0 rgba(51,51,51,0.08)'}}>
+        <div
+          className="fixed top-0 left-0 w-full z-[100]"
+          style={{
+            background: darkMode ? COLOR_3 : COLOR_2,
+            boxShadow: "0 2px 8px 0 rgba(51,51,51,0.08)",
+          }}
+        >
           <Header user={user} onLogout={onLogout} />
         </div>
       </div>
 
-      {/* Hero Section */}
-      <section className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0" style={{ minHeight: '100vh', maxWidth: '100vw', background: COLOR_1 }}>
+      {/* Hero Section - Modernized */}
+      <section
+        className="relative w-screen h-[100vh] min-h-[480px] flex items-center justify-center overflow-hidden m-0 p-0"
+        style={{ maxWidth: "100vw", background: COLOR_1 }}
+      >
         <video
           autoPlay
           loop
@@ -159,102 +184,151 @@ const ResidentialProjects = ({ user, onLogout }) => {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ minHeight: '100vh', minWidth: '100vw', objectFit: 'cover' }}
+          style={{ minHeight: "100%", minWidth: "100vw", objectFit: "cover" }}
         >
           <source src={family} type="video/mp4" />
-          Your browser does not support the video tag.
+          {t("Your browser does not support the video tag.")}
         </video>
+        {/* Glassmorphism overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#23294699] to-[#eebbc399] z-0" />
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-          <h1 className="font-bold text-5xl mb-6 drop-shadow-lg" style={{color: COLOR_2}} data-aos="fade-down">
-            Residential Projects Experts
+          <h1
+            className="font-extrabold text-5xl mb-6 drop-shadow-lg text-center tracking-tight"
+            style={{ color: COLOR_2 }}
+            data-aos="fade-down"
+          >
+            {t("Residential Projects Experts")}
           </h1>
-          <p className="max-w-2xl mx-auto text-lg drop-shadow-lg" style={{color: COLOR_2}} data-aos="fade-up">
-            Building homes that reflect your vision and lifestyle.
+          <p
+            className="max-w-2xl mx-auto text-xl drop-shadow-lg text-center"
+            style={{ color: COLOR_2 }}
+            data-aos="fade-up"
+          >
+            {t("Building homes that reflect your vision and lifestyle.")}
           </p>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section id="key-benefits" className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
-        data-aos="fade-up" data-aos-duration="1000" data-aos-once="false">
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="text-center mb-16" data-aos="fade-up" data-aos-delay="200">
-            <h2 className="text-5xl font-bold mb-4" style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>
-              Why Choose Our Residential Services
-            </h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
-              Trusted partner delivering personalized and quality residential constructions.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="space-y-8" data-aos="fade-right" data-aos-delay="300">
-              {benefits.slice(0, 3).map((b, idx) => (
-                <div key={idx} className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}>
-                  <h3 className="text-2xl font-bold mb-2" style={{ color: "#F8F4E3" }}>{b.split(':')[0]}</h3>
-                  <p className="text-base" style={{ color: "#F8F4E3" }}>{b}</p>
-                </div>
+      {/* Benefits Section - Modernized with Glassmorphism */}
+      <section
+        id="key-benefits"
+        className="w-full py-20 px-4 relative bg-gradient-to-br from-[#eebbc3]/30 to-[#aabf91]/10"
+        style={{ overflow: "hidden" }}
+        data-aos="fade-up"
+      >
+        <div className="max-w-3xl mx-auto flex flex-col items-center">
+          <FaLightbulb className="inline-block text-3xl animate-pulse mr-2" />
+          <h2
+            className="text-5xl font-extrabold mb-2 text-center"
+            style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
+          >
+            {t("Why Choose Our Residential Services")}
+          </h2>
+          <p
+            className="text-lg mb-12 text-center"
+            style={{ color: darkMode ? COLOR_2 : COLOR_3 }}
+          >
+            {t(
+              "Trusted partner delivering personalized and quality residential constructions.",
+            )}
+          </p>
+          {/* Vertical Timeline for Benefits */}
+          <div className="relative w-full">
+            <div
+              className="absolute left-1/2 top-0 bottom-0 w-1 bg-[#eebbc3] opacity-40 -translate-x-1/2"
+              aria-hidden="true"
+            />
+            <ol className="flex flex-col gap-12 w-full z-10 relative">
+              {benefits.map((b, idx) => (
+                <li
+                  key={idx}
+                  className={`flex items-center w-full relative ${
+                    idx % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                  }`}
+                  tabIndex={0}
+                  aria-label={`Benefit ${idx + 1}: ${b}`}
+                >
+                  <div className="flex-1 flex justify-end px-4">
+                    <div className="w-0 md:w-24" />
+                  </div>
+                  <div className="flex flex-col items-center z-10">
+                    <div
+                      className={`flex items-center justify-center w-16 h-16 rounded-full shadow-lg mb-3 transition-transform duration-300 bg-white/80 dark:bg-[#232946]/80 border-2 border-[#eebbc3] animate-fadeInUp`}
+                      style={{ color: darkMode ? COLOR_1 : COLOR_3 }}
+                    >
+                      <FaCheckCircle
+                        className="text-3xl"
+                        style={{ color: "#eebbc3" }}
+                      />
+                    </div>
+                    <span
+                      className="font-bold text-xl text-center px-2 mb-2"
+                      style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
+                    >
+                      {b}
+                    </span>
+                  </div>
+                  <div className="flex-1 flex justify-start px-4">
+                    <div className="w-0 md:w-24" />
+                  </div>
+                </li>
               ))}
-            </div>
-            <div className="flex flex-col items-center lg:items-start justify-start h-full" data-aos="zoom-in" data-aos-delay="600">
-              <img 
-                src={residentialService} 
-                alt="Residential Projects" 
-                className="rounded-2xl shadow-xl mb-6 w-[420px] h-[420px] object-fill border-4 border-[#F8F4E3] dark:border-[#002346]"
-                style={{ maxWidth: '100%', background: darkMode ? '#333333' : '#fff', marginTop: 0, alignSelf: 'flex-start' }}
-              />
-              <h3 className="text-2xl font-bold mb-4 self-center lg:self-start" style={{ color: darkMode ? "#F8F4E3" : "#002346" }}>Your Dream Home, Our Mission.</h3>
-              <p className="text-lg max-w-md self-center lg:self-start" style={{ color: darkMode ? "#F8F4E3" : "#333333" }}>
-                Expert residential construction with attention to detail and customer satisfaction.
-              </p>
-            </div>
-            <div className="space-y-8" data-aos="fade-left" data-aos-delay="300">
-              {benefits.slice(3, 6).map((b, idx) => (
-                <div key={idx} className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}>
-                  <h3 className="text-2xl font-bold mb-2" style={{ color: "#F8F4E3" }}>{b.split(':')[0]}</h3>
-                  <p className="text-base" style={{ color: "#F8F4E3" }}>{b}</p>
-                </div>
-              ))}
-            </div>
+            </ol>
           </div>
         </div>
+        <style>{`
+          @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fadeInUp {
+            animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+          }
+        `}</style>
       </section>
 
-      {/* Services Section */}
-      <section className="w-full py-16 px-4 relative transition-colors duration-300"
-        style={{ background: COLOR_1 }}>
+      {/* Services Section - Modern Card Grid with Icons */}
+      <section
+        className="w-full py-20 px-4 relative transition-colors duration-300"
+        style={{ background: COLOR_1 }}
+      >
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="mb-12" data-aos="fade-up">
-            <h2 className="text-5xl text-center font-bold text-white">
-              Our Residential Services
+          <div className="mb-12 text-center">
+            <FaPalette className="inline-block text-3xl" />
+            <h2 className="text-5xl font-extrabold text-white mb-4 tracking-tight flex items-center justify-center gap-3">
+              {t("Our Residential Services")}
             </h2>
+            <p className="text-lg max-w-2xl mx-auto text-white/80">
+              {t("Explore our full range of residential solutions.")}
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {services.map((service, index) => (
               <div
                 key={index}
-                style={{ backgroundColor: COLOR_2, color: COLOR_3 }}
-                className="rounded-2xl p-6 shadow-lg transform transition-all duration-300 hover:scale-105"
+                className="rounded-3xl shadow-xl p-8 flex flex-col items-center bg-white/80 dark:bg-[#232946]/80 border-2 border-[#eebbc3] backdrop-blur-md hover:scale-105 transition-transform"
+                style={{ color: darkMode ? COLOR_2 : COLOR_3, minHeight: 220 }}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
-                data-aos-once="false"
               >
-                <div className="mb-4">
-                  <span className="text-2xl font-bold" style={{ color: COLOR_1 }}>
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold mb-4" style={{color: COLOR_1}}>{service.title}</h3>
-                <p className="text-base" style={{color: COLOR_3}}>{service.description}</p>
+                <service.icon
+                  className="text-4xl mb-4 drop-shadow"
+                  style={{ color: "#eebbc3" }}
+                />
+                <h3
+                  className="text-2xl font-bold mb-2 text-center"
+                  style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
+                >
+                  {service.title}
+                </h3>
+                <p className="text-base text-center">{service.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How We Work Section (Residential projects context) */}
+      {/* How We Work Section (Residential projects context) - i18n ready */}
       <section
         className={`w-full py-20 px-4 relative`}
         style={{ background: darkMode ? COLOR_1 : COLOR_2, overflow: "hidden" }}
@@ -266,19 +340,27 @@ const ResidentialProjects = ({ user, onLogout }) => {
               className="text-5xl font-extrabold mb-2"
               style={{ color: darkMode ? COLOR_2 : COLOR_1, letterSpacing: -2 }}
             >
-              HOW WE WORK
+              {t("HOW WE WORK")}
             </h2>
-            <p className={`text-lg mb-8 ${darkMode ? 'text-[#AABF91]' : 'text-[#333]'}`}>
-              Our residential project process
+            <p
+              className={`text-lg mb-8 ${
+                darkMode ? "text-[#AABF91]" : "text-[#333]"
+              }`}
+            >
+              {t("Our residential project process")}
             </p>
-            <ul className={`list-disc pl-6 space-y-4 text-base ${darkMode ? 'text-[#AABF91]' : 'text-[#333]'}`}>
-              <li>Personalized consultation and vision assessment.</li>
-              <li>Site analysis and feasibility planning.</li>
-              <li>Custom architectural design development.</li>
-              <li>Permitting and regulatory compliance management.</li>
-              <li>Construction and quality assurance.</li>
-              <li>Regular updates and collaborative client feedback.</li>
-              <li>Final walkthrough and post-completion support.</li>
+            <ul
+              className={`list-disc pl-6 space-y-4 text-base ${
+                darkMode ? "text-[#AABF91]" : "text-[#333]"
+              }`}
+            >
+              <li>{t("Personalized consultation and vision assessment.")}</li>
+              <li>{t("Site analysis and feasibility planning.")}</li>
+              <li>{t("Custom architectural design development.")}</li>
+              <li>{t("Permitting and regulatory compliance management.")}</li>
+              <li>{t("Construction and quality assurance.")}</li>
+              <li>{t("Regular updates and collaborative client feedback.")}</li>
+              <li>{t("Final walkthrough and post-completion support.")}</li>
             </ul>
           </div>
 
@@ -294,10 +376,10 @@ const ResidentialProjects = ({ user, onLogout }) => {
                     top: 100 + 60 * i,
                     width: 300 + i * 80,
                     height: 80 + i * 40,
-                    border: '1.5px dashed #B57560',
+                    border: "1.5px dashed #B57560",
                     borderRadius: "45%",
                     zIndex: 1,
-                    mixBlendMode: darkMode ? 'screen' : 'normal',
+                    mixBlendMode: darkMode ? "screen" : "normal",
                   }}
                 />
               ))}
@@ -306,16 +388,16 @@ const ResidentialProjects = ({ user, onLogout }) => {
             {/* Cubes container */}
             <div
               className="z-10 flex flex-col items-end ml-auto space-y-6 w-[290px] sm:w-[320px] md:w-[340px] lg:w-[360px]"
-              style={{ perspective: '1200px' }}
+              style={{ perspective: "1200px" }}
             >
               {/* Cubes with color scheme consistent with page */}
               {[
-                { color: cubeColors[0], label: "Brief" },
-                { color: cubeColors[1], label: "Research" },
-                { color: cubeColors[2], label: "Sketch" },
-                { color: cubeColors[3], label: "Design" },
-                { color: cubeColors[4], label: "Present" },
-                { color: cubeColors[5], label: "Revise" },
+                { color: cubeColors[0], label: t("Brief") },
+                { color: cubeColors[1], label: t("Research") },
+                { color: cubeColors[2], label: t("Sketch") },
+                { color: cubeColors[3], label: t("Design") },
+                { color: cubeColors[4], label: t("Present") },
+                { color: cubeColors[5], label: t("Revise") },
               ].map((step, i) => (
                 <div
                   key={step.label}
@@ -326,34 +408,39 @@ const ResidentialProjects = ({ user, onLogout }) => {
                     background: step.color,
                     borderRadius: "12px",
                     boxShadow: `0 10px 20px -5px rgba(0,0,0,0.3)`,
-                    transformOrigin: 'center',
-                    animation: `floatUpDown 3s ease-in-out ${(i * 0.25)}s infinite`,
-                    cursor: 'default',
-                    userSelect: 'none',
+                    transformOrigin: "center",
+                    animation: `floatUpDown 3s ease-in-out ${
+                      i * 0.25
+                    }s infinite`,
+                    cursor: "default",
+                    userSelect: "none",
                     color: darkMode ? COLOR_1 : COLOR_2,
-                    fontWeight: '700',
-                    fontSize: '1.3rem',
-                    paddingLeft: '32px',
-                    letterSpacing: '0.05em',
+                    fontWeight: "700",
+                    fontSize: "1.3rem",
+                    paddingLeft: "32px",
+                    letterSpacing: "0.05em",
                   }}
                   tabIndex={0} // for keyboard focus, accessibility
                   aria-label={`Step ${i + 1}: ${step.label}`}
-                  onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-10px) rotateX(5deg) rotateY(7deg)'}
-                  onMouseLeave={e => e.currentTarget.style.transform = ''}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.transform =
+                      "translateY(-10px) rotateX(5deg) rotateY(7deg)")
+                  }
+                  onMouseLeave={(e) => (e.currentTarget.style.transform = "")}
                 >
                   {step.label}
                   {/* Subtle glow */}
                   <div
                     style={{
-                      position: 'absolute',
-                      bottom: '8px',
-                      left: '10%',
-                      width: '80%',
-                      height: '6px',
-                      backgroundColor: 'rgba(0,0,0,0.15)',
-                      filter: 'blur(8px)',
-                      borderRadius: '5px',
-                      pointerEvents: 'none',
+                      position: "absolute",
+                      bottom: "8px",
+                      left: "10%",
+                      width: "80%",
+                      height: "6px",
+                      backgroundColor: "rgba(0,0,0,0.15)",
+                      filter: "blur(8px)",
+                      borderRadius: "5px",
+                      pointerEvents: "none",
                       zIndex: 0,
                     }}
                   />
@@ -377,43 +464,83 @@ const ResidentialProjects = ({ user, onLogout }) => {
         `}</style>
       </section>
 
-      {/* Features Section */}
-      <section className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ background: COLOR_1 }}>
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Features Section - Modernized */}
+      <section
+        className="w-full py-20 px-4 transition-colors duration-300 relative overflow-hidden"
+        style={{ background: COLOR_1 }}
+      >
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col space-y-8" data-aos="fade-right">
               <div>
-                <h2 className="text-5xl font-bold mb-6" style={{ color: COLOR_2 }}>
-                  Our Client Features
+                <FaUserTie className="text-3xl" />
+                <h2
+                  className="text-5xl font-extrabold mb-6 flex items-center gap-3"
+                  style={{ color: COLOR_2 }}
+                >
+                  {t("Our Client Features")}
                 </h2>
                 <p className="text-xl mb-8" style={{ color: COLOR_2 }}>
-                  Always putting your project’s success first.
+                  {t("Always putting your project’s success first.")}
                 </p>
               </div>
               <div className="space-y-6">
-                <p className="text-base leading-relaxed" style={{ color: COLOR_2 }}>
-                  We treat every project with precision, care, and personal attention.
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: COLOR_2 }}
+                >
+                  {t(
+                    "We treat every project with precision, care, and personal attention.",
+                  )}
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: COLOR_2 }}>
-                  Access to resources and expert consultants throughout your project.
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: COLOR_2 }}
+                >
+                  {t(
+                    "Access to resources and expert consultants throughout your project.",
+                  )}
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: COLOR_2 }}>
-                  Client portal provides 24/7 access to design and construction updates.
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: COLOR_2 }}
+                >
+                  {t(
+                    "Client portal provides 24/7 access to design and construction updates.",
+                  )}
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: COLOR_2 }}>
-                  Expect reliability, transparency, and constant communication at every stage.
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: COLOR_2 }}
+                >
+                  {t(
+                    "Expect reliability, transparency, and constant communication at every stage.",
+                  )}
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8" data-aos="fade-left">
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+              data-aos="fade-left"
+            >
               {features.map((feature, index) => (
-                <div key={index}
-                  className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ background: COLOR_2, color: COLOR_3 }}>
-                  <h3 className="text-xl font-bold mb-2">{feature}</h3>
-                  <p className="text-base">
-                    {`Benefit from ${feature.toLowerCase()} as our client.`}
+                <div
+                  key={index}
+                  className="p-8 rounded-3xl shadow-xl bg-white/80 dark:bg-[#232946]/80 border-2 border-[#eebbc3] backdrop-blur-md hover:scale-105 transition-transform flex flex-col items-center"
+                  style={{
+                    color: darkMode ? COLOR_2 : COLOR_3,
+                    minHeight: 160,
+                  }}
+                >
+                  <FaChartLine
+                    className="text-3xl mb-3"
+                    style={{ color: "#eebbc3" }}
+                  />
+                  <h3 className="text-xl font-bold mb-2 text-center">
+                    {feature}
+                  </h3>
+                  <p className="text-base text-center">
+                    {t("Benefit from this as our client.")}
                   </p>
                 </div>
               ))}
@@ -422,52 +549,97 @@ const ResidentialProjects = ({ user, onLogout }) => {
         </div>
       </section>
 
-      {/* Final CTA/Pricing Section */}
-      <section id="pricing-section" className="w-full py-16 px-4 transition-colors duration-300" style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}>
-        <div className="max-w-6xl mx-auto text-center w-full">
-          <h2 className="text-5xl font-bold mb-4" style={{ color: darkMode ? "#F8F4E3" : "#002346" }} data-aos="fade-down" data-aos-delay="50">
-            Secure Peace of Mind for Your Project
+      {/* Final CTA/Pricing Section - Modern Glassmorphism */}
+      <section
+        id="pricing-section"
+        className="w-full py-20 px-4 transition-colors duration-300 relative overflow-hidden"
+        style={{ backgroundColor: darkMode ? COLOR_1 : COLOR_2 }}
+      >
+        {/* Gradient background accent */}
+        <div
+          className="absolute -top-24 -left-24 w-96 h-96 rounded-full opacity-30 blur-2xl z-0"
+          style={{
+            background: darkMode
+              ? "radial-gradient(circle at 30% 30%, #eebbc3 0%, #232946 100%)"
+              : "radial-gradient(circle at 30% 30%, #232946 0%, #eebbc3 100%)",
+          }}
+        />
+        <div
+          className="absolute -bottom-32 -right-32 w-[30rem] h-[30rem] rounded-full opacity-20 blur-3xl z-0"
+          style={{
+            background: darkMode
+              ? "radial-gradient(circle at 70% 70%, #eebbc3 0%, #232946 100%)"
+              : "radial-gradient(circle at 70% 70%, #eebbc3 0%, #232946 100%)",
+          }}
+        />
+        <div className="max-w-6xl mx-auto text-center w-full relative z-10">
+          <h2
+            className="text-5xl font-extrabold mb-4 tracking-tight flex items-center justify-center gap-3"
+            style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
+          >
+            <FaPhoneAlt className="inline-block text-3xl animate-bounce" />
+            {t("Secure Peace of Mind for Your Project")}
           </h2>
-          <p className="text-xl mb-12 max-w-2xl mx-auto" style={{ color: darkMode ? "#F8F4E3" : "#333333" }} data-aos="fade-up" data-aos-delay="100">
-            Find clarity, support, and expert solutions—every step of the way.
+          <p
+            className="text-xl mb-12 max-w-2xl mx-auto"
+            style={{ color: darkMode ? COLOR_2 : COLOR_3 }}
+          >
+            {t(
+              "Find clarity, support, and expert solutions—every step of the way.",
+            )}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
             {pricingTiers.map((tier, i) => (
-              <div key={i} style={{background: COLOR_2, color: COLOR_3, border: `2px solid ${COLOR_1}`}} className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300">
-                {tier.badge &&
+              <div
+                key={i}
+                className="rounded-3xl shadow-xl p-8 flex flex-col items-center bg-white/80 dark:bg-[#232946]/80 border-2 border-[#eebbc3] backdrop-blur-md hover:scale-105 transition-transform"
+                style={{ color: darkMode ? COLOR_2 : COLOR_3, minHeight: 320 }}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
+              >
+                {tier.badge && (
                   <div className="bg-white text-[#002346] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
                     {tier.badge}
-                  </div>}
-                <h3 className="text-2xl font-bold mb-2" style={{color: COLOR_1}}>{tier.title}</h3>
-                <div className="text-4xl font-bold mb-4" style={{color: COLOR_3}}>{tier.price}<span className="text-lg">{tier.priceNote}</span></div>
+                  </div>
+                )}
+                <h3
+                  className="text-2xl font-bold mb-2 text-center"
+                  style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
+                >
+                  {tier.title}
+                </h3>
+                <div
+                  className="text-4xl font-bold mb-4"
+                  style={{ color: COLOR_3 }}
+                >
+                  {tier.price}
+                  <span className="text-lg">{tier.priceNote}</span>
+                </div>
                 <ul className="text-left space-y-3 mb-6">
                   {tier.features.map((feat, j) => (
                     <li key={j}>{feat}</li>
                   ))}
                 </ul>
-                {tier.buttonText === 'Book Consultation' && (
+                {tier.buttonText === t("Book Consultation") && (
                   <button
-                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/home2#consultation-form')}
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300 bg-[#eebbc3] text-[#232946] border-2 border-[#eebbc3] hover:bg-[#232946] hover:text-[#eebbc3] focus:outline-none focus:ring-4 focus:ring-[#eebbc3]"
+                    onClick={() => navigate("/home2#consultation-form")}
                   >
                     {tier.buttonText}
                   </button>
                 )}
-                {tier.buttonText === 'Contact Us' && (
+                {tier.buttonText === t("Contact Us") && (
                   <button
-                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/contact')}
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300 bg-[#eebbc3] text-[#232946] border-2 border-[#eebbc3] hover:bg-[#232946] hover:text-[#eebbc3] focus:outline-none focus:ring-4 focus:ring-[#eebbc3]"
+                    onClick={() => navigate("/contact")}
                   >
                     {tier.buttonText}
                   </button>
                 )}
-                {tier.buttonText === 'Start Now' && (
+                {tier.buttonText === t("Start Now") && (
                   <button
-                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/home')}
+                    className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300 bg-[#eebbc3] text-[#232946] border-2 border-[#eebbc3] hover:bg-[#232946] hover:text-[#eebbc3] focus:outline-none focus:ring-4 focus:ring-[#eebbc3]"
+                    onClick={() => navigate("/home")}
                   >
                     {tier.buttonText}
                   </button>
@@ -478,7 +650,7 @@ const ResidentialProjects = ({ user, onLogout }) => {
         </div>
       </section>
 
-      <Footer darkMode={darkMode} setDarkMode={setDarkMode}/>
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );
 };

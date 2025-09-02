@@ -1,16 +1,17 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const DarkModeContext = createContext();
 
 export const DarkModeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(() => {
-    const stored = localStorage.getItem('verdict-dark-mode');
+    const stored = localStorage.getItem("verdict-dark-mode");
     return stored ? JSON.parse(stored) : false;
   });
 
   useEffect(() => {
-    localStorage.setItem('verdict-dark-mode', JSON.stringify(darkMode));
-    document.documentElement.classList.toggle('dark', darkMode);
+    localStorage.setItem("verdict-dark-mode", JSON.stringify(darkMode));
+    document.documentElement.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
   return (

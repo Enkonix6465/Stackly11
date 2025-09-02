@@ -1,171 +1,150 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext.jsx";
+import { useTranslation } from "react-i18next";
 import AOS from "aos";
 import Footer from "../components/Footer.jsx";
-//import '../aos-custom.css';
-import {
-  UserIcon,
-  DocumentDuplicateIcon,
-  ClipboardDocumentCheckIcon,
-  PaperAirplaneIcon,
-  BriefcaseIcon,
-  SparklesIcon,
-  Cog6ToothIcon,
-} from "@heroicons/react/24/solid";
-import urbanHero from '../assets/urbanHero.mp4';
-import urbanPhoto from '../assets/urbanPlanning.jpg';
 
-const COLOR_1 = '#002346'; // deep blue
-const COLOR_2 = '#F8F4E3'; // off-white
-const COLOR_3 = '#333333';
+import urbanHero from "../assets/urbanHero.mp4";
+import urbanPhoto from "../assets/urbanPlanning.jpg";
+
+const COLOR_1 = "#002346"; // deep blue
+const COLOR_2 = "#F8F4E3"; // off-white
+const COLOR_3 = "#333333"; // dark gray
 
 const UrbanPlanning = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   // Prevent horizontal scroll on the whole page
   useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = 'html, body { overflow-x: hidden !important; }';
+    const style = document.createElement("style");
+    style.innerHTML = "html, body { overflow-x: hidden !important; }";
     document.head.appendChild(style);
-    return () => { document.head.removeChild(style); };
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
-  // Smooth scroll methods
-  const scrollToBenefits = () => {
-    const benefitsSection = document.getElementById("key-benefits");
-    if (benefitsSection) {
-      benefitsSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-  const scrollToPricing = () => {
-    const pricingSection = document.getElementById("pricing-section");
-    if (pricingSection) {
-      pricingSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
 
   // Initialize AOS
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  // Page Content for Urban Planning
+  // Page Content for Urban Planning (i18n)
   const benefits = [
-    "Holistic and Sustainable Community Design",
-    "Optimized Land Use and Resource Management",
-    "Enhanced Public Spaces and Livability",
-    "Strategic Economic and Infrastructure Planning",
-    "Efficient Regulatory and Permitting Navigation",
-    "Inclusive Stakeholder and Community Engagement",
+    t("urbanPlanning.benefits.0"),
+    t("urbanPlanning.benefits.1"),
+    t("urbanPlanning.benefits.2"),
+    t("urbanPlanning.benefits.3"),
+    t("urbanPlanning.benefits.4"),
+    t("urbanPlanning.benefits.5"),
   ];
 
   const services = [
     {
-      title: "Master Planning & Zoning",
-      description:
-        "Developing comprehensive master plans and managing zoning regulations to shape future growth.",
+      title: t("urbanPlanning.services.0.title"),
+      description: t("urbanPlanning.services.0.description"),
     },
     {
-      title: "Sustainable Development",
-      description: "Integrating green infrastructure, energy efficiency, and resilient design into projects.",
+      title: t("urbanPlanning.services.1.title"),
+      description: t("urbanPlanning.services.1.description"),
     },
     {
-      title: "Community & Stakeholder Engagement",
-      description: "Facilitating inclusive public workshops and dialogue to build consensus and support.",
+      title: t("urbanPlanning.services.2.title"),
+      description: t("urbanPlanning.services.2.description"),
     },
     {
-      title: "Land Use & Feasibility Studies",
-      description:
-        "Analyzing site potential and market trends to ensure viable and successful urban projects.",
+      title: t("urbanPlanning.services.3.title"),
+      description: t("urbanPlanning.services.3.description"),
     },
     {
-      title: "Transit-Oriented Development (TOD)",
-      description:
-        "Creating vibrant, walkable communities around public transit hubs to reduce traffic and promote connectivity.",
+      title: t("urbanPlanning.services.4.title"),
+      description: t("urbanPlanning.services.4.description"),
     },
     {
-      title: "Urban Revitalization",
-      description: "Transforming underutilized or distressed areas into thriving, vibrant urban centers.",
+      title: t("urbanPlanning.services.5.title"),
+      description: t("urbanPlanning.services.5.description"),
     },
   ];
 
   const howItWorks = [
-    "Initiate with a project visioning session",
-    "Conduct site and community analysis",
-    "Develop strategic planning options",
-    "Manage permitting and regulatory approvals",
-    "Implement design and project phasing",
-    "Provide post-project support and assessment",
+    t("urbanPlanning.process.0"),
+    t("urbanPlanning.process.1"),
+    t("urbanPlanning.process.2"),
+    t("urbanPlanning.process.3"),
+    t("urbanPlanning.process.4"),
+    t("urbanPlanning.process.5"),
   ];
 
   const features = [
-    "Data-driven urban analytics",
-    "Interactive 3D city modeling",
-    "Community feedback portal",
-    "Regulatory approval tracking",
+    t("urbanPlanning.features.0"),
+    t("urbanPlanning.features.1"),
+    t("urbanPlanning.features.2"),
+    t("urbanPlanning.features.3"),
   ];
 
   const pricingTiers = [
     {
-      title: "Project Consult",
-      price: "$2,500",
-      priceNote: "/initial phase",
+      title: t("urbanPlanning.pricing.0.title"),
+      price: t("urbanPlanning.pricing.0.price"),
+      priceNote: t("urbanPlanning.pricing.0.priceNote"),
       features: [
-        "Single-session consultation",
-        "Initial feasibility assessment & land use review",
-        "Actionable recommendations for project kick-off",
-        "Executive summary report and next steps",
-        "Follow-up email support",
+        t("urbanPlanning.pricing.0.features.0"),
+        t("urbanPlanning.pricing.0.features.1"),
+        t("urbanPlanning.pricing.0.features.2"),
+        t("urbanPlanning.pricing.0.features.3"),
+        t("urbanPlanning.pricing.0.features.4"),
       ],
-      buttonText: "Book Consult",
+      buttonText: t("urbanPlanning.pricing.0.buttonText"),
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#AABF91", color: "#002346" },
       className:
         "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
-    },{
-      title: "Standard Development",
-      price: "Quote",
-      priceNote: "/project",
+    },
+    {
+      title: t("urbanPlanning.pricing.1.title"),
+      price: t("urbanPlanning.pricing.1.price"),
+      priceNote: t("urbanPlanning.pricing.1.priceNote"),
       features: [
-        "Includes all features from Project Consult",
-        "Comprehensive master planning & design",
-        "Full regulatory and permitting support",
-        "Stakeholder engagement strategy & facilitation",
+        t("urbanPlanning.pricing.1.features.0"),
+        t("urbanPlanning.pricing.1.features.1"),
+        t("urbanPlanning.pricing.1.features.2"),
+        t("urbanPlanning.pricing.1.features.3"),
       ],
-      buttonText: "Request Quote",
+      buttonText: t("urbanPlanning.pricing.1.buttonText"),
       buttonClass:
         "w-full bg-[#AABF91] text-[#002346] font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] hover:text-white transition-colors duration-300 transform hover:scale-105",
-      badge: "MOST POPULAR",
+      badge: t("urbanPlanning.pricing.1.badge"),
       boxStyle: { background: "#002346", color: "#AABF91" },
       className: "rounded-2xl p-6 border-2 border-[#AABF91] scale-105",
     },
     {
-      title: "Urban Partnership",
-      price: "Quote",
-      priceNote: "/long-term",
+      title: t("urbanPlanning.pricing.2.title"),
+      price: t("urbanPlanning.pricing.2.price"),
+      priceNote: t("urbanPlanning.pricing.2.priceNote"),
       features: [
-        "Full-scope urban planning services",
-        "Post-implementation monitoring & support",
-        "Dedicated project lead & team access",
-        "Strategic partnership for multiple projects",
-        "Customized solutions for complex urban challenges",
+        t("urbanPlanning.pricing.2.features.0"),
+        t("urbanPlanning.pricing.2.features.1"),
+        t("urbanPlanning.pricing.2.features.2"),
+        t("urbanPlanning.pricing.2.features.3"),
+        t("urbanPlanning.pricing.2.features.4"),
       ],
-      buttonText: "Start Now",
+      buttonText: t("urbanPlanning.pricing.2.buttonText"),
       buttonClass:
         "w-full bg-[#002346] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#B57560] transition-colors duration-300 transform hover:scale-105",
       boxStyle: { background: "#AABF91", color: "#002346" },
       className:
         "rounded-2xl p-6 border-2 border-[#B57560] hover:border-[#002346] transition-all duration-300",
-    }
-    // Add more pricing tiers here if needed
+    },
   ];
 
   const cubeColors = darkMode
-    ? ['#F8F4E3', '#AABF91', '#F8F4E3', '#AABF91', '#F8F4E3', '#AABF91'] // off-white and muted green shades for dark
-    : ['#002346', '#B57560', '#002346', '#B57560', '#002346', '#B57560']; // deep blue + sepia accent for light mode
+    ? ["#F8F4E3", "#AABF91", "#F8F4E3", "#AABF91", "#F8F4E3", "#AABF91"] // off-white and muted green shades for dark
+    : ["#002346", "#B57560", "#002346", "#B57560", "#002346", "#B57560"]; // deep blue + sepia accent for light mode
 
   return (
     <div
@@ -174,18 +153,14 @@ const UrbanPlanning = ({ user, onLogout }) => {
       }`}
     >
       <div className="fixed top-0 left-0 w-full z-[100] bg-white dark:bg-[#002346] shadow-lg">
-        <Header
-          user={user}
-          onLogout={onLogout}
-        />
-        <Header
-          user={user}
-          onLogout={onLogout}
-        />
+        <Header user={user} onLogout={onLogout} />
       </div>
 
       {/* Hero Section */}
-      <section className="relative w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
+      <section
+        className="relative  w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0"
+        style={{ minHeight: "100vh", maxWidth: "100vw" }}
+      >
         <video
           autoPlay
           loop
@@ -193,17 +168,23 @@ const UrbanPlanning = ({ user, onLogout }) => {
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover z-0"
-          style={{ minHeight: '100vh', minWidth: '100vw', objectFit: 'cover' }}
+          style={{ minHeight: "100vh", minWidth: "100vw", objectFit: "cover" }}
         >
           <source src={urbanHero} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
-          <h1 className="font-bold text-5xl mb-6 text-white drop-shadow-lg" data-aos="fade-down">
-            Urban Planning
+        <div className="relative z-10 flex flex-col items-center justify-center text-center w-full h-full">
+          <h1
+            className="font-bold text-5xl mb-6 text-white drop-shadow-lg"
+            data-aos="fade-down"
+          >
+            {t("urbanPlanning.hero.title")}
           </h1>
-          <p className="max-w-2xl mx-auto text-lg text-white drop-shadow-lg" data-aos="fade-up">
-            Shaping the future of communities through strategic design and sustainable growth.
+          <p
+            className="max-w-2xl mx-auto text-lg text-white drop-shadow-lg"
+            data-aos="fade-up"
+          >
+            {t("urbanPlanning.hero.subtitle")}
           </p>
         </div>
       </section>
@@ -211,87 +192,88 @@ const UrbanPlanning = ({ user, onLogout }) => {
       {/* Benefits Section */}
       <section
         id="key-benefits"
-        className="w-full py-16 px-4 transition-colors duration-300"
-        style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
+        className="w-full py-20 px-4 transition-colors duration-300"
+        style={{ backgroundColor: darkMode ? COLOR_1 : COLOR_2 }}
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-once="false"
       >
-        <div className="max-w-7xl mx-auto w-full">
-          <div
-            className="text-center mb-16"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <h2
-              className="text-5xl font-bold mb-4"
+        <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row gap-12 items-start justify-between">
+          {/* Left: Image and Tagline */}
+          <div className="hidden md:flex flex-col items-center w-1/3">
+            <img
+              src={urbanPhoto}
+              alt="Urban Planning"
+              className="rounded-2xl shadow-xl mb-6 w-[320px] h-[340px] object-cover border-4 border-[#F8F4E3] dark:border-[#002346]"
+              style={{
+                maxWidth: "100%",
+                background: darkMode ? "#333333" : "#fff",
+                marginTop: 0,
+                alignSelf: "flex-start",
+              }}
+            />
+            <h3
+              className="text-2xl font-bold mb-2 self-center"
               style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
             >
-              Key Advantages
-            </h2>
+              {t("urbanPlanning.visionTitle")}
+            </h3>
             <p
-              className="text-lg max-w-2xl mx-auto"
+              className="text-lg max-w-md self-center"
               style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
             >
-              Driving progress with thoughtful, innovative, and community-focused urban design solutions.
+              {t("urbanPlanning.visionSubtitle")}
             </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 justify-items-center">
-            {/* Benefits List */}
-            <div
-              className="space-y-8"
-              data-aos="fade-right"
-              data-aos-delay="300"
-            >
-              {benefits.slice(0, 3).map((b, idx) => (
-                <div
-                  key={idx}
-                  className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}
-                >
-                  <h3
-                    className="text-2xl font-bold mb-2"
-                    style={{ color: "#F8F4E3" }}
-                  >
-                    {b.split(":")[0]}
-                  </h3>
-                  <p className="text-base" style={{ color: "#F8F4E3" }}>
-                    {b}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col items-center lg:items-start justify-start h-full" data-aos="zoom-in" data-aos-delay="600">
-              <img
-                src={urbanPhoto}
-                alt="Urban Planning"
-                className="rounded-2xl shadow-xl mb-6 w-[420px] h-[420px] object-fill border-4 border-[#F8F4E3] dark:border-[#002346]"
-                style={{ maxWidth: '100%', background: darkMode ? '#333333' : '#fff', marginTop: 0, alignSelf: 'flex-start' }}
-              />
-              <h3 className="text-2xl font-bold mb-4 self-center lg:self-start" style={{ color: darkMode ? '#F8F4E3' : '#002346' }}>Your Vision. Our Blueprint.</h3>
-              <p className="text-lg max-w-md self-center lg:self-start" style={{ color: darkMode ? '#F8F4E3' : '#333333' }}>
-                Transforming concepts into reality with forward-thinking urban and regional planning.
+          {/* Right: Modern Grid of Benefit Cards */}
+          <div className="flex-1 w-full">
+            <div className="mb-10 text-center md:text-left">
+              <h2
+                className="text-5xl font-bold mb-4"
+                style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+              >
+                {t("urbanPlanning.benefitsTitle")}
+              </h2>
+              <p
+                className="text-lg max-w-2xl mx-auto md:mx-0"
+                style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+              >
+                {t("urbanPlanning.benefitsSubtitle")}
               </p>
             </div>
-            {/* More Benefits */}
-            <div
-              className="space-y-8"
-              data-aos="fade-left"
-              data-aos-delay="300"
-            >
-              {benefits.slice(3, 6).map((b, idx) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {benefits.map((b, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                  style={{ backgroundColor: darkMode ? "#333333" : "#002346" }}
+                  className="relative flex flex-col items-center bg-white dark:bg-[#333333] rounded-2xl shadow-xl px-6 py-8 border border-[#e5e7eb] dark:border-[#222] hover:scale-105 transition-transform duration-300"
+                  style={{
+                    color: darkMode ? "#F8F4E3" : "#002346",
+                    minHeight: 180,
+                  }}
                 >
-                  <h3
-                    className="text-2xl font-bold mb-2"
-                    style={{ color: "#F8F4E3" }}
+                  <div
+                    className="flex items-center justify-center w-16 h-16 rounded-full shadow-lg mb-4"
+                    style={{
+                      background: darkMode ? "#333333" : "#002346",
+                      color: "#F8F4E3",
+                      fontSize: 32,
+                      fontWeight: 700,
+                      border: `3px solid ${darkMode ? "#F8F4E3" : "#B57560"}`,
+                      transition: "border 0.2s",
+                    }}
+                  >
+                    <span>{idx + 1}</span>
+                  </div>
+                  <h4
+                    className="font-bold text-lg mb-2 text-center w-full"
+                    style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
                   >
                     {b.split(":")[0]}
-                  </h3>
-                  <p className="text-base" style={{ color: "#F8F4E3" }}>
+                  </h4>
+                  <p
+                    className="text-sm text-center w-full"
+                    style={{ color: darkMode ? "#AABF91" : "#333333" }}
+                  >
                     {b}
                   </p>
                 </div>
@@ -304,162 +286,183 @@ const UrbanPlanning = ({ user, onLogout }) => {
       {/* Services Section */}
       <section
         className="w-full py-16 px-4 relative transition-colors duration-300"
-        style={{
-          background: "#002346",
-        }}
+        style={{ background: COLOR_1 }}
       >
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="mb-12" data-aos="fade-up">
             <h2 className="text-5xl text-center font-bold text-white">
-              Urban Planning Services
+              {t("urbanPlanning.servicesTitle")}
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                style={{ backgroundColor: "#F8F4E3", color: "#333333" }}
-                className="rounded-2xl p-6 shadow-lg transform transition-all duration-300 hover:scale-105"
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                data-aos-once="false"
-              >
-                <div className="mb-4">
-                  <span
-                    className="text-2xl font-bold"
-                    style={{ color: "#002346" }}
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+          {/* Modern Vertical Stepper/Timeline for Services */}
+          <div className="relative flex flex-col items-center gap-0">
+            {/* Timeline vertical line */}
+            <div
+              className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#B57560] to-[#AABF91] opacity-30 z-0"
+              style={{ transform: "translateX(-50%)" }}
+            />
+            {services.map((service, idx) => {
+              const isLeft = idx % 2 !== 0;
+              return (
+                <div
+                  key={idx}
+                  className={`relative flex flex-col md:flex-row items-center w-full z-10 mb-8 ${
+                    isLeft ? "md:justify-start" : "md:justify-end"
+                  }`}
+                  style={{ minHeight: 120 }}
+                >
+                  {/* Connector line above */}
+                  {idx !== 0 && (
+                    <div
+                      className="hidden md:block absolute left-1/2 top-0 w-1 h-8 bg-[#B57560] opacity-40"
+                      style={{ transform: "translateX(-50%)" }}
+                    />
+                  )}
+                  {/* Left side (card or empty) */}
+                  {isLeft ? (
+                    <>
+                      {/* Card left */}
+                      <div
+                        className="relative bg-white dark:bg-[#333333] rounded-xl shadow-lg px-8 py-6 min-h-[90px] flex flex-col justify-center items-end border border-[#e5e7eb] dark:border-[#222] md:max-w-[520px] md:w-[520px] md:mr-8"
+                        style={{
+                          color: darkMode ? "#F8F4E3" : "#002346",
+                          zIndex: 2,
+                          textAlign: "right",
+                        }}
+                      >
+                        <h3
+                          className="font-bold text-xl mb-2"
+                          style={{ color: darkMode ? "#AABF91" : "#002346" }}
+                        >
+                          {service.title}
+                        </h3>
+                        <p
+                          className="text-base"
+                          style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                        >
+                          {service.description}
+                        </p>
+                      </div>
+                      <div className="flex-1 hidden md:block" />
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex-1 hidden md:block" />
+                      {/* Card right */}
+                      <div
+                        className="relative bg-white dark:bg-[#333333] rounded-xl shadow-lg px-8 py-6 min-h-[90px] flex flex-col justify-center items-start border border-[#e5e7eb] dark:border-[#222] md:max-w-[520px] md:w-[520px] md:ml-8"
+                        style={{
+                          color: darkMode ? "#F8F4E3" : "#002346",
+                          zIndex: 2,
+                          textAlign: "left",
+                        }}
+                      >
+                        <h3
+                          className="font-bold text-xl mb-2"
+                          style={{ color: darkMode ? "#AABF91" : "#002346" }}
+                        >
+                          {service.title}
+                        </h3>
+                        <p
+                          className="text-base"
+                          style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                        >
+                          {service.description}
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </div>
-                <h3 className="text-xl text-[#002346] font-bold mb-4" style={{ color: "#002346" }}>{service.title}</h3>
-                <p className="text-base" style={{ color: "#333333" }}>{service.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* How It Works Section - Vertical Stepper Style */}
       <section
-        className={`w-full py-20 px-4 relative`}
+        className="w-full py-20 px-4 relative"
         style={{ background: darkMode ? COLOR_1 : COLOR_2, overflow: "hidden" }}
       >
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
-          {/* Text Side */}
-          <div className="flex-1 md:pr-12 mb-10 md:mb-0">
+        <div className="max-w-3xl mx-auto w-full flex flex-col items-center">
+          <div className="mb-12 text-center">
             <h2
               className="text-5xl font-extrabold mb-2"
               style={{ color: darkMode ? COLOR_2 : COLOR_1, letterSpacing: -2 }}
             >
-              OUR PROCESS
+              {t("HOW WE WORK")}
             </h2>
-            <p className={`text-lg mb-8 ${darkMode ? 'text-[#AABF91]' : 'text-[#333]'}`}>
-              A collaborative and comprehensive approach
-            </p>
-            <ul className={`list-disc pl-6 space-y-4 text-base ${darkMode ? 'text-[#AABF91]' : 'text-[#333]'}`}>
-              <li>Initiate with a project visioning session.</li>
-              <li>Conduct site and community analysis.</li>
-              <li>Develop strategic planning options.</li>
-              <li>Manage permitting and regulatory approvals.</li>
-              <li>Implement design and project phasing.</li>
-              <li>Provide post-project support and assessment.</li>
-            </ul>
-          </div>
-
-          {/* Animated Cubes Side */}
-          <div className="flex-1 flex justify-center relative min-h-[480px] w-full md:w-auto">
-            {/* Decorative arcs on large screens only */}
-            <div className="hidden md:block absolute left-0 right-0 top-0 bottom-0 pointer-events-none">
-              {[0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  className="absolute right-6"
-                  style={{
-                    top: 100 + 60 * i,
-                    width: 300 + i * 80,
-                    height: 80 + i * 40,
-                    border: '1.5px dashed #B57560',
-                    borderRadius: "45%",
-                    zIndex: 1,
-                    mixBlendMode: darkMode ? 'screen' : 'normal',
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Cubes container */}
-            <div
-              className="z-10 flex flex-col items-end ml-auto space-y-6 w-[290px] sm:w-[320px] md:w-[340px] lg:w-[360px]"
-              style={{ perspective: '1200px' }}
+            <p
+              className={`text-lg mb-8 ${
+                darkMode ? "text-[#AABF91]" : "text-[#333]"
+              }`}
             >
-              {/* Cubes with color scheme consistent with page */}
-              {[
-                { color: cubeColors[0], label: "Vision" },
-                { color: cubeColors[1], label: "Analysis" },
-                { color: cubeColors[2], label: "Strategy" },
-                { color: cubeColors[3], label: "Approvals" },
-                { color: cubeColors[4], label: "Phasing" },
-                { color: cubeColors[5], label: "Support" },
-              ].map((step, i) => (
-                <div
-                  key={step.label}
-                  className="relative flex items-center rounded-xl shadow-xl"
-                  style={{
-                    width: "100%",
-                    height: "65px",
-                    background: step.color,
-                    borderRadius: "12px",
-                    boxShadow: `0 10px 20px -5px rgba(0,0,0,0.3)`,
-                    transformOrigin: 'center',
-                    animation: `floatUpDown 3s ease-in-out ${(i * 0.25)}s infinite`,
-                    cursor: 'default',
-                    userSelect: 'none',
-                    color: darkMode ? COLOR_1 : COLOR_2,
-                    fontWeight: '700',
-                    fontSize: '1.3rem',
-                    paddingLeft: '32px',
-                    letterSpacing: '0.05em',
-                  }}
-                  tabIndex={0} // for keyboard focus, accessibility
-                  aria-label={`Step ${i + 1}: ${step.label}`}
-                  onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-10px) rotateX(5deg) rotateY(7deg)'}
-                  onMouseLeave={e => e.currentTarget.style.transform = ''}
-                >
-                  {step.label}
-                  {/* Subtle glow */}
+              {t("Our urban planning project process")}
+            </p>
+          </div>
+          {/* Vertical Stepper with Progress Bar */}
+          <div className="relative w-full flex flex-col items-center">
+            {/* Vertical progress bar */}
+            <div
+              className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#B57560] to-[#AABF91] opacity-30 z-0"
+              style={{ transform: "translateX(-50%)" }}
+            />
+            {[
+              t("urbanPlanning.process.0"),
+              t("urbanPlanning.process.1"),
+              t("urbanPlanning.process.2"),
+              t("urbanPlanning.process.3"),
+              t("urbanPlanning.process.4"),
+              t("urbanPlanning.process.5"),
+            ].map((step, idx, arr) => (
+              <div
+                key={idx}
+                className="relative flex flex-col md:flex-row items-center w-full z-10"
+              >
+                <div className="flex flex-col items-center w-full md:w-auto">
+                  {/* Step Number */}
                   <div
+                    className="flex items-center justify-center w-16 h-16 rounded-full shadow-lg mb-2 z-10 bg-white dark:bg-[#333333] border-4"
                     style={{
-                      position: 'absolute',
-                      bottom: '8px',
-                      left: '10%',
-                      width: '80%',
-                      height: '6px',
-                      backgroundColor: 'rgba(0,0,0,0.15)',
-                      filter: 'blur(8px)',
-                      borderRadius: '5px',
-                      pointerEvents: 'none',
-                      zIndex: 0,
+                      borderColor: darkMode ? "#AABF91" : "#B57560",
+                      color: darkMode ? "#AABF91" : "#002346",
+                      fontSize: 28,
+                      fontWeight: 700,
                     }}
-                  />
+                  >
+                    <span>{String(idx + 1).padStart(2, "0")}</span>
+                  </div>
+                  {/* Progress bar segment */}
+                  {idx < arr.length - 1 && (
+                    <div className="w-1 h-12 md:h-16 bg-gradient-to-b from-[#B57560] to-[#AABF91] opacity-30" />
+                  )}
                 </div>
-              ))}
-            </div>
+                {/* Step Card */}
+                <div
+                  className="relative bg-white dark:bg-[#333333] rounded-xl shadow-lg px-6 py-5 min-h-[90px] flex flex-col justify-center items-center border border-[#e5e7eb] dark:border-[#222] w-full md:ml-8 my-4 md:my-0"
+                  style={{
+                    color: darkMode ? "#F8F4E3" : "#002346",
+                    zIndex: 2,
+                    textAlign: "center",
+                  }}
+                >
+                  <h3
+                    className="font-bold text-lg mb-1"
+                    style={{ color: darkMode ? "#AABF91" : "#002346" }}
+                  >
+                    {t("Step")} {idx + 1}
+                  </h3>
+                  <p
+                    className="text-sm"
+                    style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                  >
+                    {step}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        <style>{`
-          @keyframes floatUpDown {
-            0%, 100% { transform: translateY(0) }
-            50% { transform: translateY(-10px) }
-          }
-          @media (max-width: 768px) {
-            .z-10.flex.flex-col.items-end.ml-auto.space-y-6 {
-              width: 100% !important;
-              align-items: center !important;
-            }
-          }
-        `}</style>
       </section>
 
       {/* Features Section */}
@@ -476,10 +479,10 @@ const UrbanPlanning = ({ user, onLogout }) => {
                   className="text-5xl font-bold mb-6"
                   style={{ color: "#F8F4E3" }}
                 >
-                  Our Project Features
+                  {t("urbanPlanning.featuresTitle")}
                 </h2>
                 <p className="text-xl mb-8" style={{ color: "#F8F4E3" }}>
-                  Empowering your project with innovative technology and insights.
+                  {t("urbanPlanning.featuresSubtitle")}
                 </p>
               </div>
               <div className="space-y-6">
@@ -487,25 +490,25 @@ const UrbanPlanning = ({ user, onLogout }) => {
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  Our planning process is built on a foundation of data-driven analysis and community collaboration. We use advanced tools to visualize scenarios and predict outcomes.
+                  {t("urbanPlanning.featuresDesc.0")}
                 </p>
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  We believe that successful projects are born from inclusive dialogue. Our digital platforms make it easy to gather and integrate valuable public feedback.
+                  {t("urbanPlanning.featuresDesc.1")}
                 </p>
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  From initial concept to final approval, we provide transparent progress tracking. Our clients are always informed and engaged, ensuring a smooth and predictable process.
+                  {t("urbanPlanning.featuresDesc.2")}
                 </p>
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
                 >
-                  We help navigate the complexities of permitting and regulatory compliance, providing clear guidance and expert support to avoid delays.
+                  {t("urbanPlanning.featuresDesc.3")}
                 </p>
               </div>
             </div>
@@ -518,11 +521,11 @@ const UrbanPlanning = ({ user, onLogout }) => {
                 <div
                   key={index}
                   className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
-                style={{ background: "#F8F4E3", color: "#333333" }}
+                  style={{ background: "#F8F4E3", color: "#333333" }}
                 >
                   <h3 className="text-xl font-bold mb-2">{feature}</h3>
                   <p className="text-base">
-                    Benefit from {feature.toLowerCase()} as a valued client.
+                    {t("urbanPlanning.featuresCardText", { feature })}
                   </p>
                 </div>
               ))}
@@ -544,7 +547,7 @@ const UrbanPlanning = ({ user, onLogout }) => {
             data-aos="fade-down"
             data-aos-delay="50"
           >
-            Start Your Urban Project
+            {t("urbanPlanning.pricingTitle")}
           </h2>
           <p
             className="text-xl mb-12 max-w-2xl mx-auto"
@@ -552,46 +555,81 @@ const UrbanPlanning = ({ user, onLogout }) => {
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            From a single site to a master-planned community, we have a solution for you.
+            {t("urbanPlanning.pricingSubtitle")}
           </p>
           {/* Service Tiers */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {pricingTiers.map((tier, i) => (
-              <div key={i} style={{background: COLOR_2, color: COLOR_3, border: `2px solid ${COLOR_1}`}} className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300">
-                {tier.badge &&
+              <div
+                key={i}
+                style={{
+                  background: COLOR_2,
+                  color: COLOR_3,
+                  border: `2px solid ${COLOR_1}`,
+                }}
+                className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300"
+              >
+                {tier.badge && (
                   <div className="bg-white text-[#002346] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
                     {tier.badge}
-                  </div>}
-                <h3 className="text-2xl font-bold mb-2" style={{color: COLOR_1}}>{tier.title}</h3>
-                <div className="text-4xl font-bold mb-4" style={{color: COLOR_3}}>{tier.price}<span className="text-lg">{tier.priceNote}</span></div>
+                  </div>
+                )}
+                <h3
+                  className="text-2xl font-bold mb-2"
+                  style={{ color: COLOR_1 }}
+                >
+                  {tier.title}
+                </h3>
+                <div
+                  className="text-4xl font-bold mb-4"
+                  style={{ color: COLOR_3 }}
+                >
+                  {tier.price}
+                  <span className="text-lg">{tier.priceNote}</span>
+                </div>
                 <ul className="text-left space-y-3 mb-6">
                   {tier.features.map((feat, j) => (
                     <li key={j}>{feat}</li>
                   ))}
                 </ul>
-                {tier.buttonText === 'Book Consult' && (
+                {tier.buttonText ===
+                  t("urbanPlanning.pricing.0.buttonText") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/home2#consultation-form')}
+                    style={{
+                      background: COLOR_1,
+                      color: COLOR_2,
+                      border: `2px solid ${COLOR_1}`,
+                    }}
+                    onClick={() => navigate("/home2#consultation-form")}
                   >
                     {tier.buttonText}
                   </button>
                 )}
-                {tier.buttonText === 'Request Quote' && (
+                {tier.buttonText ===
+                  t("urbanPlanning.pricing.1.buttonText") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/contact')}
+                    style={{
+                      background: COLOR_1,
+                      color: COLOR_2,
+                      border: `2px solid ${COLOR_1}`,
+                    }}
+                    onClick={() => navigate("/contact")}
                   >
                     {tier.buttonText}
                   </button>
                 )}
-                {tier.buttonText === 'Start Now' && (
+                {tier.buttonText ===
+                  t("urbanPlanning.pricing.2.buttonText") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-                    style={{background: COLOR_1, color: COLOR_2, border: `2px solid ${COLOR_1}`}}
-                    onClick={() => navigate('/home')}
+                    style={{
+                      background: COLOR_1,
+                      color: COLOR_2,
+                      border: `2px solid ${COLOR_1}`,
+                    }}
+                    onClick={() => navigate("/home")}
                   >
                     {tier.buttonText}
                   </button>
@@ -601,7 +639,11 @@ const UrbanPlanning = ({ user, onLogout }) => {
           </div>
         </div>
       </section>
-      <Footer darkMode={darkMode} setDarkMode={setDarkMode} bgColor={darkMode ? undefined : "#F8F4E3"} />
+      <Footer
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        bgColor={darkMode ? undefined : "#F8F4E3"}
+      />
     </div>
   );
 };
