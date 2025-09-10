@@ -19,6 +19,7 @@ import missionVision from "../assets/missionVision.jpg"; // suitable about/missi
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext";
+import { color } from "chart.js/helpers";
 // Utility to sync left image height with right content
 function useSyncHeight(leftRef, rightRef) {
   useEffect(() => {
@@ -410,15 +411,15 @@ const AboutUs = ({ user, onLogout }) => {
           </h2>
           <p
             className="text-lg leading-relaxed mb-6"
-            style={{ color: darkMode ? COLOR_2 : COLOR_3 }}
+            style={{ color: darkMode ? COLOR_1 : COLOR_3 }}
           >
             {t(
               "We commit to delivering reliable, innovative, and sustainable building solutions. From blueprint to handover, your vision is at the heart of everything we do.",
             )}
           </p>
           <p
-            className="italic text-base max-w-2xl mx-auto"
-            style={{ color: darkMode ? "#eebbc3" : "#eebbc3" }}
+            className="italic font-semibold max-w-2xl mx-auto"
+            style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
           >
             {t(
               "\u201cVision Builders transformed our dream into reality with unmatched professionalism and creativity. A true partner in every step.\u201d — Client Testimonial",

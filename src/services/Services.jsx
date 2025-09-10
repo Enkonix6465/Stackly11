@@ -586,6 +586,7 @@ function TestimonialCarousel({ t, darkMode, COLOR_1, COLOR_2, COLOR_3 }) {
                       ? "0 8px 32px 0 #eebbc355"
                       : "0 8px 32px 0 #23294633",
                     borderColor: "#eebbc3",
+                    background: darkMode ? "#232946" : "#fff",
                     minHeight: 280,
                     maxHeight: 340,
                   }}
@@ -602,7 +603,7 @@ function TestimonialCarousel({ t, darkMode, COLOR_1, COLOR_2, COLOR_3 }) {
                   <div className="flex flex-col items-center">
                     <div
                       className="font-bold text-lg mb-1"
-                      style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
+                      style={{ color: darkMode ? COLOR_2 : COLOR_1 }}
                     >
                       {tst.name}
                     </div>
