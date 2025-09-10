@@ -117,11 +117,10 @@ export default function Home2({ user, onLogout }) {
       <main className="flex-grow max-w-7xl mx-auto px-6 py-12 space-y-24 md:space-y-32">
         {/* Section 2: Our Philosophy */}
         <section
-          className={`relative   mx-auto flex flex-col md:flex-row items-stretch min-h-[420px] rounded-3xl shadow-2xl overflow-hidden ${
-            darkMode
-              ? "bg-gradient-to-br from-[#181c2a] to-[#232946]"
-              : "bg-gradient-to-br from-[#e0e7ef] to-[#f8fafc]"
-          }`}
+          className={`relative   mx-auto flex flex-col md:flex-row items-stretch min-h-[420px] rounded-3xl shadow-2xl overflow-hidden ${darkMode
+            ? "bg-gradient-to-br from-[#181c2a] to-[#232946]"
+            : "bg-gradient-to-br from-[#e0e7ef] to-[#f8fafc]"
+            }`}
         >
           {/* Modern Image with Overlay */}
           <div className="md:w-2/5 w-full relative flex items-stretch justify-center">
@@ -168,11 +167,10 @@ export default function Home2({ user, onLogout }) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Card 1 */}
               <div
-                className={`flex flex-col items-center text-center rounded-2xl shadow-xl p-7 border-t-8 ${
-                  darkMode
-                    ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3]"
-                    : "bg-white text-[#232946] border-[#eebbc3]"
-                }`}
+                className={`flex flex-col items-center text-center rounded-2xl shadow-xl p-7 border-t-8 ${darkMode
+                  ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3]"
+                  : "bg-white text-[#232946] border-[#eebbc3]"
+                  }`}
                 style={{ minHeight: 180 }}
               >
                 <div className="w-12 h-12 mb-3 flex items-center justify-center rounded-full bg-gradient-to-br from-[#eebbc3] to-[#f8f4e3] text-[#232946] text-2xl font-bold shadow-md">
@@ -189,11 +187,10 @@ export default function Home2({ user, onLogout }) {
               </div>
               {/* Card 2 */}
               <div
-                className={`flex flex-col items-center text-center rounded-2xl shadow-xl p-7 border-t-8 ${
-                  darkMode
-                    ? "bg-[#181c2a] text-[#eebbc3] border-[#232946]"
-                    : "bg-[#f8f4e3] text-[#232946] border-[#232946]"
-                }`}
+                className={`flex flex-col items-center text-center rounded-2xl shadow-xl p-7 border-t-8 ${darkMode
+                  ? "bg-[#181c2a] text-[#eebbc3] border-[#232946]"
+                  : "bg-[#f8f4e3] text-[#232946] border-[#232946]"
+                  }`}
                 style={{ minHeight: 180 }}
               >
                 <div className="w-12 h-12 mb-3 flex items-center justify-center rounded-full bg-gradient-to-br from-[#232946] to-[#eebbc3] text-[#eebbc3] text-2xl font-bold shadow-md">
@@ -210,11 +207,10 @@ export default function Home2({ user, onLogout }) {
               </div>
               {/* Card 3 */}
               <div
-                className={`flex flex-col items-center text-center rounded-2xl shadow-xl p-7 border-t-8 ${
-                  darkMode
-                    ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3]"
-                    : "bg-white text-[#232946] border-[#eebbc3]"
-                }`}
+                className={`flex flex-col items-center text-center rounded-2xl shadow-xl p-7 border-t-8 ${darkMode
+                  ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3]"
+                  : "bg-white text-[#232946] border-[#eebbc3]"
+                  }`}
                 style={{ minHeight: 180 }}
               >
                 <div className="w-12 h-12 mb-3 flex items-center justify-center rounded-full bg-gradient-to-br from-[#eebbc3] to-[#232946] text-[#232946] text-2xl font-bold shadow-md">
@@ -235,11 +231,10 @@ export default function Home2({ user, onLogout }) {
 
         {/* Section 3: Our Approach */}
         <section
-          className={`relative max-w-6xl mx-auto rounded-3xl p-0 shadow-2xl border border-opacity-30 overflow-hidden ${
-            darkMode
-              ? "bg-gradient-to-br from-[#181c2a] to-[#232946] border-[#eebbc3]"
-              : "bg-gradient-to-br from-[#232946] to-[#eebbc3] border-[#232946]"
-          }`}
+          className={`relative max-w-6xl mx-auto rounded-3xl p-0 shadow-2xl border border-opacity-30 overflow-hidden ${darkMode
+            ? "bg-gradient-to-br from-[#181c2a] to-[#232946] border-[#eebbc3]"
+            : "bg-gradient-to-br from-[#232946] to-[#eebbc3] border-[#232946]"
+            }`}
         >
           <div
             className="absolute inset-0 pointer-events-none"
@@ -259,31 +254,14 @@ export default function Home2({ user, onLogout }) {
             </h2>
             {/* Timeline/Stepper Modern Layout */}
             <div className="w-full flex flex-col md:flex-row md:space-x-0 md:space-y-0 space-y-12  md:justify-between items-center relative">
-              {/* Vertical line for mobile, horizontal for desktop */}
-              <div
-                className="hidden md:block absolute top-1/2 left-0 right-0 h-1"
-                style={{
-                  background: darkMode ? "#eebbc3" : "#232946",
-                  opacity: 0.15,
-                  zIndex: 0,
-                }}
-              ></div>
-              <div
-                className="block md:hidden absolute left-1/2 top-0 bottom-0 w-1"
-                style={{
-                  background: darkMode ? "#eebbc3" : "#232946",
-                  opacity: 0.15,
-                  zIndex: 0,
-                }}
-              ></div>
+
               {/* Step 1 */}
               <div className="relative flex flex-col items-center text-center md:w-1/3 z-10">
                 <div
-                  className={`w-16 h-16 flex items-center justify-center rounded-full shadow-lg mb-4 border-4 ${
-                    darkMode
-                      ? "bg-[#232946] border-[#eebbc3] text-[#eebbc3]"
-                      : "bg-white border-[#232946] text-[#232946]"
-                  }`}
+                  className={`w-16 h-16 flex items-center justify-center rounded-full shadow-lg mb-4 border-4 ${darkMode
+                    ? "bg-[#232946] border-[#eebbc3] text-[#eebbc3]"
+                    : "bg-white border-[#232946] text-[#232946]"
+                    }`}
                 >
                   <span className="text-2xl font-bold">1</span>
                 </div>
@@ -307,11 +285,10 @@ export default function Home2({ user, onLogout }) {
               {/* Step 2 */}
               <div className="relative flex flex-col items-center text-center md:w-1/3 z-10">
                 <div
-                  className={`w-16 h-16 flex items-center justify-center rounded-full shadow-lg mb-4 border-4 ${
-                    darkMode
-                      ? "bg-[#181c2a] border-[#eebbc3] text-[#eebbc3]"
-                      : "bg-[#f8f4e3] border-[#232946] text-[#232946]"
-                  }`}
+                  className={`w-16 h-16 flex items-center justify-center rounded-full shadow-lg mb-4 border-4 ${darkMode
+                    ? "bg-[#181c2a] border-[#eebbc3] text-[#eebbc3]"
+                    : "bg-[#f8f4e3] border-[#232946] text-[#232946]"
+                    }`}
                 >
                   <span className="text-2xl font-bold">2</span>
                 </div>
@@ -333,11 +310,10 @@ export default function Home2({ user, onLogout }) {
               {/* Step 3 */}
               <div className="relative flex flex-col items-center text-center md:w-1/3 z-10">
                 <div
-                  className={`w-16 h-16 flex items-center justify-center rounded-full shadow-lg mb-4 border-4 ${
-                    darkMode
-                      ? "bg-[#232946] border-[#eebbc3] text-[#eebbc3]"
-                      : "bg-white border-[#eebbc3] text-[#232946]"
-                  }`}
+                  className={`w-16 h-16 flex items-center justify-center rounded-full shadow-lg mb-4 border-4 ${darkMode
+                    ? "bg-[#232946] border-[#eebbc3] text-[#eebbc3]"
+                    : "bg-white border-[#eebbc3] text-[#232946]"
+                    }`}
                 >
                   <span className="text-2xl font-bold">3</span>
                 </div>
@@ -362,11 +338,10 @@ export default function Home2({ user, onLogout }) {
 
         {/* Section 4: Case Studies */}
         <section
-          className={`relative max-w-7xl mx-auto rounded-3xl p-0 shadow-2xl border border-opacity-20 overflow-hidden ${
-            darkMode
-              ? "bg-gradient-to-br from-[#232946] to-[#181c2a] border-[#eebbc3]"
-              : "bg-gradient-to-br from-[#e0e7ef] to-[#f8fafc] border-[#232946]"
-          }`}
+          className={`relative max-w-7xl mx-auto rounded-3xl p-0 shadow-2xl border border-opacity-20 overflow-hidden ${darkMode
+            ? "bg-gradient-to-br from-[#232946] to-[#181c2a] border-[#eebbc3]"
+            : "bg-gradient-to-br from-[#e0e7ef] to-[#f8fafc] border-[#232946]"
+            }`}
         >
           <div
             className="absolute inset-0 pointer-events-none"
@@ -388,20 +363,18 @@ export default function Home2({ user, onLogout }) {
               {caseStudies.map(({ title, summary, year }, idx) => (
                 <article
                   key={idx}
-                  className={`relative group p-10 rounded-3xl shadow-xl border-2 transition-all duration-300 cursor-pointer overflow-hidden ${
-                    darkMode
-                      ? "bg-gradient-to-br from-[#181c2a] to-[#232946] border-[#eebbc3] text-[#f8f4e3] hover:scale-[1.025] hover:shadow-2xl"
-                      : "bg-gradient-to-br from-[#e0e7ef] to-[#f8fafc] border-[#232946] text-[#232946] hover:scale-[1.025] hover:shadow-2xl"
-                  }`}
+                  className={`relative group p-10 rounded-3xl shadow-xl border-2 transition-all duration-300 cursor-pointer overflow-hidden ${darkMode
+                    ? "bg-gradient-to-br from-[#181c2a] to-[#232946] border-[#eebbc3] text-[#f8f4e3] hover:scale-[1.025] hover:shadow-2xl"
+                    : "bg-gradient-to-br from-[#e0e7ef] to-[#f8fafc] border-[#232946] text-[#232946] hover:scale-[1.025] hover:shadow-2xl"
+                    }`}
                   style={{ minHeight: 260 }}
                 >
                   {/* Accent Ribbon */}
                   <div
-                    className={`absolute top-0 left-0 px-5 py-1 rounded-br-2xl font-bold text-xs tracking-widest shadow-md ${
-                      darkMode
-                        ? "bg-[#eebbc3] text-[#232946]"
-                        : "bg-[#232946] text-[#eebbc3]"
-                    } z-20`}
+                    className={`absolute top-0 left-0 px-5 py-1 rounded-br-2xl font-bold text-xs tracking-widest shadow-md ${darkMode
+                      ? "bg-[#eebbc3] text-[#232946]"
+                      : "bg-[#232946] text-[#eebbc3]"
+                      } z-20`}
                     style={{ letterSpacing: 2 }}
                   >
                     {t("Project") + " " + (idx + 1)}
@@ -409,11 +382,10 @@ export default function Home2({ user, onLogout }) {
                   {/* Project Icon */}
                   <div className="flex items-center justify-center mb-6">
                     <div
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg ${
-                        darkMode
-                          ? "bg-[#232946] text-[#eebbc3]"
-                          : "bg-white text-[#232946]"
-                      }`}
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg ${darkMode
+                        ? "bg-[#232946] text-[#eebbc3]"
+                        : "bg-white text-[#232946]"
+                        }`}
                     >
                       {idx === 0 ? (
                         <svg
@@ -468,11 +440,10 @@ export default function Home2({ user, onLogout }) {
                   </h3>
                   <p className="mb-6 leading-relaxed text-lg">{summary}</p>
                   <div
-                    className={`inline-block px-4 py-2 rounded-lg font-semibold text-sm ${
-                      darkMode
-                        ? "bg-[#232946] text-[#eebbc3]"
-                        : "bg-[#002346] text-[#f8f4e3]"
-                    }`}
+                    className={`inline-block px-4 py-2 rounded-lg font-semibold text-sm ${darkMode
+                      ? "bg-[#232946] text-[#eebbc3]"
+                      : "bg-[#002346] text-[#f8f4e3]"
+                      }`}
                     style={{ boxShadow: "0 2px 8px rgba(54,117,136,0.6)" }}
                   >
                     {t("Year")}: {year}
@@ -485,11 +456,10 @@ export default function Home2({ user, onLogout }) {
 
         {/* Section 5: Latest Insights */}
         <section
-          className={`relative max-w-7xl mx-auto rounded-3xl p-0 shadow-2xl overflow-hidden ${
-            darkMode
-              ? "bg-gradient-to-br from-[#181c2a] to-[#232946]"
-              : "bg-gradient-to-br from-[#232946] to-[#eebbc3]"
-          }`}
+          className={`relative max-w-7xl mx-auto rounded-3xl p-0 shadow-2xl overflow-hidden ${darkMode
+            ? "bg-gradient-to-br from-[#181c2a] to-[#232946]"
+            : "bg-gradient-to-br from-[#232946] to-[#eebbc3]"
+            }`}
         >
           <div
             className="absolute inset-0 pointer-events-none"
@@ -589,21 +559,19 @@ export default function Home2({ user, onLogout }) {
               ].map(({ title, excerpt, icon }, idx) => (
                 <article
                   key={idx}
-                  className={`relative group p-8 rounded-2xl shadow-xl border-2 transition-all duration-300 overflow-hidden ${
-                    darkMode
-                      ? "bg-[#232946]/90 border-[#eebbc3] text-[#f8f4e3] hover:scale-[1.025] hover:shadow-2xl"
-                      : "bg-white/90 border-[#232946] text-[#232946] hover:scale-[1.025] hover:shadow-2xl"
-                  }`}
+                  className={`relative group p-8 rounded-2xl shadow-xl border-2 transition-all duration-300 overflow-hidden ${darkMode
+                    ? "bg-[#232946]/90 border-[#eebbc3] text-[#f8f4e3] hover:scale-[1.025] hover:shadow-2xl"
+                    : "bg-white/90 border-[#232946] text-[#232946] hover:scale-[1.025] hover:shadow-2xl"
+                    }`}
                   style={{ minHeight: 240 }}
                 >
                   {/* Icon */}
                   <div className="flex items-center justify-center mb-5">
                     <div
-                      className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg ${
-                        darkMode
-                          ? "bg-[#232946] text-[#eebbc3]"
-                          : "bg-white text-[#232946]"
-                      }`}
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg ${darkMode
+                        ? "bg-[#232946] text-[#eebbc3]"
+                        : "bg-white text-[#232946]"
+                        }`}
                     >
                       {icon}
                     </div>
@@ -616,11 +584,10 @@ export default function Home2({ user, onLogout }) {
                   </h3>
                   <p className="mb-4 leading-relaxed text-base">{excerpt}</p>
                   <button
-                    className={`mt-2 inline-block py-2 px-4 rounded transition text-sm font-semibold ${
-                      darkMode
-                        ? "bg-[#eebbc3] text-[#232946]"
-                        : "bg-[#232946] text-[#f8f4e3]"
-                    }`}
+                    className={`mt-2 inline-block py-2 px-4 rounded transition text-sm font-semibold ${darkMode
+                      ? "bg-[#eebbc3] text-[#232946]"
+                      : "bg-[#232946] text-[#f8f4e3]"
+                      }`}
                     onClick={() => navigate("/blog")}
                   >
                     {t("Read More")}
@@ -634,20 +601,18 @@ export default function Home2({ user, onLogout }) {
         {/* Section 6: Contact */}
         <section
           id="consultation-form"
-          className={`relative   mx-auto mt-16 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${
-            darkMode
-              ? "bg-gradient-to-br from-[#181c2a] to-[#232946]"
-              : "bg-gradient-to-br from-[#e0e7ef] to-[#f8fafc]"
-          }`}
+          className={`relative   mx-auto mt-16 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row ${darkMode
+            ? "bg-gradient-to-br from-[#181c2a] to-[#232946]"
+            : "bg-gradient-to-br from-[#e0e7ef] to-[#f8fafc]"
+            }`}
         >
           {/* Left Accent & Icon */}
           <div className="hidden md:flex flex-col items-center justify-center w-1/3 bg-transparent p-8 relative">
             <div
-              className={`w-20 h-20 flex items-center justify-center rounded-3xl shadow-2xl mb-6 ${
-                darkMode
-                  ? "bg-[#232946] text-[#eebbc3]"
-                  : "bg-white text-[#232946]"
-              }`}
+              className={`w-20 h-20 flex items-center justify-center rounded-3xl shadow-2xl mb-6 ${darkMode
+                ? "bg-[#232946] text-[#eebbc3]"
+                : "bg-white text-[#232946]"
+                }`}
             >
               <svg width="48" height="48" fill="none" viewBox="0 0 24 24">
                 <rect
@@ -703,11 +668,10 @@ export default function Home2({ user, onLogout }) {
                   type="text"
                   placeholder={t("Your full name")}
                   required
-                  className={`w-full p-3 rounded-xl border-2 focus:ring-2 focus:ring-[#eebbc3] transition ${
-                    darkMode
-                      ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3] placeholder-[#eebbc3]/60"
-                      : "bg-[#f8f4e3] text-[#232946] border-[#232946] placeholder-[#232946]/60"
-                  }`}
+                  className={`w-full p-3 rounded-xl border-2 focus:ring-2 focus:ring-[#eebbc3] transition ${darkMode
+                    ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3] placeholder-[#eebbc3]/60"
+                    : "bg-[#f8f4e3] text-[#232946] border-[#232946] placeholder-[#232946]/60"
+                    }`}
                 />
               </div>
               <div>
@@ -723,11 +687,10 @@ export default function Home2({ user, onLogout }) {
                   type="email"
                   placeholder={t("Your email address")}
                   required
-                  className={`w-full p-3 rounded-xl border-2 focus:ring-2 focus:ring-[#eebbc3] transition ${
-                    darkMode
-                      ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3] placeholder-[#eebbc3]/60"
-                      : "bg-[#f8f4e3] text-[#232946] border-[#232946] placeholder-[#232946]/60"
-                  }`}
+                  className={`w-full p-3 rounded-xl border-2 focus:ring-2 focus:ring-[#eebbc3] transition ${darkMode
+                    ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3] placeholder-[#eebbc3]/60"
+                    : "bg-[#f8f4e3] text-[#232946] border-[#232946] placeholder-[#232946]/60"
+                    }`}
                 />
               </div>
               <div>
@@ -743,20 +706,18 @@ export default function Home2({ user, onLogout }) {
                   rows={4}
                   placeholder={t("Briefly describe your project")}
                   required
-                  className={`w-full p-3 rounded-xl border-2 focus:ring-2 focus:ring-[#eebbc3] transition ${
-                    darkMode
-                      ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3] placeholder-[#eebbc3]/60"
-                      : "bg-[#f8f4e3] text-[#232946] border-[#232946] placeholder-[#232946]/60"
-                  }`}
+                  className={`w-full p-3 rounded-xl border-2 focus:ring-2 focus:ring-[#eebbc3] transition ${darkMode
+                    ? "bg-[#232946] text-[#f8f4e3] border-[#eebbc3] placeholder-[#eebbc3]/60"
+                    : "bg-[#f8f4e3] text-[#232946] border-[#232946] placeholder-[#232946]/60"
+                    }`}
                 />
               </div>
               <button
                 type="submit"
-                className={`w-full py-3 rounded-full font-bold text-lg shadow-lg transition-colors hover:scale-105 hover:bg-[#eebbc3] hover:text-[#232946] duration-200 border-2 border-[#eebbc3] ${
-                  darkMode
-                    ? "bg-[#232946] text-[#eebbc3]"
-                    : "bg-[#232946] text-[#000000]"
-                }`}
+                className={`w-full py-3 rounded-full font-bold text-lg shadow-lg transition-colors hover:scale-105 hover:bg-[#eebbc3] hover:text-[#232946] duration-200 border-2 border-[#eebbc3] ${darkMode
+                  ? "bg-[#232946] text-[#eebbc3]"
+                  : "bg-[#232946] text-[#000000]"
+                  }`}
               >
                 {t("Book Consultation")}
               </button>

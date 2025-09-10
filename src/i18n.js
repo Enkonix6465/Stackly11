@@ -1080,11 +1080,11 @@ const resources = {
       "Our Approach": "Our Approach",
       At: "At",
       "we unite architectural creativity with engineering precision. Each project is overseen with attention to detail, ensuring structural quality and design excellence.":
-        "we unite architectural creativity with engineering precision. Each project is overseen with attention to detail, ensuring structural quality and design excellence.",
+        "we unite architectural creativity with engineering precision. Each project is overseen with attention to detail.",
       "We believe in transparent communication and collaboration—keeping clients consistently updated from planning to construction.":
         "We believe in transparent communication and collaboration—keeping clients consistently updated from planning to construction.",
       "Our process emphasizes innovation, sustainability, and efficiency, delivering results that are functional, aesthetic, and future-ready.":
-        "Our process emphasizes innovation, sustainability, and efficiency, delivering results that are functional, aesthetic, and future-ready.",
+        "Our process emphasizes innovation, sustainability, and efficiency, delivering results that are functional, aesthetic.",
       "Featured Projects": "Featured Projects",
       "Sustainable Residential Complex": "Sustainable Residential Complex",
       "Designed and constructed an award-winning eco-friendly residential complex with solar integration and smart water management.":
