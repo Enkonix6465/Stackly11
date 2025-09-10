@@ -179,13 +179,13 @@ const UrbanPlanning = ({ user, onLogout }) => {
         </video>
         <div className="relative z-10 flex flex-col items-center justify-center text-center w-full h-full">
           <h1
-            className="font-bold text-5xl mb-6 text-white drop-shadow-lg"
+            className="font-bold text-center text-5xl mb-6 text-white drop-shadow-lg"
             data-aos="fade-down"
           >
             {t("urbanPlanning.hero.title")}
           </h1>
           <p
-            className="max-w-2xl mx-auto text-lg text-white drop-shadow-lg"
+            className="max-w-2xl text-center mx-auto text-lg text-white drop-shadow-lg"
             data-aos="fade-up"
           >
             {t("urbanPlanning.hero.subtitle")}

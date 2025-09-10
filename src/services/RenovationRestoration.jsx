@@ -176,15 +176,15 @@ const RenovationRestoration = ({ user, onLogout }) => {
         </video>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full">
           <h1
-            className="font-bold text-5xl mb-6"
+            className="font-bold text-center text-5xl mb-6"
             style={{ color: "#F8F4E3" }}
             data-aos="fade-down"
           >
             {t("renovation.hero.title")}
           </h1>
           <p
-            className="max-w-2xl mx-auto text-center text-lg"
-            style={{ color: "#000000ff" }}
+            className="max-w-2xl  mx-auto text-center text-lg"
+            style={{ color: darkMode ? "#F8F4E3" : "#000000ff" }}
             data-aos="fade-up"
           >
             {t("renovation.hero.subtitle")}

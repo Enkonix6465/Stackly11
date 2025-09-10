@@ -470,7 +470,7 @@ const Blog = ({ user, onLogout }) => {
                         {t(post.excerptKey)}
                       </p>
                     </div>
-                    <div className="flex flex-wrap flex-col w-fit  items-start  items-center mt-4">
+                    <div className="flex flex-wrap flex-col w-fit  items-start   mt-4">
                       <span
                         className="text-sm text-gray-200"
                         style={{ color: darkMode ? COLOR_2 : COLOR_1 }}

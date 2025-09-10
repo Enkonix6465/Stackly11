@@ -176,7 +176,7 @@ const InteriorDesign = ({ user, onLogout }) => {
           </h1>
 
           <p
-            className="max-w-2xl mx-auto text-lg"
+            className="max-w-2xl text-center mx-auto text-lg"
             style={{ color: "#333333", textShadow: "0 2px 8px #F8F4E3" }}
             data-aos="fade-up"
           >

@@ -573,13 +573,6 @@ const ResidentialProjects = ({ user, onLogout }) => {
           }}
         />
         <div className="max-w-6xl mx-auto text-center w-full relative z-10">
-          <h2
-            className="text-5xl font-extrabold mb-4 tracking-tight flex items-center justify-center gap-3"
-            style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
-          >
-            <FaPhoneAlt className="inline-block text-3xl animate-bounce" />
-            {t("Secure Peace of Mind for Your Project")}
-          </h2>
           <p
             className="text-xl mb-12 max-w-2xl mx-auto"
             style={{ color: darkMode ? COLOR_2 : COLOR_3 }}
