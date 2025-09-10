@@ -1,33 +1,33 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
-import Header from "../components/Header.jsx";
-import { useDarkMode } from "../context/DarkModeContext";
-import Footer from "../components/Footer.jsx";
-import servicesHero from "../assets/servicesHero.mp4";
-import whyChoose from "../assets/whyChoose.jpg";
-import familySection from "../assets/familySection.png";
-import industrialFacilities from "../assets/industrialFacilities.jpg";
-import commercialComplex from "../assets/commercialComplex.jpg";
-import corporateSection from "../assets/corporateSection.jpg";
-import immigrationSection from "../assets/immigrationSection.jpg";
-import realestateSection from "../assets/realEstatePhoto.jpg";
+import { useTranslation } from "react-i18next";
 import {
-  FaHome,
   FaBriefcase,
-  FaIndustry,
-  FaUsers,
-  FaGlobe,
   FaBuilding,
-  FaPalette,
   FaCheckCircle,
   FaCogs,
+  FaGlobe,
   FaHandshake,
+  FaHome,
+  FaIndustry,
   FaLightbulb,
-  FaStar,
+  FaPalette,
   FaRegSmile,
+  FaStar,
+  FaUsers,
 } from "react-icons/fa";
-import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
+import commercialComplex from "../assets/commercialComplex.jpg";
+import corporateSection from "../assets/corporateSection.jpg";
+import familySection from "../assets/familySection.png";
+import immigrationSection from "../assets/immigrationSection.jpg";
+import industrialFacilities from "../assets/industrialFacilities.jpg";
+import realestateSection from "../assets/realEstatePhoto.jpg";
+import servicesHero from "../assets/servicesHero.mp4";
+import whyChoose from "../assets/whyChoose.jpg";
+import Footer from "../components/Footer.jsx";
+import Header from "../components/Header.jsx";
+import { useDarkMode } from "../context/DarkModeContext";
 
 const COLOR_1 = "#002346";
 const COLOR_2 = "#F8F4E3";

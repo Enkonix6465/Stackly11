@@ -1,25 +1,25 @@
 import React from "react";
-import { DarkModeProvider } from "./context/DarkModeContext";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import LoginPage from "./pages/Login";
-import HomePage from "./pages/Home";
-import UrbanPlanning from "./services/UrbanPlanning";
+import { DarkModeProvider } from "./context/DarkModeContext";
+import AboutUs from "./pages/AboutUs";
+import AdminDashboard from "./pages/AdminDashboard";
 import Blog from "./pages/Blog";
 import ContactUs from "./pages/ContactUs";
-import IndustrialFacilities from "./services/IndustrialFacilities";
+import HomePage from "./pages/Home";
+import Home2 from "./pages/Home2";
+import LoginPage from "./pages/Login";
+import ModernArchitecture from "./pages/ModernArchitecture";
+import PlanningResidentialProject from "./pages/PlanningResidentialProject";
+import Renovation from "./pages/Renovation";
 import CommercialComplexes from "./services/CommercialComplexes";
-import ResidentialProjects from "./services/ResidentialProjects";
+import IndustrialFacilities from "./services/IndustrialFacilities";
 import InteriorDesign from "./services/InteriorDesign";
 import RenovationRestoration from "./services/RenovationRestoration";
+import ResidentialProjects from "./services/ResidentialProjects";
 import Services from "./services/Services";
-import AboutUs from "./pages/AboutUs";
-import { useTranslation } from "react-i18next";
-import AdminDashboard from "./pages/AdminDashboard";
-import Home2 from "./pages/Home2";
-import PlanningResidentialProject from "./pages/PlanningResidentialProject";
-import ModernArchitecture from "./pages/ModernArchitecture";
-import Renovation from "./pages/Renovation";
+import UrbanPlanning from "./services/UrbanPlanning";
 
 function App() {
   // You may want to keep user state here if needed

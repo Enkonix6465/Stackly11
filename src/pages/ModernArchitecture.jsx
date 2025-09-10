@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useDarkMode } from "../context/DarkModeContext.jsx";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
+import { useNavigate } from "react-router-dom";
 import designProcess from "../assets/modernArchitecture.jpg";
+import Footer from "../components/Footer.jsx";
+import Header from "../components/Header.jsx";
+import { useDarkMode } from "../context/DarkModeContext.jsx";
 
 const ModernArchitecture = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();

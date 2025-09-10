@@ -1,19 +1,18 @@
 /* eslint-disable no-unused-vars */
 
+import AOS from "aos";
+import React, { useEffect, useLayoutEffect } from "react";
+import { useTranslation } from "react-i18next";
 import {
-  FaRulerCombined,
-  FaRecycle,
+  FaComments,
+  FaHammer,
   FaHome,
   FaPiggyBank,
-  FaHammer,
-  FaComments,
+  FaRecycle,
+  FaRulerCombined,
 } from "react-icons/fa";
-import AOS from "aos";
-import React, { useEffect, useLayoutEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import blog from "../assets/blogHero.mp4";
-import burjKhalifa from "../assets/burjKhalifa.jpg"; // Optional: Replace with a suitable "landmark building" image for architecture firm if needed
 import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext";
@@ -218,7 +217,7 @@ function LawQuiz() {
 
   const correctCount = selected.reduce(
     (acc, val, idx) => acc + (val === QUIZ_QUESTIONS[idx].answer ? 1 : 0),
-    0
+    0,
   );
 
   if (showResult) {

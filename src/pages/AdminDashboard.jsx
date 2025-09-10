@@ -1,32 +1,22 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
-import { useDarkMode } from "../context/DarkModeContext";
-import { Pie, Bar } from "react-chartjs-2";
 import {
-  Chart as ChartJS,
   ArcElement,
-  Tooltip,
-  Legend,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
+  Tooltip,
 } from "chart.js";
+import React, { useEffect } from "react";
+import { Bar } from "react-chartjs-2";
+import { useDarkMode } from "../context/DarkModeContext";
 
-import {
-  PieChart,
-  Users,
-  FileText,
-  Calendar,
-  TrendingUp,
-  FolderOpen,
-  ArrowRight,
-  Upload,
-  PlusCircle,
-} from "lucide-react";
-import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
+import { FileText, FolderOpen, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Footer from "../components/Footer.jsx";
+import Header from "../components/Header.jsx";
 
 ChartJS.register(
   ArcElement,
@@ -90,16 +80,16 @@ export default function AdminDashboard({ user, onLogout }) {
       {
         label: "Active Projects",
         data: [27, 51, 72, 38, 94, 102],
-        borderColor: COLOR_1,
-        backgroundColor: darkMode ? "#fff" : "rgba(0,35,70,0.08)",
+        borderColor: darkMode ? "#26A0A2" : "#002346",
+        backgroundColor: darkMode ? "#26A0A2" : "rgba(0,35,70,0.18)",
         tension: 0.4,
         pointRadius: 3,
       },
       {
         label: "Completed Projects",
         data: [13, 26, 38, 16, 29, 42],
-        borderColor: COLOR_3,
-        backgroundColor: darkMode ? "#fff" : "rgba(51,51,51,0.04)",
+        borderColor: darkMode ? "#F8B400" : "#B57560",
+        backgroundColor: darkMode ? "#F8B400" : "rgba(181,117,96,0.18)",
         borderDash: [3, 2],
         tension: 0.4,
         pointRadius: 2,
@@ -121,7 +111,9 @@ export default function AdminDashboard({ user, onLogout }) {
       {
         label: "Projects Delivered",
         data: [182, 240, 320, 210, 78],
-        backgroundColor: darkMode ? "#fff" : COLOR_1,
+        backgroundColor: darkMode
+          ? ["#26A0A2", "#F8B400", "#B57560", "#AABF91", "#F8F4E3"]
+          : ["#002346", "#B57560", "#AABF91", "#F8B400", "#F8F4E3"],
         borderWidth: 2,
       },
     ],
@@ -170,7 +162,7 @@ export default function AdminDashboard({ user, onLogout }) {
             style={{ background: cardBg }}
           >
             <h2
-              className="text-2xl font-bold mb-4"
+              className="text-lg font-bold mb-4"
               style={{ color: textPrimary }}
             >
               {t("adminDashboard.userLoginActivity")}
@@ -186,17 +178,27 @@ export default function AdminDashboard({ user, onLogout }) {
             </div>
             <div className="overflow-x-auto">
               <table
-                className="w-full text-left text-sm"
-                style={{ color: textPrimary }}
+                className="w-full min-w-[600px] text-left text-sm rounded-xl overflow-hidden"
+                style={{
+                  color: textPrimary,
+                  background: darkMode ? "#222" : "#fff",
+                  boxShadow: darkMode
+                    ? "0 2px 8px #0002"
+                    : "0 2px 8px #00234611",
+                }}
               >
-                <thead>
-                  <tr>
-                    <th className="py-2">{t("adminDashboard.email")}</th>
-                    <th className="py-2">{t("adminDashboard.name")}</th>
-                    <th className="py-2">{t("adminDashboard.role")}</th>
-                    <th className="py-2">{t("adminDashboard.time")}</th>
-                    <th className="py-2">{t("adminDashboard.date")}</th>
-                    <th className="py-2">{t("adminDashboard.event")}</th>
+                <thead
+                  className={`${darkMode ? " text-black border-b border-[#444]" : "border-b border-[#EEE]"}`}
+                >
+                  <tr className="bg-gradient-to-r from-blue-100 to-blue-300 dark:from-[#222] dark:to-[#333]">
+                    <th className="py-3 px-2 sticky left-0 bg-inherit z-10">
+                      {t("adminDashboard.email")}
+                    </th>
+                    <th className="py-3 px-2">{t("adminDashboard.name")}</th>
+                    <th className="py-3 px-2">{t("adminDashboard.role")}</th>
+                    <th className="py-3 px-2">{t("adminDashboard.time")}</th>
+                    <th className="py-3 px-2">{t("adminDashboard.date")}</th>
+                    <th className="py-3 px-2">{t("adminDashboard.event")}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -213,16 +215,25 @@ export default function AdminDashboard({ user, onLogout }) {
                       .map((login, idx) => (
                         <tr
                           key={idx}
-                          className="border-t"
-                          style={{ borderColor: "#EEE" }}
+                          className="border-t hover:bg-blue-50 dark:hover:bg-[#222] transition"
+                          style={{ borderColor: darkMode ? "#444" : "#EEE" }}
                         >
-                          <td className="py-2">{login.email}</td>
-                          <td className="py-2">{login.name}</td>
-                          <td className="py-2">{login.role}</td>
-                          <td className="py-2">{login.loginTime}</td>
-                          <td className="py-2">{login.loginDate}</td>
-                          <td className="py-2">
-                            {login.event === "signup" ? "Signup" : "Login"}
+                          <td className="py-2 px-2 whitespace-nowrap text-xs md:text-sm">
+                            {login.email}
+                          </td>
+                          <td className="py-2 px-2 whitespace-nowrap text-xs md:text-sm">
+                            {login.name}
+                          </td>
+                          <td className="py-2 px-2 whitespace-nowrap text-xs md:text-sm">
+                            {login.role}
+                          </td>
+                          <td className="py-2 px-2 whitespace-nowrap text-xs md:text-sm">
+                            {login.loginTime}
+                          </td>
+                          <td className="py-2 px-2 whitespace-nowrap text-xs md:text-sm">
+                            {login.loginDate}
+                          </td>
+                          <td className="py-2 px-2 whitespace-nowrap text-xs md:text-sm">
                             {login.event === "signup"
                               ? t("adminDashboard.signup")
                               : t("adminDashboard.login")}
@@ -429,7 +440,7 @@ export default function AdminDashboard({ user, onLogout }) {
                     style={{ borderColor: "#EEE" }}
                   >
                     <td className="py-2">{row.client}</td>
-                    <td>
+                    <td className="text-sm font-semibold">
                       {row.status === "Paid" && (
                         <span style={{ color: "green" }}>
                           {t("adminDashboard.paid")}

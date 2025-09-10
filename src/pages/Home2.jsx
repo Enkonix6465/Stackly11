@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import home2Hero from "../assets/home2Hero.mp4";
 import philosophy from "../assets/philosophy.jpg";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext";
-import Footer from "../components/Footer.jsx";
-import home2Hero from "../assets/home2Hero.mp4";
 
 export default function Home2({ user, onLogout }) {
   const { darkMode, setDarkMode } = useDarkMode();
@@ -258,7 +258,7 @@ export default function Home2({ user, onLogout }) {
               {t("Our Approach")}
             </h2>
             {/* Timeline/Stepper Modern Layout */}
-            <div className="w-full flex flex-col md:flex-row md:space-x-0 md:space-y-0 space-y-12 md:space-y-0 md:justify-between items-center relative">
+            <div className="w-full flex flex-col md:flex-row md:space-x-0 md:space-y-0 space-y-12  md:justify-between items-center relative">
               {/* Vertical line for mobile, horizontal for desktop */}
               <div
                 className="hidden md:block absolute top-1/2 left-0 right-0 h-1"
@@ -755,7 +755,7 @@ export default function Home2({ user, onLogout }) {
                 className={`w-full py-3 rounded-full font-bold text-lg shadow-lg transition-colors hover:scale-105 hover:bg-[#eebbc3] hover:text-[#232946] duration-200 border-2 border-[#eebbc3] ${
                   darkMode
                     ? "bg-[#232946] text-[#eebbc3]"
-                    : "bg-[#232946] text-[#f8f4e3]"
+                    : "bg-[#232946] text-[#000000]"
                 }`}
               >
                 {t("Book Consultation")}

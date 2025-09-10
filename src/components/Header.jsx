@@ -1,5 +1,6 @@
 /* eslint-disable no-empty */
 /* eslint-disable no-unused-vars */
+import { Globe } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
@@ -141,79 +142,25 @@ export default function Header() {
           ? "bg-gradient-to-r from-[#181c2b] via-[#232946] to-[#1a2a3a] border-[#232946]"
           : "bg-gradient-to-r from-[#f8fafc] via-[#e0e7ef] to-[#f3f4f6] border-[#e0e7ef]"
       }`}
-       
     >
-      <div
-        className="   mx-auto w-full py-2 flex items-center justify-between"
-      >
+      <div className="   mx-auto w-full py-2 flex items-center justify-between">
         {/* Logo - Left Side */}
         <div className="">
-          <div className="  ">
-            <img
-              src={logo}
-              alt="LIFE Logo"
-              className="w-[170px]    "
-            />
-          </div>
+          <a href="/home" className="  ">
+            <img src={logo} alt="LIFE Logo" className="w-[170px]    " />
+          </a>
         </div>
 
         {/* Desktop Navigation - Right Side with Equal Gaps */}
         <nav className="hidden lg:flex items-center gap-4   ">
           {/* Language Dropdown */}
-          <div className="relative">
-            <button
-              className={`text-base font-semibold flex items-center gap-1 px-4 py-2 rounded-lg focus:outline-none transition-all duration-200 shadow-sm border ${
-                darkMode
-                  ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#fff]"
-                  : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#1e293b]"
-              }`}
-              onClick={() => setIsLangDropdownOpen((open) => !open)}
-            >
-              {t("Languages")}
-              <svg
-                className="w-5 h-5 ml-1"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-            {isLangDropdownOpen && (
-              <div
-                className={`absolute left-0 mt-2 w-44 border rounded-xl shadow-xl z-50 transition-colors duration-200 ${
-                  darkMode
-                    ? "bg-[#232946] border-[#313866]"
-                    : "bg-white border-[#e0e7ef]"
-                }`}
-              >
-                {languages.map((lang) => (
-                  <div
-                    key={lang.code}
-                    className={`block px-4 py-2 text-base rounded-lg transition-colors duration-200 cursor-pointer ${
-                      darkMode
-                        ? "text-[#eebbc3] hover:bg-[#313866] hover:text-white"
-                        : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#1e293b]"
-                    }`}
-                    onClick={() => handleLanguageChange(lang.code)}
-                  >
-                    {lang.label}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+
           <div className="relative">
             <button
               className={`text-base font-semibold flex items-center gap-1 px-4 py-2 rounded-lg focus:outline-none transition-all duration-200 border shadow-sm ${
                 darkMode
-                  ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#fff]"
-                  : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#1e293b]"
+                  ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#eebbc3]"
+                  : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#232946]"
               }`}
               onClick={() => setHomeDropdown((open) => !open)}
             >
@@ -234,16 +181,14 @@ export default function Header() {
             </button>
             {homeDropdown && (
               <div
-                className={`absolute left-0 mt-2 w-48 border rounded shadow-lg z-50 transition-colors duration-200 ${
-                  darkMode ? "bg-gray-800 border-gray-600" : "bg-white "
-                }`}
+                className={`absolute left-0 mt-2 w-48 border rounded shadow-lg z-50 transition-colors duration-200 ${darkMode ? "bg-[#232946] border-[#313866]" : "bg-white border-[#e0e7ef]"}`}
               >
                 <Link
                   to="/home"
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 ${
+                  className={`block px-4 py-3 text-base transition-colors duration-200 ${
                     darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
+                      ? "text-[#eebbc3] hover:bg-[#313866] hover:text-[#eebbc3]"
+                      : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#232946]"
                   }`}
                   onClick={() => {
                     setHomeDropdown(false);
@@ -254,10 +199,10 @@ export default function Header() {
                 </Link>
                 <Link
                   to="/home2"
-                  className={`block px-4 py-3 text-base hover:bg-blue-100 transition-colors duration-200 ${
+                  className={`block px-4 py-3 text-base transition-colors duration-200 ${
                     darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
+                      ? "text-[#eebbc3] hover:bg-[#313866] hover:text-[#eebbc3]"
+                      : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#232946]"
                   }`}
                   onClick={() => {
                     setHomeDropdown(false);
@@ -273,8 +218,8 @@ export default function Header() {
             to="/about"
             className={`text-base font-semibold px-4 py-2 rounded-lg border shadow-sm transition-all duration-200 ${
               darkMode
-                ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#fff]"
-                : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#1e293b]"
+                ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#eebbc3]"
+                : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#232946]"
             }`}
             onClick={scrollToTop}
           >
@@ -284,8 +229,8 @@ export default function Header() {
             <button
               className={`text-base font-semibold flex items-center gap-1 px-4 py-2 rounded-lg focus:outline-none transition-all duration-200 border shadow-sm ${
                 darkMode
-                  ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#fff]"
-                  : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#1e293b]"
+                  ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#eebbc3]"
+                  : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#232946]"
               }`}
               onClick={() => {
                 navigate("/services");
@@ -324,8 +269,8 @@ export default function Header() {
                 <div
                   className={`block px-4 py-2 text-base rounded-lg transition-colors duration-200 cursor-pointer border-b ${
                     darkMode
-                      ? "text-[#eebbc3] hover:bg-[#313866] hover:text-white border-[#313866]"
-                      : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#1e293b] border-[#e0e7ef]"
+                      ? "text-[#eebbc3] hover:bg-[#313866] hover:text-[#eebbc3] border-[#313866]"
+                      : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#232946] border-[#e0e7ef]"
                   }`}
                   onClick={() => {
                     setServicesDropdown(false);
@@ -338,8 +283,8 @@ export default function Header() {
                 <div
                   className={`block px-4 py-2 text-base rounded-lg transition-colors duration-200 cursor-pointer ${
                     darkMode
-                      ? "text-[#eebbc3] hover:bg-[#313866] hover:text-white"
-                      : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#1e293b]"
+                      ? "text-[#eebbc3] hover:bg-[#313866] hover:text-[#eebbc3]"
+                      : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#232946]"
                   }`}
                   onClick={() => {
                     setServicesDropdown(false);
@@ -350,10 +295,10 @@ export default function Header() {
                   {t("Residential Projects")}
                 </div>
                 <div
-                  className={`block px-4 py-3 text-base hover:bg-ice transition-colors duration-200 cursor-pointer ${
+                  className={`block px-4 py-3 text-base transition-colors duration-200 cursor-pointer ${
                     darkMode
-                      ? "text-white hover:bg-gray-700"
-                      : "text-black hover:bg-gray-100"
+                      ? "text-[#eebbc3] hover:bg-[#313866] hover:text-[#eebbc3]"
+                      : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#232946]"
                   }`}
                   onClick={() => {
                     setServicesDropdown(false);
@@ -426,8 +371,8 @@ export default function Header() {
             to="/blog"
             className={`text-base font-semibold px-4 py-2 rounded-lg border shadow-sm transition-all duration-200 ${
               darkMode
-                ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#fff]"
-                : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#1e293b]"
+                ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#eebbc3]"
+                : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#232946]"
             }`}
             onClick={scrollToTop}
           >
@@ -437,8 +382,8 @@ export default function Header() {
             to="/contact"
             className={`text-base font-semibold px-4 py-2 rounded-lg border shadow-sm transition-all duration-200 ${
               darkMode
-                ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#fff]"
-                : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#1e293b]"
+                ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#eebbc3]"
+                : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#232946]"
             }`}
             onClick={scrollToTop}
           >
@@ -479,7 +424,7 @@ export default function Header() {
           </button>
 
           {/* Avatar with Dropdown */}
-          <div className="relative avatar-dropdown ml-4">
+          <div className="relative  avatar-dropdown ml-4">
             <div
               onClick={() => setIsAvatarDropdownOpen(!isAvatarDropdownOpen)}
               className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-base cursor-pointer border-2 shadow-md transition-all duration-200 ${
@@ -517,6 +462,39 @@ export default function Header() {
                       Signed in
                     </div>
                   </div>
+                  {/* Admin Dashboard Button */}
+                  <button
+                    onClick={() => {
+                      setIsAvatarDropdownOpen(false);
+                      navigate("/admin-dashboard");
+                    }}
+                    className={`w-full text-left px-4 py-2 text-sm rounded-lg flex items-center transition-colors duration-200 mb-1 ${
+                      darkMode
+                        ? "text-[#eebbc3] hover:bg-[#313866] hover:text-[#eebbc3]"
+                        : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#232946]"
+                    }`}
+                  >
+                    <svg
+                      className="w-4 h-4 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M16 3v4M8 3v4M4 11h16"
+                      />
+                    </svg>
+                    {t("Admin Dashboard")}
+                  </button>
                   <button
                     onClick={handleLogout}
                     className={`w-full text-left px-4 py-2 text-sm rounded-lg flex items-center transition-colors duration-200 ${
@@ -541,6 +519,54 @@ export default function Header() {
                     {t("Logout")}
                   </button>
                 </div>
+              </div>
+            )}
+          </div>
+          <div className=" relative">
+            <button
+              className={`text-base font-semibold flex items-center gap-1 px-4 py-2 rounded-lg focus:outline-none transition-all duration-200 shadow-sm border ${
+                darkMode
+                  ? "bg-[#232946] text-[#eebbc3] border-[#232946] hover:bg-[#313866] hover:text-[#fff]"
+                  : "bg-[#e0e7ef] text-[#232946] border-[#e0e7ef] hover:bg-[#c7d2fe] hover:text-[#1e293b]"
+              }`}
+              onClick={() => setIsLangDropdownOpen((open) => !open)}
+            >
+              <Globe />
+              <svg
+                className="w-5 h-5 ml-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            {isLangDropdownOpen && (
+              <div
+                className={`absolute left-0 mt-2 w-44 border rounded-xl shadow-xl z-50 transition-colors duration-200 ${
+                  darkMode
+                    ? "bg-[#232946] border-[#313866]"
+                    : "bg-white border-[#e0e7ef]"
+                }`}
+              >
+                {languages.map((lang) => (
+                  <div
+                    key={lang.code}
+                    className={`block px-4 py-2 text-base rounded-lg transition-colors duration-200 cursor-pointer ${
+                      darkMode
+                        ? "text-[#eebbc3] hover:bg-[#313866] hover:text-white"
+                        : "text-[#232946] hover:bg-[#e0e7ef] hover:text-[#1e293b]"
+                    }`}
+                    onClick={() => handleLanguageChange(lang.code)}
+                  >
+                    {lang.label}
+                  </div>
+                ))}
               </div>
             )}
           </div>
@@ -667,7 +693,7 @@ export default function Header() {
                       ? "bg-[#232946] border-[#313866]"
                       : "bg-white border-[#e0e7ef]"
                   }`}
-                  style={{ position: 'relative' }}
+                  style={{ position: "relative" }}
                 >
                   {languages.map((lang) => (
                     <div
@@ -716,7 +742,6 @@ export default function Header() {
               </button>
               {homeDropdown && (
                 <div className="ml-4 mt-2 space-y-2">
-                 
                   <Link
                     to="/home"
                     onClick={closeMobileMenu}

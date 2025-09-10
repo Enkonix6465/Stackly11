@@ -159,7 +159,7 @@ const RenovationRestoration = ({ user, onLogout }) => {
         style={{
           minHeight: "100vh",
           maxWidth: "100vw",
-          background: darkMode ? "#367588" : "#F8F4E3",
+          background: darkMode ? COLOR_2 : COLOR_1,
         }}
       >
         <video
@@ -168,7 +168,7 @@ const RenovationRestoration = ({ user, onLogout }) => {
           loading="lazy"
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute opacity-50 inset-0 w-full h-full object-cover z-0"
           style={{ minHeight: "100vh", minWidth: "100vw", objectFit: "cover" }}
         >
           <source src={renovation} type="video/mp4" />
@@ -269,7 +269,7 @@ const RenovationRestoration = ({ user, onLogout }) => {
                   </div>
                   <h4
                     className="font-bold text-lg mb-2 text-center w-full"
-                    style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                    style={{ color: darkMode ? COLOR_3 : "#002346" }}
                   >
                     {b.split(":")[0]}
                   </h4>
@@ -341,7 +341,7 @@ const RenovationRestoration = ({ user, onLogout }) => {
                         </h3>
                         <p
                           className="text-base"
-                          style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                          style={{ color: darkMode ? COLOR_1 : "#333333" }}
                         >
                           {service.description}
                         </p>
@@ -370,7 +370,7 @@ const RenovationRestoration = ({ user, onLogout }) => {
                         </h3>
                         <p
                           className="text-base"
-                          style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                          style={{ color: darkMode ? COLOR_1 : "#333333" }}
                         >
                           {service.description}
                         </p>
@@ -408,10 +408,7 @@ const RenovationRestoration = ({ user, onLogout }) => {
           {/* Vertical Stepper with Progress Bar */}
           <div className="relative w-full flex flex-col items-center">
             {/* Vertical progress bar */}
-            <div
-              className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#B57560] to-[#AABF91] opacity-30 z-0"
-              style={{ transform: "translateX(-50%)" }}
-            />
+
             {processSteps.map((step, idx, arr) => (
               <div
                 key={idx}
@@ -452,7 +449,7 @@ const RenovationRestoration = ({ user, onLogout }) => {
                   </h3>
                   <p
                     className="text-sm"
-                    style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                    style={{ color: darkMode ? COLOR_1 : "#333333" }}
                   >
                     {step}
                   </p>

@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import AOS from "aos";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext.jsx";
-import { useTranslation } from "react-i18next";
-import AOS from "aos";
-import Footer from "../components/Footer.jsx";
 
 import urbanHero from "../assets/urbanHero.mp4";
 import urbanPhoto from "../assets/urbanPlanning.jpg";
@@ -159,7 +159,11 @@ const UrbanPlanning = ({ user, onLogout }) => {
       {/* Hero Section */}
       <section
         className="relative  w-screen h-screen flex items-center justify-center overflow-hidden m-0 p-0"
-        style={{ minHeight: "100vh", maxWidth: "100vw" }}
+        style={{
+          minHeight: "100vh",
+          maxWidth: "100vw",
+          backgroundColor: COLOR_1,
+        }}
       >
         <video
           autoPlay
@@ -167,7 +171,7 @@ const UrbanPlanning = ({ user, onLogout }) => {
           loading="lazy"
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute opacity-20 inset-0 w-full h-full object-cover z-0"
           style={{ minHeight: "100vh", minWidth: "100vw", objectFit: "cover" }}
         >
           <source src={urbanHero} type="video/mp4" />
@@ -266,7 +270,7 @@ const UrbanPlanning = ({ user, onLogout }) => {
                   </div>
                   <h4
                     className="font-bold text-lg mb-2 text-center w-full"
-                    style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                    style={{ color: darkMode ? COLOR_3 : "#002346" }}
                   >
                     {b.split(":")[0]}
                   </h4>
@@ -403,10 +407,7 @@ const UrbanPlanning = ({ user, onLogout }) => {
           {/* Vertical Stepper with Progress Bar */}
           <div className="relative w-full flex flex-col items-center">
             {/* Vertical progress bar */}
-            <div
-              className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#B57560] to-[#AABF91] opacity-30 z-0"
-              style={{ transform: "translateX(-50%)" }}
-            />
+
             {[
               t("urbanPlanning.process.0"),
               t("urbanPlanning.process.1"),
@@ -454,7 +455,7 @@ const UrbanPlanning = ({ user, onLogout }) => {
                   </h3>
                   <p
                     className="text-sm"
-                    style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                    style={{ color: darkMode ? COLOR_1 : "#333333" }}
                   >
                     {step}
                   </p>

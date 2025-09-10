@@ -1,10 +1,11 @@
+import AOS from "aos";
+import { Phone } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import contact from "../assets/contactUsHero.mp4";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext";
-import { useTranslation } from "react-i18next";
-import AOS from "aos";
-import Footer from "../components/Footer.jsx";
-import contact from "../assets/contactUsHero.mp4";
 
 // Office locations for construction firm branches
 const locations = [
@@ -338,17 +339,7 @@ const ContactUs = ({ user, onLogout }) => {
               </label>
               <div className="relative w-full">
                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xl text-[#002346]">
-                  <svg
-                    width="22"
-                    height="22"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <rect x="3" y="5" width="18" height="14" rx="2" />
-                    <path d="M7 9h.01M7 15h.01" />
-                  </svg>
+                  <Phone />
                 </span>
                 <input
                   id="phone"
@@ -384,8 +375,11 @@ const ContactUs = ({ user, onLogout }) => {
             <div className="md:col-span-2 flex justify-center mt-4">
               <button
                 type="submit"
-                className="bg-[#002346] hover:bg-[#00172a] text-white font-semibold py-3 px-10 rounded-xl shadow-md transition-colors duration-300 text-lg"
-                style={{ minWidth: "260px" }}
+                className="bg-[#002346] hover:bg-[#00172a]  font-semibold py-3 px-10 rounded-xl shadow-md transition-colors duration-300 text-lg"
+                style={{
+                  minWidth: "260px",
+                  color: darkMode ? COLOR_1 : COLOR_3,
+                }}
               >
                 {t("contact.form.send")}
               </button>

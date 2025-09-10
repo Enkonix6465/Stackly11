@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Header from "../components/Header.jsx";
-import { useDarkMode } from "../context/DarkModeContext.jsx";
-import Footer from "../components/Footer.jsx";
 import AOS from "aos";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
-  FaHome,
-  FaPalette,
-  FaLeaf,
-  FaCogs,
-  FaRegSmile,
-  FaCheckCircle,
-  FaLightbulb,
-  FaPhoneAlt,
-  FaUserTie,
   FaChartLine,
+  FaCheckCircle,
+  FaCogs,
+  FaHome,
+  FaLeaf,
+  FaLightbulb,
+  FaPalette,
+  FaPhoneAlt,
+  FaRegSmile,
+  FaUserTie,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import family from "../assets/residentialHero.mp4";
+import Footer from "../components/Footer.jsx";
+import Header from "../components/Header.jsx";
+import { useDarkMode } from "../context/DarkModeContext.jsx";
 // import residentialService from "../assets/residentialService.png";
 
 const COLOR_1 = "#002346"; // deep blue
@@ -183,7 +183,7 @@ const ResidentialProjects = ({ user, onLogout }) => {
           loading="lazy"
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute   inset-0 w-full h-full object-cover z-0"
           style={{ minHeight: "100%", minWidth: "100vw", objectFit: "cover" }}
         >
           <source src={family} type="video/mp4" />

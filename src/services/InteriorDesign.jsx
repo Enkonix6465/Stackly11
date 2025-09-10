@@ -1,22 +1,13 @@
-/* eslint-disable no-irregular-whitespace */
-import React, { useEffect } from "react";
+import AOS from "aos";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext.jsx";
-import Footer from "../components/Footer.jsx";
-import AOS from "aos";
-import {
-  UserIcon,
-  DocumentDuplicateIcon,
-  ClipboardDocumentCheckIcon,
-  PaperAirplaneIcon,
-  BriefcaseIcon,
-  SparklesIcon,
-  Cog6ToothIcon,
-} from "@heroicons/react/24/solid";
-import interiorHero from "../assets/interiorHero.mp4";
+
 import interiorDesignPhoto from "../assets/interiorDesign.jpg";
+import interiorHero from "../assets/interiorHero.mp4";
 
 const COLOR_1 = "#002346"; // deep blue
 const COLOR_2 = "#F8F4E3"; // off-white
@@ -168,7 +159,7 @@ const InteriorDesign = ({ user, onLogout }) => {
           loading="lazy"
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute  opacity-50 inset-0 w-full h-full object-cover z-0"
           style={{ minHeight: "100vh", minWidth: "100vw", objectFit: "cover" }}
         >
           <source src={interiorHero} type="video/mp4" />
@@ -270,7 +261,7 @@ const InteriorDesign = ({ user, onLogout }) => {
                   </div>
                   <h4
                     className="font-bold text-lg mb-2 text-center w-full"
-                    style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
+                    style={{ color: darkMode ? COLOR_3 : "#002346" }}
                   >
                     {b.split(":")[0]}
                   </h4>
@@ -286,24 +277,19 @@ const InteriorDesign = ({ user, onLogout }) => {
           </div>
         </div>
       </section>
-            {/* Services Section */}     
+      {/* Services Section */}
       <section
         className="w-full py-16 px-4 relative transition-colors duration-300"
         style={{ background: "#002346" }}
       >
-               
         <div className="max-w-7xl mx-auto relative z-10 w-full">
-                   
           <div className="mb-12" data-aos="fade-up">
-                       
             <h2 className="text-5xl text-center font-bold text-white">
               {t("interior.servicesTitle")}
             </h2>
-                     
           </div>
-                   
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                       
             {services.map((service, index) => (
               <div
                 key={index}
@@ -313,33 +299,26 @@ const InteriorDesign = ({ user, onLogout }) => {
                 data-aos-delay={index * 100}
                 data-aos-once="false"
               >
-                               
                 <div className="mb-4">
-                                   
                   <span
                     className="text-2xl font-bold"
                     style={{ color: "#002346" }}
                   >
-                                        {String(index + 1).padStart(2, "0")}   
-                                 
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                                 
                 </div>
-                               
+
                 <h3 className="text-xl text-[#002346] font-bold mb-4">
                   {service.title}
                 </h3>
-                               
-                <p className="text-base">{service.description}</p>             
+
+                <p className="text-base">{service.description}</p>
               </div>
             ))}
-                     
           </div>
-                 
         </div>
-             
       </section>
-            {/* How It Works Section */} 
+      {/* How It Works Section */}
       <section
         className="w-full py-20 px-4 relative"
         style={{ background: darkMode ? COLOR_1 : COLOR_2, overflow: "hidden" }}
@@ -360,11 +339,6 @@ const InteriorDesign = ({ user, onLogout }) => {
           </div>
           {/* Vertical Stepper with Progress Bar */}
           <div className="relative w-full flex flex-col items-center">
-            {/* Vertical progress bar */}
-            <div
-              className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#B57560] to-[#AABF91] opacity-30 z-0"
-              style={{ transform: "translateX(-50%)" }}
-            />
             {[
               t("interior.processStep1"),
               t("interior.processStep2"),
@@ -412,7 +386,7 @@ const InteriorDesign = ({ user, onLogout }) => {
                   </h3>
                   <p
                     className="text-sm"
-                    style={{ color: darkMode ? "#F8F4E3" : "#333333" }}
+                    style={{ color: darkMode ? COLOR_1 : "#333333" }}
                   >
                     {step}
                   </p>
@@ -422,20 +396,15 @@ const InteriorDesign = ({ user, onLogout }) => {
           </div>
         </div>
       </section>
-            {/* Features Section */}     
+      {/* Features Section */}
       <section
         className="w-full py-16 px-4 transition-colors duration-300"
         style={{ background: "#002346" }}
       >
-               
         <div className="max-w-7xl mx-auto w-full">
-                   
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                       
             <div className="flex flex-col space-y-8" data-aos="fade-right">
-                           
               <div>
-                               
                 <h2
                   className="text-5xl font-bold mb-6"
                   style={{ color: "#F8F4E3" }}
@@ -445,11 +414,9 @@ const InteriorDesign = ({ user, onLogout }) => {
                 <p className="text-xl mb-8" style={{ color: "#F8F4E3" }}>
                   {t("interior.featuresSubtitle")}
                 </p>
-                             
               </div>
-                           
+
               <div className="space-y-6">
-                               
                 <p
                   className="text-base leading-relaxed"
                   style={{ color: "#F8F4E3" }}
@@ -474,47 +441,36 @@ const InteriorDesign = ({ user, onLogout }) => {
                 >
                   {t("interior.featuresPara4")}
                 </p>
-                             
               </div>
-                         
             </div>
-                       
+
             <div
               className="grid grid-cols-1 sm:grid-cols-2 gap-8"
               data-aos="fade-left"
             >
-                           
               {features.map((feature, index) => (
                 <div
                   key={index}
                   className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300"
                   style={{ background: "#F8F4E3", color: "#333333" }}
                 >
-                                   
                   <h3 className="text-xl font-bold mb-2">{feature}</h3>
                   <p className="text-base">
                     {t("interior.featureBenefit", { feature })}
                   </p>
-                                 
                 </div>
               ))}
-                         
             </div>
-                     
           </div>
-                 
         </div>
-             
       </section>
-            {/* Final CTA/Pricing Section */}     
+      {/* Final CTA/Pricing Section */}
       <section
         id="pricing-section"
         className="w-full py-16 px-4 transition-colors duration-300"
         style={{ backgroundColor: darkMode ? "#002346" : "#F8F4E3" }}
       >
-               
         <div className="max-w-6xl mx-auto text-center w-full">
-                   
           <h2
             className="text-5xl font-bold mb-4"
             style={{ color: darkMode ? "#F8F4E3" : "#002346" }}
@@ -531,9 +487,8 @@ const InteriorDesign = ({ user, onLogout }) => {
           >
             {t("interior.pricingSubtitle")}
           </p>
-                   
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                       
             {pricingTiers.map((tier, i) => (
               <div
                 key={i}
@@ -544,13 +499,12 @@ const InteriorDesign = ({ user, onLogout }) => {
                 }}
                 className="rounded-2xl p-6 border-2 shadow-md hover:scale-105 transition-all duration-300"
               >
-                               
                 {tier.badge && (
                   <div className="bg-white text-[#002346] text-sm font-bold px-3 py-1 rounded-full inline-block mb-4 animate-pulse">
                     {tier.badge}
                   </div>
                 )}
-                               
+
                 <h3
                   className="text-2xl font-bold mb-2"
                   style={{ color: COLOR_1 }}
@@ -564,15 +518,13 @@ const InteriorDesign = ({ user, onLogout }) => {
                   {tier.price}
                   <span className="text-lg">{tier.priceNote}</span>
                 </div>
-                               
+
                 <ul className="text-left space-y-3 mb-6">
-                                   
                   {tier.features.map((feat, j) => (
                     <li key={j}>{feat}</li>
                   ))}
-                                 
                 </ul>
-                               
+
                 {tier.buttonText === t("interior.pricing1.button") && (
                   <button
                     className="w-full font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
@@ -612,14 +564,12 @@ const InteriorDesign = ({ user, onLogout }) => {
                     {tier.buttonText}
                   </button>
                 )}
-                             
               </div>
             ))}
-                     
           </div>
         </div>
       </section>
-            <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );
 };

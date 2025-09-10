@@ -1,15 +1,14 @@
-import React from "react";
-import { useDarkMode } from "../context/DarkModeContext";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
+import { useNavigate } from "react-router-dom";
+import emilyDavis from "../assets/emilyDavis.png";
 import home from "../assets/homeHero.mp4";
-import whyChoose from "../assets/whyChoose.jpg";
 import janeDoe from "../assets/janeDoe.jpg";
 import johnSmith from "../assets/johnSmith.jpg";
-import emilyDavis from "../assets/emilyDavis.png";
 import kevinSpacey from "../assets/kevinSpacey.jpg";
+import whyChoose from "../assets/whyChoose.jpg";
+import Footer from "../components/Footer.jsx";
+import Header from "../components/Header.jsx";
+import { useDarkMode } from "../context/DarkModeContext";
 
 // Strict color palette
 const COLOR_1 = "#002346"; // deep blue
@@ -351,7 +350,7 @@ const Home = ({ user, onLogout }) => {
                 </li>
               </ul>
               <button
-                className={`px-10 py-4 rounded-full transition drop-shadow-xl font-bold text-lg shadow-lg hover:scale-105 hover:bg-[#eebbc3] hover:text-[#232946] duration-200 border-2 border-[#eebbc3] ${darkMode ? "bg-[#232946] text-[#eebbc3]" : "bg-[#232946] text-[#f8f4e3]"}`}
+                className={`px-10 py-4 rounded-full transition drop-shadow-xl font-bold text-lg shadow-lg hover:scale-105 hover:bg-[#eebbc3] hover:text-[#232946] duration-200 border-2 border-[#eebbc3] ${darkMode ? "bg-[#0a0d1c] text-[#000000]" : "bg-[#232946]  "}`}
                 onClick={() => navigate("/about")}
               >
                 {t("Learn More About Us")}
@@ -538,14 +537,14 @@ const Home = ({ user, onLogout }) => {
               {t("Ready to Start Your Project?")}
             </h2>
             <p
-              className={`max-w-xl mx-auto mb-10 text-lg font-medium text-center ${darkMode ? "text-[#f8f4e3]/90" : "text-[#232946]"}`}
+              className={`max-w-xl mx-auto mb-10 text-lg font-medium text-center ${darkMode ? "text-[#f8f4e3]" : "text-[#232946]"}`}
             >
               {t(
                 "Contact us today to discuss your vision, and let’s bring it to life with expert design and construction.",
               )}
             </p>
             <button
-              className={`px-10 py-4 rounded-full transition font-bold text-lg shadow-lg hover:scale-105 hover:bg-[#eebbc3] hover:text-[#232946] duration-200 border-2 border-[#eebbc3] ${darkMode ? "bg-[#232946] text-[#eebbc3]" : "bg-[#232946] text-[#f8f4e3]"}`}
+              className={`px-10 py-4 rounded-full transition font-bold text-lg shadow-lg hover:scale-105 hover:bg-[#eebbc3] hover:text-[#232946] duration-200 border-2 border-[#eebbc3] ${darkMode ? "bg-[#232946] text-[#eebbc3]" : "bg-[#232946] text-[#000000]"}`}
               onClick={() => navigate("/home2#consultation-form")}
             >
               {t("Book a consultation")}

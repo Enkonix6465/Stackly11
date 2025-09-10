@@ -4,6 +4,7 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
+      "Admin Dashboard": "Admin Dashboard",
       adminDashboard: {
         email: "Email",
         name: "Name",
@@ -300,9 +301,9 @@ const resources = {
           ariaLabel: "Architecture/Building Knowledge",
           imageAlt: "Iconic Building",
           title: "Building the Future: Did You Know?",
-          0: "The tallest building in the world, the Burj Khalifa, stands at 828 meters and required over 330,000 cubic meters of concrete!",
+          0: "The tallest building in the world, stands at 828 meters and required over 330,000 cubic meters of concrete!",
           1: "Sustainable design can reduce a building's operating costs by up to 50% through energy and water savings.",
-          2: "Modern BIM (Building Information Modeling) improves collaboration among architects, engineers, and contractors for fewer errors.",
+          2: "Modern BIM   improves collaboration among engineers, and contractors for fewer errors.",
           3: "The Great Wall of China is over 13,000 miles long—history’s most impressive construction feat!",
         },
         quiz: {
@@ -1343,6 +1344,7 @@ const resources = {
   },
   ar: {
     translation: {
+      "Admin Dashboard": "لوحة معلومات الإدارة",
       adminDashboard: {
         email: "البريد الإلكتروني",
         name: "الاسم",
@@ -2624,6 +2626,7 @@ const resources = {
     },
   },
   he: {
+    "Admin Dashboard": "לוח המחוונים של המנהל",
     translation: {
       adminDashboard: {
         email: "אימייל",

@@ -1,19 +1,24 @@
 /* eslint-disable no-unused-vars */
 
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import {
   FaBullseye,
-  FaRocket,
-  FaGlobe,
   FaCompass,
-  FaTrophy,
+  FaGlobe,
   FaHandshake,
   FaLeaf,
   FaLightbulb,
+  FaRocket,
+  FaTrophy,
   FaUsers,
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import aboutUsHero from "../assets/aboutUsHero.mp4";
+import missionVision from "../assets/missionVision.jpg"; // suitable about/mission static image
+import Footer from "../components/Footer.jsx";
+import Header from "../components/Header.jsx";
 import { useDarkMode } from "../context/DarkModeContext";
-import { useTranslation } from "react-i18next";
 // Utility to sync left image height with right content
 function useSyncHeight(leftRef, rightRef) {
   useEffect(() => {
@@ -27,11 +32,6 @@ function useSyncHeight(leftRef, rightRef) {
     return () => window.removeEventListener("resize", sync);
   }, [leftRef, rightRef]);
 }
-import { useNavigate } from "react-router-dom";
-import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
-import aboutUsHero from "../assets/aboutUsHero.mp4";
-import missionVision from "../assets/missionVision.jpg"; // suitable about/mission static image
 
 const AboutUs = ({ user, onLogout }) => {
   const { darkMode, setDarkMode } = useDarkMode();
