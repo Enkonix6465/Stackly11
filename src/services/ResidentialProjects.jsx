@@ -217,7 +217,7 @@ const ResidentialProjects = ({ user, onLogout }) => {
         data-aos="fade-up"
       >
         <div className="max-w-3xl mx-auto flex flex-col items-center">
-          <FaLightbulb className="inline-block text-3xl animate-pulse mr-2" />
+           
           <h2
             className="text-5xl font-extrabold mb-2 text-center"
             style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
@@ -234,17 +234,13 @@ const ResidentialProjects = ({ user, onLogout }) => {
           </p>
           {/* Vertical Timeline for Benefits */}
           <div className="relative w-full">
-            <div
-              className="absolute left-1/2 top-0 bottom-0 w-1 bg-[#eebbc3] opacity-40 -translate-x-1/2"
-              aria-hidden="true"
-            />
+
             <ol className="flex flex-col gap-12 w-full z-10 relative">
               {benefits.map((b, idx) => (
                 <li
                   key={idx}
-                  className={`flex items-center w-full relative ${
-                    idx % 2 === 0 ? "flex-row" : "flex-row-reverse"
-                  }`}
+                  className={`flex items-center w-full relative ${idx % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                    }`}
                   tabIndex={0}
                   aria-label={`Benefit ${idx + 1}: ${b}`}
                 >
@@ -294,7 +290,6 @@ const ResidentialProjects = ({ user, onLogout }) => {
       >
         <div className="max-w-7xl mx-auto relative z-10 w-full">
           <div className="mb-12 text-center">
-            <FaPalette className="inline-block text-3xl" />
             <h2 className="text-5xl font-extrabold text-white mb-4 tracking-tight flex items-center justify-center gap-3">
               {t("Our Residential Services")}
             </h2>
@@ -307,13 +302,17 @@ const ResidentialProjects = ({ user, onLogout }) => {
               <div
                 key={index}
                 className="rounded-3xl shadow-xl p-8 flex flex-col items-center bg-white/80 dark:bg-[#232946]/80 border-2 border-[#eebbc3] backdrop-blur-md hover:scale-105 transition-transform"
-                style={{ color: darkMode ? COLOR_2 : COLOR_3, minHeight: 220 }}
+                style={{
+                  color: darkMode ? COLOR_2 : COLOR_3,
+                  backgroundColor: darkMode ? "#232946" : "#FFFFFFCC",
+                  minHeight: 220
+                }}
                 data-aos="fade-up"
                 data-aos-delay={index * 100}
               >
                 <service.icon
                   className="text-4xl mb-4 drop-shadow"
-                  style={{ color: "#eebbc3" }}
+                // style={{ color: "#eebbc3" }}
                 />
                 <h3
                   className="text-2xl font-bold mb-2 text-center"
@@ -343,16 +342,14 @@ const ResidentialProjects = ({ user, onLogout }) => {
               {t("HOW WE WORK")}
             </h2>
             <p
-              className={`text-lg mb-8 ${
-                darkMode ? "text-[#AABF91]" : "text-[#333]"
-              }`}
+              className={`text-lg mb-8 ${darkMode ? "text-[#AABF91]" : "text-[#333]"
+                }`}
             >
               {t("Our residential project process")}
             </p>
             <ul
-              className={`list-disc pl-6 space-y-4 text-base ${
-                darkMode ? "text-[#AABF91]" : "text-[#333]"
-              }`}
+              className={`list-disc pl-6 space-y-4 text-base ${darkMode ? "text-[#AABF91]" : "text-[#333]"
+                }`}
             >
               <li>{t("Personalized consultation and vision assessment.")}</li>
               <li>{t("Site analysis and feasibility planning.")}</li>
@@ -409,9 +406,8 @@ const ResidentialProjects = ({ user, onLogout }) => {
                     borderRadius: "12px",
                     boxShadow: `0 10px 20px -5px rgba(0,0,0,0.3)`,
                     transformOrigin: "center",
-                    animation: `floatUpDown 3s ease-in-out ${
-                      i * 0.25
-                    }s infinite`,
+                    animation: `floatUpDown 3s ease-in-out ${i * 0.25
+                      }s infinite`,
                     cursor: "default",
                     userSelect: "none",
                     color: darkMode ? COLOR_1 : COLOR_2,
@@ -423,8 +419,8 @@ const ResidentialProjects = ({ user, onLogout }) => {
                   tabIndex={0} // for keyboard focus, accessibility
                   aria-label={`Step ${i + 1}: ${step.label}`}
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.transform =
-                      "translateY(-10px) rotateX(5deg) rotateY(7deg)")
+                  (e.currentTarget.style.transform =
+                    "translateY(-10px) rotateX(5deg) rotateY(7deg)")
                   }
                   onMouseLeave={(e) => (e.currentTarget.style.transform = "")}
                 >
@@ -473,7 +469,7 @@ const ResidentialProjects = ({ user, onLogout }) => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col space-y-8" data-aos="fade-right">
               <div>
-                <FaUserTie className="text-3xl" />
+
                 <h2
                   className="text-5xl font-extrabold mb-6 flex items-center gap-3"
                   style={{ color: COLOR_2 }}
@@ -529,12 +525,13 @@ const ResidentialProjects = ({ user, onLogout }) => {
                   className="p-8 rounded-3xl shadow-xl bg-white/80 dark:bg-[#232946]/80 border-2 border-[#eebbc3] backdrop-blur-md hover:scale-105 transition-transform flex flex-col items-center"
                   style={{
                     color: darkMode ? COLOR_2 : COLOR_3,
+                    backgroundColor: darkMode ? "#232946" : "#FFFFFFCC",
                     minHeight: 160,
                   }}
                 >
                   <FaChartLine
                     className="text-3xl mb-3"
-                    style={{ color: "#eebbc3" }}
+                  // style={{ color: "#eebbc3" }}
                   />
                   <h3 className="text-xl font-bold mb-2 text-center">
                     {feature}
@@ -586,7 +583,11 @@ const ResidentialProjects = ({ user, onLogout }) => {
               <div
                 key={i}
                 className="rounded-3xl shadow-xl p-8 flex flex-col items-center bg-white/80 dark:bg-[#232946]/80 border-2 border-[#eebbc3] backdrop-blur-md hover:scale-105 transition-transform"
-                style={{ color: darkMode ? COLOR_2 : COLOR_3, minHeight: 320 }}
+                style={{
+                  color: darkMode ? COLOR_2 : COLOR_3,
+                  backgroundColor: darkMode ? "#232946" : "#FFFFFFCC",
+                  minHeight: 320
+                }}
                 data-aos="fade-up"
                 data-aos-delay={i * 100}
               >
@@ -603,7 +604,7 @@ const ResidentialProjects = ({ user, onLogout }) => {
                 </h3>
                 <div
                   className="text-4xl font-bold mb-4"
-                  style={{ color: COLOR_3 }}
+                  style={{ color: darkMode ? "#eebbc3" : COLOR_1 }}
                 >
                   {tier.price}
                   <span className="text-lg">{tier.priceNote}</span>

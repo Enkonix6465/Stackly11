@@ -142,15 +142,13 @@ const CommercialComplexes = ({ user, onLogout }) => {
 
   return (
     <div
-      className={`min-h-screen w-full transition-colors duration-300 ${
-        darkMode ? `bg-[${COLOR_1}]` : `bg-[${COLOR_2}]`
-      }`}
+      className={`min-h-screen w-full transition-colors duration-300 ${darkMode ? `bg-[${COLOR_1}]` : `bg-[${COLOR_2}]`
+        }`}
       style={{ overflowX: "hidden" }}
     >
       <div
-        className={`fixed top-0 left-0 w-full z-[100] ${
-          darkMode ? `bg-[${COLOR_3}]` : `bg-[${COLOR_2}]`
-        } shadow-lg`}
+        className={`fixed top-0 left-0 w-full z-[100] ${darkMode ? `bg-[${COLOR_3}]` : `bg-[${COLOR_2}]`
+          } shadow-lg`}
       >
         <Header
           darkMode={darkMode}
@@ -321,9 +319,8 @@ const CommercialComplexes = ({ user, onLogout }) => {
               return (
                 <div
                   key={idx}
-                  className={`relative flex flex-col md:flex-row items-center w-full z-10 mb-8 ${
-                    isLeft ? "md:justify-start" : "md:justify-end"
-                  }`}
+                  className={`relative flex flex-col md:flex-row items-center w-full z-10 mb-8 ${isLeft ? "md:justify-start" : "md:justify-end"
+                    }`}
                   style={{ minHeight: 120 }}
                 >
                   {/* Connector line above */}
@@ -401,7 +398,7 @@ const CommercialComplexes = ({ user, onLogout }) => {
         className="w-full py-20 px-4 relative"
         style={{ background: darkMode ? COLOR_1 : COLOR_2, overflow: "hidden" }}
       >
-        <div className="max-w-3xl mx-auto w-full flex flex-col items-center">
+        <div className="max-w-6xl mx-auto w-full flex flex-col items-center">
           <div className="mb-12 text-center">
             <h2
               className="text-5xl font-extrabold mb-2"
@@ -415,62 +412,78 @@ const CommercialComplexes = ({ user, onLogout }) => {
               {t("Our commercial project process")}
             </p>
           </div>
-          {/* Vertical Stepper with Progress Bar */}
-          <div className="relative w-full flex flex-col items-center">
-            {/* Vertical progress bar */}
-
+          {/* Modern Card Grid for Steps */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
             {[
-              t("Initial consultation and requirement analysis."),
-              t("Site survey and feasibility study."),
-              t("Conceptual and architectural design creation."),
-              t("Regulatory approvals and compliance handling."),
-              t("Efficient construction with quality monitoring."),
-              t("Transparent client updates and review meetings."),
-              t("Final handover and post-completion support."),
-            ].map((step, idx, arr) => (
+              {
+                title: t("Initial consultation and requirement analysis."),
+                 
+                icon: "📝",
+                color: darkMode ? "#AABF91" : "#B57560",
+              },
+              {
+                title: t("Site survey and feasibility study."),
+                icon: "📍",
+                color: darkMode ? "#AABF91" : "#B57560",
+              },
+              {
+                title: t("Conceptual and architectural design creation."),
+                 
+                icon: "🏢",
+                color: darkMode ? "#AABF91" : "#B57560",
+              },
+              {
+                title: t("Regulatory approvals and compliance handling."),
+                icon: "📑",
+                color: darkMode ? "#AABF91" : "#B57560",
+              },
+              {
+                title:   t("Efficient construction with quality monitoring."),
+                 
+                icon: "🏗️",
+                color: darkMode ? "#AABF91" : "#B57560",
+              },
+
+              {
+                title: t("Final handover and post-completion support."),
+                 
+                icon: "🎉",
+                color: darkMode ? "#AABF91" : "#B57560",
+              },
+            ].map((step, idx) => (
               <div
                 key={idx}
-                className="relative flex flex-col md:flex-row items-center w-full z-10"
+                className="relative flex flex-col items-center bg-white dark:bg-[#333333] rounded-2xl shadow-xl px-8 py-10 border border-[#e5e7eb] dark:border-[#222] hover:scale-105 transition-transform duration-300"
+                style={{ color: darkMode ? "#F8F4E3" : "#002346", minHeight: 220 }}
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
               >
-                <div className="flex flex-col items-center w-full md:w-auto">
-                  {/* Step Number */}
-                  <div
-                    className="flex items-center justify-center w-16 h-16 rounded-full shadow-lg mb-2 z-10 bg-white dark:bg-[#333333] border-4"
-                    style={{
-                      borderColor: darkMode ? "#AABF91" : "#B57560",
-                      color: darkMode ? "#AABF91" : "#002346",
-                      fontSize: 28,
-                      fontWeight: 700,
-                    }}
-                  >
-                    <span>{String(idx + 1).padStart(2, "0")}</span>
-                  </div>
-                  {/* Progress bar segment */}
-                  {idx < arr.length - 1 && (
-                    <div className="w-1 h-12 md:h-16 bg-gradient-to-b from-[#B57560] to-[#AABF91] opacity-30" />
-                  )}
-                </div>
-                {/* Step Card */}
                 <div
-                  className="relative bg-white dark:bg-[#333333] rounded-xl shadow-lg px-6 py-5 min-h-[90px] flex flex-col justify-center items-center border border-[#e5e7eb] dark:border-[#222] w-full md:ml-8 my-4 md:my-0"
+                  className="flex items-center justify-center w-16 h-16 rounded-full mb-4"
                   style={{
-                    color: darkMode ? "#F8F4E3" : "#002346",
-                    zIndex: 2,
-                    textAlign: "center",
+                    background: step.color,
+                    color: darkMode ? COLOR_1 : COLOR_2,
+                    fontSize: 32,
+                    fontWeight: 700,
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.08)",
                   }}
                 >
-                  <h3
-                    className="font-bold text-lg mb-1"
-                    style={{ color: darkMode ? "#AABF91" : "#002346" }}
-                  >
-                    {t("Step")} {idx + 1}
-                  </h3>
-                  <p
-                    className="text-sm"
-                    style={{ color: darkMode ? COLOR_1 : "#333333" }}
-                  >
-                    {step}
-                  </p>
+                  <span>{step.icon}</span>
+                </div>
+                <h3
+                  className="font-bold text-xl mb-2 text-center"
+                  style={{ color: darkMode ? COLOR_1 : COLOR_3 }}
+                >
+                  {t("Step")} {idx + 1}
+                </h3>
+                <p
+                  className="text-base text-center"
+                  style={{ color: darkMode ? COLOR_1 : "#333333" }}
+                >
+                  {step.title}
+                </p>
+                <div className="absolute top-4 right-4 text-xs font-bold opacity-30 select-none" style={{ color: step.color }}>
+                  {String(idx + 1).padStart(2, "0")}
                 </div>
               </div>
             ))}

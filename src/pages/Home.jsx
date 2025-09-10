@@ -128,7 +128,7 @@ const Home = ({ user, onLogout }) => {
                 ),
                 icon: (
                   <svg
-                    className="w-12 h-12 mb-4 text-[#eebbc3]"
+                    className="w-12 h-12 mb-4  "
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -145,7 +145,7 @@ const Home = ({ user, onLogout }) => {
                 ),
                 icon: (
                   <svg
-                    className="w-12 h-12 mb-4 text-[#eebbc3]"
+                    className="w-12 h-12 mb-4 "
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -163,7 +163,7 @@ const Home = ({ user, onLogout }) => {
                 ),
                 icon: (
                   <svg
-                    className="w-12 h-12 mb-4 text-[#eebbc3]"
+                    className="w-12 h-12 mb-4 "
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -181,7 +181,7 @@ const Home = ({ user, onLogout }) => {
                 ),
                 icon: (
                   <svg
-                    className="w-12 h-12 mb-4 text-[#eebbc3]"
+                    className="w-12 h-12 mb-4 "
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -199,7 +199,7 @@ const Home = ({ user, onLogout }) => {
                 ),
                 icon: (
                   <svg
-                    className="w-12 h-12 mb-4 text-[#eebbc3]"
+                    className="w-12 h-12 mb-4 "
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -217,7 +217,7 @@ const Home = ({ user, onLogout }) => {
                 ),
                 icon: (
                   <svg
-                    className="w-12 h-12 mb-4 text-[#eebbc3]"
+                    className="w-12 h-12 mb-4 "
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -394,7 +394,7 @@ const Home = ({ user, onLogout }) => {
               <div
                 key={name}
                 className={`relative flex flex-col items-center rounded-3xl shadow-2xl p-0 pt-8 pb-6 transition-all duration-300 hover:scale-105 hover:shadow-3xl group overflow-hidden ${darkMode ? "bg-[#232946]/90" : "bg-white/90"}`}
-                style={{ minHeight: 340 }}
+              // style={{ minHeight: 340 }}
               >
                 <div className="relative flex flex-col items-center w-full">
                   <div
@@ -403,7 +403,7 @@ const Home = ({ user, onLogout }) => {
                     <img
                       src={img}
                       alt={name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-110 object-top transition-transform duration-300"
                     />
                   </div>
                   <h3
@@ -412,19 +412,13 @@ const Home = ({ user, onLogout }) => {
                     {name}
                   </h3>
                   <p
-                    className={`text-base font-medium mb-2 drop-shadow ${darkMode ? "text-[#f8f4e3]" : "text-[#eebbc3]"}`}
+                    className={`text-base font-medium mb-2 drop-shadow ${darkMode ? "text-[#f8f4e3]" : "text-[#000]"}`}
                   >
                     {title}
                   </p>
-                  <div className="w-10 h-1 rounded-full bg-[#eebbc3] mb-2" />
+
                 </div>
-                <div className="flex-1 flex flex-col justify-end items-center px-4">
-                  <p
-                    className={`text-sm opacity-80 text-center mt-2 ${darkMode ? "text-[#f8f4e3]" : "text-[#232946]"}`}
-                  >
-                    {t("Expert in their field")}
-                  </p>
-                </div>
+
               </div>
             ))}
           </div>

@@ -454,7 +454,7 @@ const Services = ({ user, onLogout }) => {
 
       {/* 6. Consultation CTA */}
       <section
-        className="w-full py-20 flex justify-center items-center relative overflow-hidden"
+        className="w-full py-20 flex justify-center items-center  overflow-hidden"
         style={{ background: darkMode ? COLOR_1 : COLOR_2 }}
       >
         <div className="w-full   mx-auto relative z-10 flex flex-col items-center text-center">
@@ -536,14 +536,23 @@ function TestimonialCarousel({ t, darkMode, COLOR_1, COLOR_2, COLOR_3 }) {
       img: "https://randomuser.me/api/portraits/women/44.jpg",
     },
   ];
-  // Group testimonials into slides of 2
+  // Responsive: 1 testimonial per slide on mobile, 2 per slide on desktop
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   let slides = [];
-  for (let i = 0; i < testimonials.length; i += 1) {
-    slides.push(testimonials.slice(i, i + 1));
+  const perSlide = isMobile ? 1 : 2;
+  for (let i = 0; i < testimonials.length; i += perSlide) {
+    slides.push(testimonials.slice(i, i + perSlide));
   }
-  // If a slide has only one testimonial, move it to the front
-  if (slides.length > 1 && slides[slides.length - 1].length === 1) {
-    slides = [slides[slides.length - 1], ...slides.slice(0, slides.length - 1)];
+  // If desktop and last slide has only one testimonial, add the first testimonial to it
+  if (!isMobile && slides.length > 1 && slides[slides.length - 1].length === 1) {
+    slides[slides.length - 1].push(testimonials[0]);
   }
   const [current, setCurrent] = React.useState(0);
   const total = slides.length;
@@ -562,13 +571,13 @@ function TestimonialCarousel({ t, darkMode, COLOR_1, COLOR_2, COLOR_3 }) {
     return () => window.removeEventListener("keydown", handler);
   }, [total]);
   return (
-    <div className="w-full max-w-3xl flex flex-col items-center relative">
+    <div className="w-full max-w-6xl flex flex-col items-center ">
       {/* Cards */}
       <div className="relative w-full min-h-[340px] flex items-center justify-center">
         {slides.map((slide, idx) => (
           <div
             key={idx}
-            className={`absolute left-0 top-0 w-full transition-all duration-700 ease-in-out ${
+            className={` absolute left-0 top-0 w-full transition-all duration-700 ease-in-out ${
               idx === current
                 ? "opacity-100 scale-100 z-20"
                 : "opacity-0 scale-90 z-10 pointer-events-none"
